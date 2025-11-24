@@ -96,6 +96,29 @@
     .sheep-layer span:nth-child(4) { bottom: 14%; right: 16%; animation-delay: -5s; }
     .sheep-layer span:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -17s; }
 
+    /* CAMADA MEME (EMOJIS) – visível só no modo Turbo */
+    .meme-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      font-size: 2.6rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .meme-layer span {
+      position: absolute;
+      animation: memeFloat 18s ease-in-out infinite alternate;
+    }
+
+    .meme-layer span:nth-child(1) { top: 8%;  left: 12%; animation-delay: -2s; }
+    .meme-layer span:nth-child(2) { top: 30%; right: 8%; animation-delay: -7s; }
+    .meme-layer span:nth-child(3) { bottom: 18%; left: 20%; animation-delay: -11s; }
+    .meme-layer span:nth-child(4) { bottom: 8%; right: 20%; animation-delay: -4s; }
+    .meme-layer span:nth-child(5) { top: 48%; left: 55%; animation-delay: -9s; }
+    .meme-layer span:nth-child(6) { top: 15%; left: 55%; animation-delay: -13s; }
+
     @keyframes portalPulse {
       0% {
         transform: translate3d(0, 0, 0) scale(1);
@@ -132,6 +155,57 @@
       }
       100% {
         transform: translate3d(-16px, 14px, 0) rotate(-3deg);
+      }
+    }
+
+    @keyframes memeFloat {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 0 rgba(0,0,0,0.4));
+      }
+      50% {
+        transform: translate3d(18px, -22px, 0) scale(1.1) rotate(6deg);
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+      }
+      100% {
+        transform: translate3d(-24px, 16px, 0) scale(0.95) rotate(-5deg);
+        filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+      }
+    }
+
+    /* MODO TURBO MEME – overrides quando body.turbo-on */
+    body.turbo-on .animated-bg {
+      background:
+        radial-gradient(circle at 0% 0%, #ff9c3a 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #ff3a6c 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, #1b7bff 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #7a3aff 0, transparent 55%),
+        radial-gradient(circle at 50% 50%, #050309 0, #050309 55%, #0b0615 100%);
+      background-size: 260% 260%;
+      animation: bgShift 22s ease-in-out infinite alternate;
+      opacity: 0.95;
+    }
+
+    body.turbo-on .sheep-layer {
+      opacity: 0.18;
+    }
+
+    body.turbo-on .meme-layer {
+      opacity: 0.4;
+    }
+
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 0%;
+        filter: saturate(1);
+      }
+      50% {
+        background-position: 50% 100%;
+        filter: saturate(1.2);
+      }
+      100% {
+        background-position: 100% 0%;
+        filter: saturate(1.4);
       }
     }
 
@@ -730,6 +804,16 @@
     <span>🐏</span>
   </div>
 
+  <!-- CAMADA MEME (aparece no modo Turbo) -->
+  <div class="meme-layer">
+    <span>🚀</span>
+    <span>🔥</span>
+    <span>💥</span>
+    <span>🐑</span>
+    <span>😈</span>
+    <span>📈</span>
+  </div>
+
   <div class="page">
     <header>
       <nav class="nav">
@@ -747,6 +831,9 @@
           <a href="#roadmap" class="btn btn-outline">Roadmap</a>
           <a href="#tokenomics" class="btn btn-outline">Tokenomics</a>
           <a href="#how-to-buy" class="btn btn-primary">Como comprar</a>
+          <button type="button" class="btn btn-outline" id="toggle-meme">
+            Turbo Meme: OFF
+          </button>
         </div>
       </nav>
     </header>
@@ -1070,6 +1157,30 @@
 
     fetchPLHPPrice();
     setInterval(fetchPLHPPrice, 60000);
+
+    // Toggle do modo TURBO MEME
+    (function () {
+      const key = "plhpTurboMeme";
+      const btn = document.getElementById("toggle-meme");
+      if (!btn) return;
+
+      // Recupera preferência salva
+      try {
+        const saved = localStorage.getItem(key);
+        if (saved === "on") {
+          document.body.classList.add("turbo-on");
+          btn.textContent = "Turbo Meme: ON";
+        }
+      } catch (e) {}
+
+      btn.addEventListener("click", () => {
+        const isOn = document.body.classList.toggle("turbo-on");
+        btn.textContent = isOn ? "Turbo Meme: ON" : "Turbo Meme: OFF";
+        try {
+          localStorage.setItem(key, isOn ? "on" : "off");
+        } catch (e) {}
+      });
+    })();
   </script>
 </body>
 </html>

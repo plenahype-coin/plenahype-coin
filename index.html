@@ -317,6 +317,7 @@
       gap: 12px;
       font-size: 0.8rem;
       color: var(--muted);
+      margin-bottom: 12px;
     }
 
     .pill-inline {
@@ -639,6 +640,50 @@
       color: var(--primary-soft);
     }
 
+    /* WIDGET DE PREÇO EM TEMPO REAL */
+    .price-widget {
+      margin-top: 6px;
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(7, 3, 16, 0.9);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.82rem;
+      color: var(--muted);
+      backdrop-filter: blur(8px);
+    }
+
+    .price-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-soft);
+      margin-bottom: 6px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 2px;
+    }
+
+    .price-row.small {
+      font-size: 0.78rem;
+      opacity: 0.9;
+    }
+
+    .price-row span:last-child {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .price-updated {
+      margin-top: 4px;
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+
     @media (max-width: 880px) {
       .hero {
         grid-template-columns: minmax(0,1fr);
@@ -735,6 +780,28 @@
           <div class="hero-meta">
             <span class="pill-inline"><span class="dot"></span> Rede: BNB Smart Chain (BEP-20)</span>
             <span class="pill-inline"><span class="dot"></span> Supply: 69.420.000.000 PLHP</span>
+          </div>
+
+          <!-- WIDGET DE PREÇO EM TEMPO REAL -->
+          <div class="price-widget">
+            <div class="price-title">Preço em tempo real</div>
+            <div class="price-row">
+              <span>PLHP / BNB</span>
+              <span id="price-native">Carregando...</span>
+            </div>
+            <div class="price-row">
+              <span>Preço em USD</span>
+              <span id="price-usd">Carregando...</span>
+            </div>
+            <div class="price-row small">
+              <span>Liquidez (USD)</span>
+              <span id="liquidity-usd">Carregando...</span>
+            </div>
+            <div class="price-row small">
+              <span>Volume 24h</span>
+              <span id="volume-usd">Carregando...</span>
+            </div>
+            <div class="price-updated" id="price-updated">Atualizando...</div>
           </div>
         </div>
 
@@ -944,8 +1011,65 @@
       </div>
     </footer>
   </div>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    async function fetchPLHPPrice() {
+      const apiUrl = "https://api.dexscreener.com/latest/dex/tokens/0x69575D9877822277539355ae8B97b5D5dee1313F";
+
+      try {
+        const res = await fetch(apiUrl);
+        if (!res.ok) throw new Error("Erro ao buscar preço");
+        const data = await res.json();
+
+        if (!data.pairs || !data.pairs.length) throw new Error("Par não encontrado");
+
+        const pair = data.pairs[0];
+
+        const priceNative   = pair.priceNative;
+        const priceUsd      = pair.priceUsd;
+        const liquidityUsd  = pair.liquidity?.usd;
+        const volume24hUsd  = pair.volume?.h24;
+
+        const elNative   = document.getElementById("price-native");
+        const elUsd      = document.getElementById("price-usd");
+        const elLiq      = document.getElementById("liquidity-usd");
+        const elVol      = document.getElementById("volume-usd");
+        const elUpdated  = document.getElementById("price-updated");
+
+        if (!elNative || !elUsd) return;
+
+        elNative.textContent =
+          priceNative ? priceNative + " BNB" : "-";
+
+        elUsd.textContent =
+          priceUsd ? "$" + Number(priceUsd).toFixed(8) : "-";
+
+        elLiq.textContent =
+          liquidityUsd ? "$" + Number(liquidityUsd).toLocaleString("en-US", { maximumFractionDigits: 0 }) : "-";
+
+        elVol.textContent =
+          volume24hUsd ? "$" + Number(volume24hUsd).toLocaleString("en-US", { maximumFractionDigits: 0 }) : "-";
+
+        const now = new Date();
+        elUpdated.textContent =
+          "Atualizado às " +
+          now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+      } catch (err) {
+        console.error(err);
+        const elNative  = document.getElementById("price-native");
+        const elUsd     = document.getElementById("price-usd");
+        const elUpdated = document.getElementById("price-updated");
+
+        if (elNative)  elNative.textContent  = "Erro";
+        if (elUsd)     elUsd.textContent     = "Erro";
+        if (elUpdated) elUpdated.textContent = "Falha ao atualizar";
+      }
+    }
+
+    fetchPLHPPrice();
+    setInterval(fetchPLHPPrice, 60000);
   </script>
 </body>
 </html>

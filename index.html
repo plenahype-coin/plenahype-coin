@@ -35,53 +35,104 @@
       overflow-x: hidden;
     }
 
-    /* Fundo animado */
+    /* FUNDO PORTAL CÓSMICO + CARNEIROS */
     .animated-bg {
       position: fixed;
       inset: 0;
-      z-index: -2;
-      background: radial-gradient(circle at 0% 0%, #3a1c5e 0, transparent 50%),
-                  radial-gradient(circle at 100% 0%, #ff8b3a 0, transparent 55%),
-                  radial-gradient(circle at 0% 100%, #1b7bff 0, transparent 55%),
-                  radial-gradient(circle at 100% 100%, #ff3a6c 0, transparent 50%);
-      filter: blur(1px);
-      animation: bgMove 18s ease-in-out infinite alternate;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 20% -10%, #ff9c3a 0, transparent 55%),
+        radial-gradient(circle at 80% 0%, #ff3a6c 0, transparent 55%),
+        radial-gradient(circle at -5% 100%, #1b7bff 0, transparent 55%),
+        radial-gradient(circle at 110% 100%, #7a3aff 0, transparent 55%),
+        radial-gradient(circle at 50% 50%, #050309 0, #050309 55%, #0b0615 100%);
+      animation: portalPulse 18s ease-in-out infinite alternate;
+      opacity: 0.9;
     }
 
-    .animated-bg::before {
-      content: "🐏 🐏 🐏 🐏 🐏";
-      position: absolute;
+    .portal-ring {
+      position: fixed;
       inset: 0;
+      z-index: -2;
+      pointer-events: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 5rem;
-      opacity: 0.06;
-      animation: sheepDrift 30s linear infinite;
-      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.2;
     }
 
-    @keyframes bgMove {
+    .portal-ring::before {
+      content: "";
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,212,74,0.9);
+      box-shadow:
+        0 0 40px rgba(255,212,74,0.8),
+        0 0 120px rgba(255,90,140,0.8),
+        inset 0 0 40px rgba(0,0,0,0.9);
+      animation: ringSpin 26s linear infinite;
+    }
+
+    .sheep-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      font-size: 4.8rem;
+      opacity: 0.095;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sheep-layer span {
+      position: absolute;
+      animation: sheepFloat 22s ease-in-out infinite alternate;
+    }
+    .sheep-layer span:nth-child(1) { top: 12%; left: 8%; animation-delay: -3s; }
+    .sheep-layer span:nth-child(2) { top: 18%; right: 10%; animation-delay: -8s; }
+    .sheep-layer span:nth-child(3) { bottom: 10%; left: 15%; animation-delay: -13s; }
+    .sheep-layer span:nth-child(4) { bottom: 14%; right: 16%; animation-delay: -5s; }
+    .sheep-layer span:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -17s; }
+
+    @keyframes portalPulse {
       0% {
         transform: translate3d(0, 0, 0) scale(1);
+        filter: saturate(1);
       }
       50% {
-        transform: translate3d(-10px, -20px, 0) scale(1.05);
+        transform: translate3d(-10px, -15px, 0) scale(1.05);
+        filter: saturate(1.2);
       }
       100% {
-        transform: translate3d(15px, 10px, 0) scale(1.08);
+        transform: translate3d(12px, 18px, 0) scale(1.08);
+        filter: saturate(1.35);
       }
     }
 
-    @keyframes sheepDrift {
+    @keyframes ringSpin {
       0% {
-        transform: translate3d(-10%, 10%, 0) rotate(0deg);
+        transform: rotate(0deg) scale(1);
       }
       50% {
-        transform: translate3d(5%, -5%, 0) rotate(4deg);
+        transform: rotate(180deg) scale(1.03);
       }
       100% {
-        transform: translate3d(10%, 15%, 0) rotate(-3deg);
+        transform: rotate(360deg) scale(1);
+      }
+    }
+
+    @keyframes sheepFloat {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate3d(12px, -18px, 0) rotate(4deg);
+      }
+      100% {
+        transform: translate3d(-16px, 14px, 0) rotate(-3deg);
       }
     }
 
@@ -97,19 +148,19 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(5,3,9,0.98), rgba(5,3,9,0.72), transparent);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5,3,9,0.98), rgba(5,3,9,0.82), transparent);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .nav {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 12px 18px;
+      padding: 10px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
     }
 
     .nav-left {
@@ -155,15 +206,17 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .btn {
       border-radius: 999px;
-      padding: 8px 16px;
+      padding: 7px 14px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       border: 1px solid transparent;
       cursor: pointer;
       white-space: nowrap;
@@ -202,7 +255,7 @@
     .hero {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 40px 18px 34px;
+      padding: 38px 18px 30px;
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: 28px;
@@ -249,7 +302,7 @@
     .hero-subtitle {
       font-size: 0.98rem;
       color: var(--muted);
-      max-width: 470px;
+      max-width: 480px;
       margin-bottom: 18px;
     }
 
@@ -287,7 +340,7 @@
 
     .hero-card {
       position: relative;
-      background: radial-gradient(circle at top, #3a1c5e, #0c0616);
+      background: radial-gradient(circle at top, rgba(58,28,94,0.95), #0c0616);
       border-radius: 26px;
       padding: 22px;
       box-shadow: var(--shadow);
@@ -329,7 +382,7 @@
       position: absolute;
       top: 16px;
       right: 16px;
-      background: rgba(5,3,9,0.8);
+      background: rgba(5,3,9,0.85);
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.12);
       padding: 4px 10px;
@@ -618,7 +671,16 @@
   </style>
 </head>
 <body>
+  <!-- FUNDO ANIMADO -->
   <div class="animated-bg"></div>
+  <div class="portal-ring"></div>
+  <div class="sheep-layer">
+    <span>🐏</span>
+    <span>🐏</span>
+    <span>🐏</span>
+    <span>🐏</span>
+    <span>🐏</span>
+  </div>
 
   <div class="page">
     <header>
@@ -633,8 +695,10 @@
           </div>
         </div>
         <div class="nav-actions">
+          <a href="#story" class="btn btn-outline">História</a>
+          <a href="#roadmap" class="btn btn-outline">Roadmap</a>
           <a href="#tokenomics" class="btn btn-outline">Tokenomics</a>
-          <a href="#how-to-buy" class="btn btn-primary">Comprar PLHP</a>
+          <a href="#how-to-buy" class="btn btn-primary">Como comprar</a>
         </div>
       </nav>
     </header>
@@ -839,8 +903,8 @@
         </div>
       </section>
 
-      <!-- ROADMAP SIMPLES -->
-      <section class="section">
+      <!-- ROADMAP -->
+      <section class="section" id="roadmap">
         <div class="section-header">
           <h2 class="section-title">Roadmap</h2>
           <p class="section-subtitle">

@@ -96,7 +96,7 @@
     .sheep-layer span:nth-child(4) { bottom: 14%; right: 16%; animation-delay: -5s; }
     .sheep-layer span:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -17s; }
 
-    /* CAMADA MEME (EMOJIS) – visível só no modo Turbo */
+    /* CAMADA MEME (EMOJIS) – visível no Turbo */
     .meme-layer {
       position: fixed;
       inset: 0;
@@ -109,7 +109,8 @@
 
     .meme-layer span {
       position: absolute;
-      animation: memeFloat 18s ease-in-out infinite alternate;
+      /* AQUI: velocidade 6s */
+      animation: memeFloat 6s ease-in-out infinite alternate;
     }
 
     .meme-layer span:nth-child(1) { top: 8%;  left: 12%; animation-delay: -2s; }
@@ -173,7 +174,7 @@
       }
     }
 
-    /* MODO TURBO MEME – overrides quando body.turbo-on */
+    /* MODO TURBO MEME – sempre ligado via class="turbo-on" no body */
     body.turbo-on .animated-bg {
       background:
         radial-gradient(circle at 0% 0%, #ff9c3a 0, transparent 55%),
@@ -792,7 +793,7 @@
     }
   </style>
 </head>
-<body>
+<body class="turbo-on">
   <!-- FUNDO ANIMADO -->
   <div class="animated-bg"></div>
   <div class="portal-ring"></div>
@@ -804,7 +805,7 @@
     <span>🐏</span>
   </div>
 
-  <!-- CAMADA MEME (aparece no modo Turbo) -->
+  <!-- CAMADA MEME (turbo sempre ligado) -->
   <div class="meme-layer">
     <span>🚀</span>
     <span>🔥</span>
@@ -831,9 +832,6 @@
           <a href="#roadmap" class="btn btn-outline">Roadmap</a>
           <a href="#tokenomics" class="btn btn-outline">Tokenomics</a>
           <a href="#how-to-buy" class="btn btn-primary">Como comprar</a>
-          <button type="button" class="btn btn-outline" id="toggle-meme">
-            Turbo Meme: OFF
-          </button>
         </div>
       </nav>
     </header>
@@ -1157,30 +1155,6 @@
 
     fetchPLHPPrice();
     setInterval(fetchPLHPPrice, 60000);
-
-    // Toggle do modo TURBO MEME
-    (function () {
-      const key = "plhpTurboMeme";
-      const btn = document.getElementById("toggle-meme");
-      if (!btn) return;
-
-      // Recupera preferência salva
-      try {
-        const saved = localStorage.getItem(key);
-        if (saved === "on") {
-          document.body.classList.add("turbo-on");
-          btn.textContent = "Turbo Meme: ON";
-        }
-      } catch (e) {}
-
-      btn.addEventListener("click", () => {
-        const isOn = document.body.classList.toggle("turbo-on");
-        btn.textContent = isOn ? "Turbo Meme: ON" : "Turbo Meme: OFF";
-        try {
-          localStorage.setItem(key, isOn ? "on" : "off");
-        } catch (e) {}
-      });
-    })();
   </script>
 </body>
 </html>

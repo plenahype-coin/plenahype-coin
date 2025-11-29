@@ -848,16 +848,57 @@
       opacity: 0.7;
     }
 
-    /* TWITTER CARD */
+    /* TWITTER CARD (ESTÁTICO) */
     .twitter-card {
-      padding: 0;
-      overflow: hidden;
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .twitter-card .twitter-timeline {
-      display: block;
-      width: 100%;
-      min-height: 550px; /* garante altura */
+    .twitter-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .twitter-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffd44a, #ff4f7b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .twitter-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .twitter-handle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .twitter-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .twitter-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      opacity: 0.9;
+    }
+
+    .twitter-btn {
+      align-self: flex-start;
+      margin-top: 4px;
     }
 
     @media (max-width: 880px) {
@@ -1308,7 +1349,7 @@
         </div>
       </section>
 
-      <!-- TWITTER / X TIMELINE -->
+      <!-- TWITTER / X (CARD ESTÁTICO) -->
       <section class="section" id="twitter">
         <div class="section-header">
           <h2 class="section-title" data-i18n="twitter.title">
@@ -1320,13 +1361,29 @@
           </p>
         </div>
         <div class="card twitter-card">
-          <!-- código de embed atualizado -->
+          <div class="twitter-header">
+            <div class="twitter-avatar">🐏</div>
+            <div>
+              <div class="twitter-name">PLHP Coin</div>
+              <div class="twitter-handle">@PlenaHype_Coin</div>
+            </div>
+          </div>
+          <p class="twitter-text">
+            O carneiro mais brabo da BNB Chain já está on-chain. Memes, hype,
+            degen vibes e zero promessa de retorno financeiro.  
+            Entra no rebanho, acompanha os posts e fica ligado nos próximos
+            movimentos da PLHP. 👀
+          </p>
+          <div class="twitter-meta">
+            Perfil oficial da comunidade PLHP no X (Twitter).
+          </div>
           <a
-            class="twitter-timeline"
-            data-theme="dark"
+            class="btn btn-primary twitter-btn"
             href="https://twitter.com/PlenaHype_Coin"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Tweets by @PlenaHype_Coin
+            Abrir perfil no X / Twitter
           </a>
         </div>
       </section>
@@ -1357,9 +1414,6 @@
       </div>
     </footer>
   </div>
-
-  <!-- SCRIPT TWITTER WIDGET -->
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <script>
     // YEAR
@@ -1548,10 +1602,13 @@
           "Instale a MetaMask ou outra carteira compatível, adicione a <strong>BNB Smart Chain</strong> e envie BNB para ela.",
         "how.step2Title": "Acesse a PancakeSwap",
         "how.step2Text":
-          "Abra o <strong>pancakeswap.finance</strong>, conecte sua carteira e vá em Swap. Se o PLHP não aparecer, cole o contrato oficial e importe o token.",
+          "Abra o <strong>pancakeswap.finance</strong>, conecte sua
+        carteira e vá em Swap. Se o PLHP não aparecer, cole o contrato
+        oficial e importe o token.",
         "how.step3Title": "Troque BNB por PLHP",
         "how.step3Text":
-          "Escolha quanto BNB quer usar, confirme o swap e aguarde a transação. Pronto – agora você faz parte do rebanho PLHP.",
+          "Escolha quanto BNB quer usar, confirme o swap e aguarde a
+        transação. Pronto – agora você faz parte do rebanho PLHP.",
         "how.contractLabel": "Endereço oficial do contrato:",
         "how.contractBadge": "BNB Smart Chain • BEP-20",
 
@@ -1563,7 +1620,8 @@
           "Deploy do contrato, criação da liquidez inicial, site no ar e primeiras compras.",
         "roadmap.phase2Title": "Fase 2 – Comunidade",
         "roadmap.phase2Text":
-          "Twitter, Telegram, memes, parcerias orgânicas e holders iniciais.",
+          "Twitter, Telegram, memes, parcerias orgânicas e holders
+        iniciais.",
         "roadmap.phase3Title": "Fase 3 – Crescimento",
         "roadmap.phase3Text":
           "Aplicações para listagem em agregadores, bots de preço e integrações Web3.",
@@ -1721,26 +1779,20 @@
     // Inicializa em português
     setLanguage("pt");
 
-    // PREÇOS – usando endpoint novo do DexScreener
+    // PREÇOS
     async function fetchPLHPPrice() {
       const apiUrl =
-        "https://api.dexscreener.com/token-pairs/v1/bsc/0x69575D9877822277539355ae8B97b5D5dee1313F";
+        "https://api.dexscreener.com/latest/dex/tokens/0x69575D9877822277539355ae8B97b5D5dee1313F";
 
       try {
         const res = await fetch(apiUrl);
-        if (!res.ok) throw new Error("Erro ao buscar preço: " + res.status);
-
+        if (!res.ok) throw new Error("Erro ao buscar preço");
         const data = await res.json();
 
-        // token-pairs pode vir como array simples OU obj com .pairs
-        let pair = null;
-        if (Array.isArray(data)) {
-          pair = data[0];
-        } else if (Array.isArray(data.pairs)) {
-          pair = data.pairs[0];
-        }
+        if (!data.pairs || !data.pairs.length)
+          throw new Error("Par não encontrado");
 
-        if (!pair) throw new Error("Par não encontrado na resposta");
+        const pair = data.pairs[0];
 
         const priceNative = pair.priceNative;
         const priceUsd = pair.priceUsd;

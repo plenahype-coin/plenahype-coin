@@ -53,7 +53,7 @@
       text-decoration: none;
     }
 
-    /* ===== FUNDO ANIMADO MEMEZADO ===== */
+    /* ===== FUNDO PORTAL CÓSMICO + CARNEIROS (IGUAL AO SITE ANTIGO) ===== */
 
     .animated-bg,
     .portal-ring,
@@ -66,23 +66,23 @@
     }
 
     .animated-bg {
+      z-index: -3;
       background:
-        radial-gradient(circle at 10% 0%, rgba(92, 40, 180, 0.5), transparent 55%),
-        radial-gradient(circle at 90% 0%, rgba(255, 189, 89, 0.4), transparent 55%),
-        radial-gradient(circle at 0% 100%, rgba(255, 79, 123, 0.35), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(32, 211, 238, 0.35), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), transparent 60%),
-        radial-gradient(circle at 30% 70%, rgba(148, 163, 253, 0.26), transparent 60%),
-        radial-gradient(circle at 70% 20%, rgba(129, 140, 248, 0.18), transparent 60%);
-      opacity: 0.85;
-      filter: saturate(1.1);
-      animation: bgShift 32s ease-in-out infinite alternate;
+        radial-gradient(circle at 20% -10%, #ff9c3a 0, transparent 55%),
+        radial-gradient(circle at 80% 0%, #ff3a6c 0, transparent 55%),
+        radial-gradient(circle at -5% 100%, #1b7bff 0, transparent 55%),
+        radial-gradient(circle at 110% 100%, #7a3aff 0, transparent 55%),
+        radial-gradient(circle at 50% 50%, #050309 0, #050309 55%, #0b0615 100%);
+      animation: portalPulseBg 18s ease-in-out infinite alternate;
+      opacity: 0.9;
     }
 
     .portal-ring {
+      z-index: -2;
       display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0.4;
     }
 
     .portal-ring::before {
@@ -90,151 +90,146 @@
       width: min(520px, 80vw);
       height: min(520px, 80vw);
       border-radius: 50%;
-      border: 1px solid rgba(248, 250, 252, 0.08);
+      border: 2px solid rgba(255, 212, 74, 0.9);
       box-shadow:
-        0 0 80px rgba(129, 140, 248, 0.1),
-        0 0 160px rgba(56, 189, 248, 0.25);
-      background:
-        radial-gradient(circle at 30% 20%, rgba(244, 244, 245, 0.1), transparent 60%),
-        radial-gradient(circle at 70% 80%, rgba(56, 189, 248, 0.07), transparent 55%);
-      opacity: 0.55;
-      animation: portalPulse 14s ease-in-out infinite alternate;
+        0 0 40px rgba(255, 212, 74, 0.8),
+        0 0 120px rgba(255, 90, 140, 0.8),
+        inset 0 0 40px rgba(0, 0, 0, 0.9);
+      animation: ringSpin 26s linear infinite;
     }
 
     .sheep-layer {
-      opacity: 0.16;
-      mix-blend-mode: screen;
+      z-index: -1;
+      opacity: 0.18;
     }
 
     .sheep-layer span {
       position: absolute;
       font-size: 32px;
-      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.7));
-      animation: sheepFloat 28s linear infinite;
+      filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.9));
+      animation: sheepFloat 26s linear infinite;
     }
 
     .sheep-layer span:nth-child(1) {
-      top: 16%;
+      top: 18%;
       left: 8%;
-      animation-duration: 26s;
+      animation-delay: -4s;
     }
     .sheep-layer span:nth-child(2) {
-      top: 26%;
+      top: 22%;
       right: 10%;
-      animation-duration: 32s;
+      animation-delay: -8s;
     }
     .sheep-layer span:nth-child(3) {
-      bottom: 18%;
-      left: 18%;
-      animation-duration: 30s;
+      bottom: 10%;
+      left: 15%;
+      animation-delay: -13s;
     }
     .sheep-layer span:nth-child(4) {
-      bottom: 12%;
-      right: 22%;
-      animation-duration: 34s;
+      bottom: 14%;
+      right: 16%;
+      animation-delay: -5s;
     }
     .sheep-layer span:nth-child(5) {
-      top: 48%;
-      left: 44%;
-      animation-duration: 38s;
+      top: 50%;
+      left: 46%;
+      animation-delay: -11s;
     }
     .sheep-layer span:nth-child(6) {
-      top: 8%;
-      right: 45%;
-      animation-duration: 36s;
+      top: 12%;
+      left: 52%;
+      animation-delay: -16s;
     }
 
     .meme-layer {
-      opacity: 0.3;
-      mix-blend-mode: screen;
+      z-index: -1;
+      opacity: 0.28;
     }
 
     .meme-layer span {
       position: absolute;
       font-size: 26px;
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.7));
-      animation: memeFloat 24s linear infinite;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.9));
+      animation: memeFloat 22s linear infinite;
     }
 
     .meme-layer span:nth-child(1) {
-      top: 14%;
-      left: 30%;
+      top: 16%;
+      left: 26%;
+      animation-delay: -2s;
     }
     .meme-layer span:nth-child(2) {
-      top: 36%;
-      right: 30%;
+      top: 40%;
+      right: 24%;
+      animation-delay: -7s;
     }
     .meme-layer span:nth-child(3) {
-      bottom: 22%;
-      left: 32%;
+      bottom: 20%;
+      left: 30%;
+      animation-delay: -10s;
     }
     .meme-layer span:nth-child(4) {
-      bottom: 26%;
-      right: 18%;
+      bottom: 22%;
+      right: 20%;
+      animation-delay: -14s;
     }
     .meme-layer span:nth-child(5) {
-      top: 52%;
-      right: 8%;
+      top: 8%;
+      right: 18%;
+      animation-delay: -5s;
     }
     .meme-layer span:nth-child(6) {
-      top: 6%;
-      right: 18%;
+      top: 55%;
+      left: 12%;
+      animation-delay: -12s;
     }
 
     body.turbo-on .animated-bg {
-      opacity: 0.95;
-      animation-duration: 26s;
+      opacity: 1;
+      animation-duration: 14s;
     }
 
     body.turbo-on .sheep-layer {
-      opacity: 0.18;
+      opacity: 0.22;
     }
 
     body.turbo-on .meme-layer {
-      opacity: 0.4;
+      opacity: 0.34;
     }
 
-    .page {
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes bgShift {
+    @keyframes portalPulseBg {
       0% {
-        transform: translate3d(0, 0, 0) scale(1);
+        transform: scale(1);
+        filter: saturate(1);
       }
       50% {
-        transform: translate3d(-10px, 6px, 0) scale(1.02);
+        transform: scale(1.03);
+        filter: saturate(1.2);
       }
       100% {
-        transform: translate3d(12px, -6px, 0) scale(1.03);
+        transform: scale(1.06);
+        filter: saturate(1.35);
       }
     }
 
-    @keyframes portalPulse {
+    @keyframes ringSpin {
       0% {
-        transform: scale(0.96) rotate(0deg);
-        opacity: 0.5;
-      }
-      50% {
-        transform: scale(1.02) rotate(2deg);
-        opacity: 0.7;
+        transform: rotate(0deg);
       }
       100% {
-        transform: scale(1.05) rotate(-2deg);
-        opacity: 0.6;
+        transform: rotate(360deg);
       }
     }
 
     @keyframes sheepFloat {
       0% {
-        transform: translate3d(-10px, 10px, 0) rotate(-4deg);
+        transform: translate3d(0, 0, 0) rotate(0deg);
       }
       50% {
-        transform: translate3d(10px, -8px, 0) rotate(4deg);
+        transform: translate3d(14px, -16px, 0) rotate(4deg);
       }
       100% {
-        transform: translate3d(-12px, 10px, 0) rotate(-3deg);
+        transform: translate3d(-18px, 12px, 0) rotate(-3deg);
       }
     }
 
@@ -243,10 +238,10 @@
         transform: translate3d(0, 0, 0) rotate(0deg);
       }
       50% {
-        transform: translate3d(6px, -10px, 0) rotate(4deg);
+        transform: translate3d(10px, -14px, 0) rotate(3deg);
       }
       100% {
-        transform: translate3d(-6px, 10px, 0) rotate(-4deg);
+        transform: translate3d(-12px, 10px, 0) rotate(-4deg);
       }
     }
 
@@ -943,6 +938,11 @@
 
     /* RESPONSIVO */
 
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
     @media (max-width: 900px) {
       .hero,
       .section-grid {
@@ -1009,7 +1009,7 @@
   </style>
 </head>
 <body class="turbo-on">
-  <!-- Fundo animado memezado -->
+  <!-- Fundo animado memezado (portal + carneiros + foguete) -->
   <div class="animated-bg"></div>
   <div class="portal-ring"></div>
 

@@ -798,6 +798,7 @@
 
     .footer-links a {
       color: var(--muted);
+      text-decoration: none;
     }
 
     .footer-links a:hover {
@@ -848,57 +849,15 @@
       opacity: 0.7;
     }
 
-    /* TWITTER CARD (ESTÁTICO) */
+    /* TWITTER CARD */
     .twitter-card {
-      padding: 18px 18px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      padding: 0;
+      overflow: hidden;
     }
 
-    .twitter-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .twitter-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #ffd44a, #ff4f7b);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    }
-
-    .twitter-name {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .twitter-handle {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .twitter-text {
-      font-size: 0.86rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .twitter-meta {
-      font-size: 0.78rem;
-      color: var(--muted);
-      opacity: 0.9;
-    }
-
-    .twitter-btn {
-      align-self: flex-start;
-      margin-top: 4px;
+    .twitter-card .twitter-timeline {
+      display: block;
+      width: 100%;
     }
 
     @media (max-width: 880px) {
@@ -1191,6 +1150,9 @@
               <div class="pill" data-i18n="about.pillUse">
                 <strong>Uso:</strong> memes, hype & Web3
               </div>
+              <div class="pill" data-i18n="about.pillLock">
+                <strong>Liquidez:</strong> travada (PinkLock)
+              </div>
             </div>
           </div>
         </div>
@@ -1228,7 +1190,7 @@
           <p class="story-text" data-i18n="story.p3">
             A PLHP foi lançada na
             <span class="story-highlight">BNB Chain</span> com um supply de
-            <span class="story-highlight">69.420.000.000</span> tokens –
+            <span class="story-highlight">69.420.000.000</span> tokens – 
             porque, sim, número também é meme. Liquidez inicial honesta,
             contrato público e a promessa mais verdadeira da cripto:
             <span class="story-highlight"
@@ -1349,7 +1311,7 @@
         </div>
       </section>
 
-      <!-- TWITTER / X (CARD ESTÁTICO) -->
+      <!-- TWITTER / X TIMELINE -->
       <section class="section" id="twitter">
         <div class="section-header">
           <h2 class="section-title" data-i18n="twitter.title">
@@ -1361,29 +1323,16 @@
           </p>
         </div>
         <div class="card twitter-card">
-          <div class="twitter-header">
-            <div class="twitter-avatar">🐏</div>
-            <div>
-              <div class="twitter-name">PLHP Coin</div>
-              <div class="twitter-handle">@PlenaHype_Coin</div>
-            </div>
-          </div>
-          <p class="twitter-text">
-            O carneiro mais brabo da BNB Chain já está on-chain. Memes, hype,
-            degen vibes e zero promessa de retorno financeiro.  
-            Entra no rebanho, acompanha os posts e fica ligado nos próximos
-            movimentos da PLHP. 👀
-          </p>
-          <div class="twitter-meta">
-            Perfil oficial da comunidade PLHP no X (Twitter).
-          </div>
           <a
-            class="btn btn-primary twitter-btn"
+            class="twitter-timeline"
+            data-theme="dark"
+            data-width="100%"
+            data-height="550"
+            data-chrome="noheader nofooter transparent"
             href="https://twitter.com/PlenaHype_Coin"
-            target="_blank"
-            rel="noopener noreferrer"
+            data-i18n="twitter.linkLabel"
           >
-            Abrir perfil no X / Twitter
+            Tweets por @PlenaHype_Coin
           </a>
         </div>
       </section>
@@ -1410,10 +1359,20 @@
           >
             Ver no BscScan
           </a>
+          <a
+            href="https://www.pinksale.finance/pinklock/bsc/record/1397746"
+            target="_blank"
+            data-i18n="footer.lock"
+          >
+            Liquidez travada (PinkLock)
+          </a>
         </div>
       </div>
     </footer>
   </div>
+
+  <!-- SCRIPT TWITTER WIDGET -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <script>
     // YEAR
@@ -1474,6 +1433,7 @@
         "about.pillContract": "<strong>Contract:</strong> simple & verified",
         "about.pillLiquidity": "<strong>Liquidity:</strong> started by creator",
         "about.pillUse": "<strong>Use:</strong> memes, hype & Web3",
+        "about.pillLock": "<strong>Liquidity:</strong> locked (PinkLock)",
 
         "story.title": "The PLHP story",
         "story.subtitle":
@@ -1523,7 +1483,8 @@
         "footer.text":
           "© <span id=\"year\"></span> PLHP Coin • PlenaHype. No promise of financial return. Crypto is full risk.",
         "footer.buy": "Buy PLHP",
-        "footer.bscscan": "View on BscScan"
+        "footer.bscscan": "View on BscScan",
+        "footer.lock": "Liquidity locked (PinkLock)"
       },
       pt: {
         "nav.tagline": "PlenaHype • Meme coin na BNB Chain",
@@ -1581,6 +1542,7 @@
         "about.pillLiquidity":
           "<strong>Liquidez:</strong> iniciada pelo criador",
         "about.pillUse": "<strong>Uso:</strong> memes, hype & Web3",
+        "about.pillLock": "<strong>Liquidez:</strong> travada (PinkLock)",
 
         "story.title": "A história da PLHP",
         "story.subtitle":
@@ -1602,13 +1564,10 @@
           "Instale a MetaMask ou outra carteira compatível, adicione a <strong>BNB Smart Chain</strong> e envie BNB para ela.",
         "how.step2Title": "Acesse a PancakeSwap",
         "how.step2Text":
-          "Abra o <strong>pancakeswap.finance</strong>, conecte sua
-        carteira e vá em Swap. Se o PLHP não aparecer, cole o contrato
-        oficial e importe o token.",
+          "Abra o <strong>pancakeswap.finance</strong>, conecte sua carteira e vá em Swap. Se o PLHP não aparecer, cole o contrato oficial e importe o token.",
         "how.step3Title": "Troque BNB por PLHP",
         "how.step3Text":
-          "Escolha quanto BNB quer usar, confirme o swap e aguarde a
-        transação. Pronto – agora você faz parte do rebanho PLHP.",
+          "Escolha quanto BNB quer usar, confirme o swap e aguarde a transação. Pronto – agora você faz parte do rebanho PLHP.",
         "how.contractLabel": "Endereço oficial do contrato:",
         "how.contractBadge": "BNB Smart Chain • BEP-20",
 
@@ -1620,8 +1579,7 @@
           "Deploy do contrato, criação da liquidez inicial, site no ar e primeiras compras.",
         "roadmap.phase2Title": "Fase 2 – Comunidade",
         "roadmap.phase2Text":
-          "Twitter, Telegram, memes, parcerias orgânicas e holders
-        iniciais.",
+          "Twitter, Telegram, memes, parcerias orgânicas e holders iniciais.",
         "roadmap.phase3Title": "Fase 3 – Crescimento",
         "roadmap.phase3Text":
           "Aplicações para listagem em agregadores, bots de preço e integrações Web3.",
@@ -1634,7 +1592,8 @@
         "footer.text":
           "© <span id=\"year\"></span> PLHP Coin • PlenaHype. Nenhuma promessa de retorno financeiro. Cripto é risco total.",
         "footer.buy": "Comprar PLHP",
-        "footer.bscscan": "Ver no BscScan"
+        "footer.bscscan": "Ver no BscScan",
+        "footer.lock": "Liquidez travada (PinkLock)"
       },
       es: {
         "nav.tagline": "PlenaHype • Meme coin en BNB Chain",
@@ -1692,6 +1651,7 @@
         "about.pillLiquidity":
           "<strong>Liquidez:</strong> iniciada por el creador",
         "about.pillUse": "<strong>Uso:</strong> memes, hype & Web3",
+        "about.pillLock": "<strong>Liquidez:</strong> bloqueada (PinkLock)",
 
         "story.title": "La historia de PLHP",
         "story.subtitle":
@@ -1741,7 +1701,8 @@
         "footer.text":
           "© <span id=\"year\"></span> PLHP Coin • PlenaHype. Ninguna promesa de retorno financiero. Cripto es riesgo total.",
         "footer.buy": "Comprar PLHP",
-        "footer.bscscan": "Ver en BscScan"
+        "footer.bscscan": "Ver en BscScan",
+        "footer.lock": "Liquidez bloqueada (PinkLock)"
       }
     };
 
@@ -1779,10 +1740,10 @@
     // Inicializa em português
     setLanguage("pt");
 
-    // PREÇOS
+    // PREÇOS (usando endpoint estável de search do DexScreener)
     async function fetchPLHPPrice() {
       const apiUrl =
-        "https://api.dexscreener.com/latest/dex/tokens/0x69575D9877822277539355ae8B97b5D5dee1313F";
+        "https://api.dexscreener.com/latest/dex/search?q=0x69575D9877822277539355ae8B97b5D5dee1313F";
 
       try {
         const res = await fetch(apiUrl);
@@ -1828,9 +1789,9 @@
           : "-";
 
         const now = new Date();
-        const currentLang = document
-          .querySelector(".btn-lang.active")
-          ?.getAttribute("data-lang");
+        const currentLang =
+          document.querySelector(".btn-lang.active")?.getAttribute("data-lang") ||
+          "pt";
 
         let prefix = "Atualizado às ";
         if (currentLang === "en") prefix = "Updated at ";
@@ -1840,7 +1801,11 @@
         elUpdated.textContent =
           prefix +
           now.toLocaleTimeString(
-            currentLang === "pt" ? "pt-BR" : currentLang === "es" ? "es-ES" : "en-US",
+            currentLang === "pt"
+              ? "pt-BR"
+              : currentLang === "es"
+              ? "es-ES"
+              : "en-US",
             {
               hour: "2-digit",
               minute: "2-digit"
@@ -1850,15 +1815,19 @@
         console.error(err);
         const elNative = document.getElementById("price-native");
         const elUsd = document.getElementById("price-usd");
+        const elLiq = document.getElementById("liquidity-usd");
+        const elVol = document.getElementById("volume-usd");
         const elUpdated = document.getElementById("price-updated");
 
         if (elNative) elNative.textContent = "Error";
-        if (elUsd) elUsd.textContent = "Error";
+        if (elUsd) elUsd.textContent = "-";
+        if (elLiq) elLiq.textContent = "-";
+        if (elVol) elVol.textContent = "-";
 
         if (elUpdated) {
-          const currentLang = document
-            .querySelector(".btn-lang.active")
-            ?.getAttribute("data-lang");
+          const currentLang =
+            document.querySelector(".btn-lang.active")?.getAttribute("data-lang") ||
+            "pt";
           elUpdated.dataset.error = "1";
           if (currentLang === "pt") elUpdated.textContent = "Falha ao atualizar";
           else if (currentLang === "es")

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PLHP Coin – PlenaHype</title>
-  <meta name="description" content="PLHP (PlenaHype) é a meme coin do carneiro mais brabo da BNB Chain. Comunidade, hype e transparência na veia.">
+  <meta
+    name="description"
+    content="PLHP (PlenaHype) is the meme coin of the most furious ram on BNB Chain. Community, hype and full transparency."
+  />
   <style>
     :root {
       --bg: #050309;
@@ -16,7 +19,7 @@
       --text: #f6f5ff;
       --muted: #b1a9d9;
       --radius: 18px;
-      --shadow: 0 22px 60px rgba(0,0,0,0.65);
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.65);
     }
 
     * {
@@ -26,7 +29,8 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -66,11 +70,11 @@
       width: 520px;
       height: 520px;
       border-radius: 50%;
-      border: 2px solid rgba(255,212,74,0.9);
+      border: 2px solid rgba(255, 212, 74, 0.9);
       box-shadow:
-        0 0 40px rgba(255,212,74,0.8),
-        0 0 120px rgba(255,90,140,0.8),
-        inset 0 0 40px rgba(0,0,0,0.9);
+        0 0 40px rgba(255, 212, 74, 0.8),
+        0 0 120px rgba(255, 90, 140, 0.8),
+        inset 0 0 40px rgba(0, 0, 0, 0.9);
       animation: ringSpin 26s linear infinite;
     }
 
@@ -90,11 +94,32 @@
       position: absolute;
       animation: sheepFloat 22s ease-in-out infinite alternate;
     }
-    .sheep-layer span:nth-child(1) { top: 12%; left: 8%; animation-delay: -3s; }
-    .sheep-layer span:nth-child(2) { top: 18%; right: 10%; animation-delay: -8s; }
-    .sheep-layer span:nth-child(3) { bottom: 10%; left: 15%; animation-delay: -13s; }
-    .sheep-layer span:nth-child(4) { bottom: 14%; right: 16%; animation-delay: -5s; }
-    .sheep-layer span:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -17s; }
+    .sheep-layer span:nth-child(1) {
+      top: 12%;
+      left: 8%;
+      animation-delay: -3s;
+    }
+    .sheep-layer span:nth-child(2) {
+      top: 18%;
+      right: 10%;
+      animation-delay: -8s;
+    }
+    .sheep-layer span:nth-child(3) {
+      bottom: 10%;
+      left: 15%;
+      animation-delay: -13s;
+    }
+    .sheep-layer span:nth-child(4) {
+      bottom: 14%;
+      right: 16%;
+      animation-delay: -5s;
+    }
+    .sheep-layer span:nth-child(5) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -17s;
+    }
 
     /* CAMADA MEME (EMOJIS) – visível no Turbo */
     .meme-layer {
@@ -109,16 +134,39 @@
 
     .meme-layer span {
       position: absolute;
-      /* AQUI: velocidade 6s */
       animation: memeFloat 6s ease-in-out infinite alternate;
     }
 
-    .meme-layer span:nth-child(1) { top: 8%;  left: 12%; animation-delay: -2s; }
-    .meme-layer span:nth-child(2) { top: 30%; right: 8%; animation-delay: -7s; }
-    .meme-layer span:nth-child(3) { bottom: 18%; left: 20%; animation-delay: -11s; }
-    .meme-layer span:nth-child(4) { bottom: 8%; right: 20%; animation-delay: -4s; }
-    .meme-layer span:nth-child(5) { top: 48%; left: 55%; animation-delay: -9s; }
-    .meme-layer span:nth-child(6) { top: 15%; left: 55%; animation-delay: -13s; }
+    .meme-layer span:nth-child(1) {
+      top: 8%;
+      left: 12%;
+      animation-delay: -2s;
+    }
+    .meme-layer span:nth-child(2) {
+      top: 30%;
+      right: 8%;
+      animation-delay: -7s;
+    }
+    .meme-layer span:nth-child(3) {
+      bottom: 18%;
+      left: 20%;
+      animation-delay: -11s;
+    }
+    .meme-layer span:nth-child(4) {
+      bottom: 8%;
+      right: 20%;
+      animation-delay: -4s;
+    }
+    .meme-layer span:nth-child(5) {
+      top: 48%;
+      left: 55%;
+      animation-delay: -9s;
+    }
+    .meme-layer span:nth-child(6) {
+      top: 15%;
+      left: 55%;
+      animation-delay: -13s;
+    }
 
     @keyframes portalPulse {
       0% {
@@ -162,15 +210,15 @@
     @keyframes memeFloat {
       0% {
         transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-        filter: drop-shadow(0 0 0 rgba(0,0,0,0.4));
+        filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.4));
       }
       50% {
         transform: translate3d(18px, -22px, 0) scale(1.1) rotate(6deg);
-        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
       }
       100% {
         transform: translate3d(-24px, 16px, 0) scale(0.95) rotate(-5deg);
-        filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+        filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.5));
       }
     }
 
@@ -223,8 +271,13 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(5,3,9,0.98), rgba(5,3,9,0.82), transparent);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 3, 9, 0.98),
+        rgba(5, 3, 9, 0.82),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .nav {
@@ -247,8 +300,8 @@
       height: 40px;
       border-radius: 50%;
       overflow: hidden;
-      border: 2px solid rgba(255,212,74,0.9);
-      box-shadow: 0 0 18px rgba(255,212,74,0.7);
+      border: 2px solid rgba(255, 212, 74, 0.9);
+      box-shadow: 0 0 18px rgba(255, 212, 74, 0.7);
       background: #000;
     }
 
@@ -306,19 +359,35 @@
 
     .btn-primary:hover {
       transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 26px 70px rgba(0,0,0,0.7);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.7);
     }
 
     .btn-outline {
-      background: rgba(13,7,28,0.9);
-      border-color: rgba(255,255,255,0.16);
+      background: rgba(13, 7, 28, 0.9);
+      border-color: rgba(255, 255, 255, 0.16);
       color: var(--muted);
     }
 
     .btn-outline:hover {
       border-color: var(--primary-soft);
       color: var(--primary-soft);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-lang {
+      padding-inline: 10px;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(10, 6, 22, 0.9);
+      color: var(--muted);
+    }
+
+    .btn-lang.active {
+      background: linear-gradient(135deg, #ffd44a, #ff9c3a);
+      color: #2a1900;
+      border-color: rgba(255, 212, 74, 0.9);
+      font-weight: 600;
     }
 
     main {
@@ -341,8 +410,12 @@
       gap: 8px;
       padding: 4px 12px 4px 4px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: radial-gradient(circle at left, rgba(255,212,74,0.45), rgba(9,4,21,0.98));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: radial-gradient(
+        circle at left,
+        rgba(255, 212, 74, 0.45),
+        rgba(9, 4, 21, 0.98)
+      );
       font-size: 0.78rem;
       margin-bottom: 16px;
       color: var(--primary-soft);
@@ -352,7 +425,7 @@
       width: 22px;
       height: 22px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -401,7 +474,7 @@
       gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(14, 9, 30, 0.9);
     }
 
@@ -414,7 +487,11 @@
 
     .hero-card {
       position: relative;
-      background: radial-gradient(circle at top, rgba(58,28,94,0.95), #0c0616);
+      background: radial-gradient(
+        circle at top,
+        rgba(58, 28, 94, 0.95),
+        #0c0616
+      );
       border-radius: 26px;
       padding: 22px;
       box-shadow: var(--shadow);
@@ -425,7 +502,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: inherit;
       pointer-events: none;
     }
@@ -441,8 +518,8 @@
       height: 190px;
       border-radius: 50%;
       overflow: hidden;
-      border: 3px solid rgba(0,0,0,0.85);
-      box-shadow: 0 28px 60px rgba(0,0,0,0.9);
+      border: 3px solid rgba(0, 0, 0, 0.85);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.9);
       background: #000;
     }
 
@@ -456,9 +533,9 @@
       position: absolute;
       top: 16px;
       right: 16px;
-      background: rgba(5,3,9,0.85);
+      background: rgba(5, 3, 9, 0.85);
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 4px 10px;
       font-size: 0.78rem;
       display: inline-flex;
@@ -472,21 +549,21 @@
       height: 9px;
       border-radius: 50%;
       background: #0bff7b;
-      box-shadow: 0 0 12px rgba(11,255,123,0.9);
+      box-shadow: 0 0 12px rgba(11, 255, 123, 0.9);
     }
 
     .hero-stats {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
       font-size: 0.8rem;
       margin-top: 6px;
     }
 
     .stat {
-      background: rgba(8,4,19,0.9);
+      background: rgba(8, 4, 19, 0.9);
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 9px 11px;
     }
 
@@ -529,16 +606,20 @@
 
     .grid-2 {
       display: grid;
-      grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr);
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
       gap: 22px;
     }
 
     .card {
-      background: linear-gradient(150deg, rgba(19,10,40,0.96), rgba(7,4,18,0.98));
+      background: linear-gradient(
+        150deg,
+        rgba(19, 10, 40, 0.96),
+        rgba(7, 4, 18, 0.98)
+      );
       border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       padding: 18px 18px 16px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
     }
 
     .card h3 {
@@ -573,16 +654,16 @@
 
     .tokenomics-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
       margin-top: 10px;
     }
 
     .pill {
-      background: rgba(7,3,16,0.9);
+      background: rgba(7, 3, 16, 0.9);
       border-radius: 999px;
       padding: 7px 10px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       font-size: 0.8rem;
       color: var(--muted);
       display: inline-flex;
@@ -596,7 +677,7 @@
 
     .howto-steps {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
       margin-top: 10px;
     }
@@ -614,8 +695,8 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 1px solid rgba(255,212,74,0.9);
-      background: rgba(255,212,74,0.14);
+      border: 1px solid rgba(255, 212, 74, 0.9);
+      background: rgba(255, 212, 74, 0.14);
       font-size: 0.76rem;
       display: inline-flex;
       align-items: center;
@@ -633,7 +714,7 @@
       padding: 10px 12px;
       background: rgba(4, 2, 10, 0.96);
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       font-size: 0.78rem;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
@@ -647,21 +728,21 @@
       font-size: 0.78rem;
       padding: 3px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(120,178,255,0.7);
-      background: rgba(12,49,115,0.4);
+      border: 1px solid rgba(120, 178, 255, 0.7);
+      background: rgba(12, 49, 115, 0.4);
       color: #c4dcff;
     }
 
     .roadmap-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
 
     .milestone {
-      background: rgba(6,3,14,0.96);
+      background: rgba(6, 3, 14, 0.96);
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 10px 12px;
       font-size: 0.8rem;
     }
@@ -685,7 +766,7 @@
     }
 
     footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding: 16px 32px 20px;
       background: radial-gradient(circle at top, #1d0f2e, #050309);
       font-size: 0.78rem;
@@ -722,7 +803,7 @@
       padding: 10px 14px;
       border-radius: 14px;
       background: rgba(7, 3, 16, 0.9);
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       font-size: 0.82rem;
       color: var(--muted);
       backdrop-filter: blur(8px);
@@ -761,24 +842,24 @@
 
     @media (max-width: 880px) {
       .hero {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
       .hero-card {
         order: -1;
       }
       .grid-2 {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
       .roadmap-grid,
       .tokenomics-grid,
       .howto-steps {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
     @media (max-width: 640px) {
       .nav-actions {
-        display: none;
+        gap: 6px;
       }
       .hero {
         padding-top: 26px;
@@ -820,18 +901,39 @@
       <nav class="nav">
         <div class="nav-left">
           <div class="nav-logo">
-            <img src="logo.png" alt="PLHP Coin Logo">
+            <img src="logo.png" alt="PLHP Coin Logo" />
           </div>
           <div class="nav-title">
             <span>PLHP COIN</span>
-            <span>PlenaHype • Meme coin na BNB Chain</span>
+            <span data-i18n="nav.tagline">
+              PlenaHype • Meme coin on BNB Chain
+            </span>
           </div>
         </div>
         <div class="nav-actions">
-          <a href="#story" class="btn btn-outline">História</a>
-          <a href="#roadmap" class="btn btn-outline">Roadmap</a>
-          <a href="#tokenomics" class="btn btn-outline">Tokenomics</a>
-          <a href="#how-to-buy" class="btn btn-primary">Como comprar</a>
+          <a href="#story" class="btn btn-outline" data-i18n="nav.story">
+            Story
+          </a>
+          <a href="#roadmap" class="btn btn-outline" data-i18n="nav.roadmap">
+            Roadmap
+          </a>
+          <a
+            href="#tokenomics"
+            class="btn btn-outline"
+            data-i18n="nav.tokenomics"
+          >
+            Tokenomics
+          </a>
+          <a
+            href="#how-to-buy"
+            class="btn btn-primary"
+            data-i18n="nav.howToBuy"
+          >
+            How to buy
+          </a>
+          <button class="btn-lang active" data-lang="en">EN</button>
+          <button class="btn-lang" data-lang="pt">PT</button>
+          <button class="btn-lang" data-lang="es">ES</button>
         </div>
       </nav>
     </header>
@@ -842,80 +944,120 @@
         <div>
           <div class="hero-badge">
             <div class="hero-badge-icon">🐏</div>
-            Carneiro tiltado + hype de meme = PLHP
+            <span data-i18n="hero.badge">
+              Tilted ram + meme hype = PLHP
+            </span>
           </div>
           <h1 class="hero-title">
-            A <span>PLHP Coin</span> é a moeda do carneiro mais brabo da BNB Chain.
+            <span data-i18n="hero.title">
+              PLHP Coin is the token of the most furious ram on BNB Chain.
+            </span>
           </h1>
-          <p class="hero-subtitle">
-            PLHP (PlenaHype) é uma meme coin criada pra quem gosta de zoeira,
-            hype e transparência. Contrato simples, sem taxa escondida e foco
-            total em comunidade.
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            PLHP (PlenaHype) is a meme coin built for people who love fun,
+            degen energy and transparency. Simple contract, no hidden taxes
+            and full focus on community.
           </p>
 
           <div class="hero-cta">
-            <a class="btn btn-primary" href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56" target="_blank">
-              Comprar na PancakeSwap
+            <a
+              class="btn btn-primary"
+              href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
+              target="_blank"
+              data-i18n="hero.btnBuy"
+            >
+              Buy on PancakeSwap
             </a>
-            <a class="btn btn-outline" href="#story">
-              Ler a história da PLHP
+            <a class="btn btn-outline" href="#story" data-i18n="hero.btnStory">
+              Read PLHP story
             </a>
           </div>
 
           <div class="hero-meta">
-            <span class="pill-inline"><span class="dot"></span> Rede: BNB Smart Chain (BEP-20)</span>
-            <span class="pill-inline"><span class="dot"></span> Supply: 69.420.000.000 PLHP</span>
+            <span class="pill-inline">
+              <span class="dot"></span>
+              <span data-i18n="hero.meta.network">
+                Network: BNB Smart Chain (BEP-20)
+              </span>
+            </span>
+            <span class="pill-inline">
+              <span class="dot"></span>
+              <span data-i18n="hero.meta.supply">
+                Supply: 69,420,000,000 PLHP
+              </span>
+            </span>
           </div>
 
           <!-- WIDGET DE PREÇO EM TEMPO REAL -->
           <div class="price-widget">
-            <div class="price-title">Preço em tempo real</div>
-            <div class="price-row">
-              <span>PLHP / BNB</span>
-              <span id="price-native">Carregando...</span>
+            <div class="price-title" data-i18n="price.title">
+              Live price
             </div>
             <div class="price-row">
-              <span>Preço em USD</span>
-              <span id="price-usd">Carregando...</span>
+              <span data-i18n="price.pair">PLHP / BNB</span>
+              <span id="price-native">Loading...</span>
+            </div>
+            <div class="price-row">
+              <span data-i18n="price.usd">Price in USD</span>
+              <span id="price-usd">Loading...</span>
             </div>
             <div class="price-row small">
-              <span>Liquidez (USD)</span>
-              <span id="liquidity-usd">Carregando...</span>
+              <span data-i18n="price.liquidity">Liquidity (USD)</span>
+              <span id="liquidity-usd">Loading...</span>
             </div>
             <div class="price-row small">
-              <span>Volume 24h</span>
-              <span id="volume-usd">Carregando...</span>
+              <span data-i18n="price.volume">24h volume</span>
+              <span id="volume-usd">Loading...</span>
             </div>
-            <div class="price-updated" id="price-updated">Atualizando...</div>
+            <div
+              class="price-updated"
+              id="price-updated"
+              data-i18n="price.updating"
+            >
+              Updating...
+            </div>
           </div>
         </div>
 
         <aside class="hero-card">
           <div class="hero-chip">
-            <span></span> Pool inicial criada
+            <span></span>
+            <span data-i18n="hero.poolChip">Initial pool created</span>
           </div>
           <div class="hero-logo-wrap">
             <div class="hero-logo">
-              <img src="logo.png" alt="PLHP Logo">
+              <img src="logo.png" alt="PLHP Logo" />
             </div>
           </div>
 
           <div class="hero-stats">
             <div class="stat">
-              <div class="stat-label">Nome do token</div>
-              <div class="stat-value">PLHP Coin</div>
+              <div class="stat-label" data-i18n="hero.stats.nameLabel">
+                Token name
+              </div>
+              <div class="stat-value" data-i18n="hero.stats.nameValue">
+                PLHP Coin
+              </div>
             </div>
             <div class="stat">
-              <div class="stat-label">Símbolo</div>
+              <div class="stat-label" data-i18n="hero.stats.symbolLabel">
+                Symbol
+              </div>
               <div class="stat-value">$PLHP</div>
             </div>
             <div class="stat">
-              <div class="stat-label">Supply total</div>
-              <div class="stat-value">69.420.000.000</div>
+              <div class="stat-label" data-i18n="hero.stats.supplyLabel">
+                Total supply
+              </div>
+              <div class="stat-value">69,420,000,000</div>
             </div>
             <div class="stat">
-              <div class="stat-label">Taxas no contrato</div>
-              <div class="stat-value">0% buy / 0% sell</div>
+              <div class="stat-label" data-i18n="hero.stats.taxLabel">
+                Contract fees
+              </div>
+              <div class="stat-value" data-i18n="hero.stats.taxValue">
+                0% buy / 0% sell
+              </div>
             </div>
           </div>
         </aside>
@@ -924,45 +1066,66 @@
       <!-- SOBRE / TOKENOMICS -->
       <section class="section" id="tokenomics">
         <div class="section-header">
-          <h2 class="section-title">Sobre o projeto</h2>
-          <p class="section-subtitle">
-            O foco da PLHP é ser simples, divertida e transparente. Nada de
-            função escondida, scam de dev ou promessa mirabolante.
+          <h2 class="section-title" data-i18n="about.title">
+            About the project
+          </h2>
+          <p class="section-subtitle" data-i18n="about.subtitle">
+            The core of PLHP is to be simple, fun and transparent. No hidden
+            functions, no dev scam, no magic promises.
           </p>
         </div>
         <div class="grid-2">
           <div class="card">
-            <h3>O que é a PLHP Coin?</h3>
-            <p>
-              PLHP (PlenaHype) é uma meme coin inspirada na energia de Áries:
-              impulso, coragem, pavio curto e um pouco de caos controlado. É a
-              moeda do carneiro que vai pra cima mesmo quando o mercado tá
-              querendo derrubar.
+            <h3 data-i18n="about.whatTitle">What is PLHP Coin?</h3>
+            <p data-i18n="about.whatP1">
+              PLHP (PlenaHype) is a meme coin inspired by Aries energy:
+              impulse, courage, short fuse and a bit of controlled chaos. It’s
+              the ram that charges forward even when the market is trying to
+              knock everyone down.
             </p>
-            <p>
-              A ideia é criar uma comunidade meme com identidade forte, história
-              própria e espaço pra quem quer participar desde o começo – não só
-              olhando gráfico, mas fazendo parte da zoeira e das decisões.
+            <p data-i18n="about.whatP2">
+              The idea is to build a meme community with strong identity, its
+              own lore and room for early degens – not just watching charts,
+              but taking part in the chaos and the decisions.
             </p>
             <ul class="list-check">
-              <li>Contrato padrão, sem taxas e sem funções malucas.</li>
-              <li>Sem promessa de lucro: cripto é risco total, sempre.</li>
-              <li>Com o tempo, a comunidade ajuda a decidir próximos passos.</li>
+              <li data-i18n="about.list1">
+                Standard contract, no trading taxes and no weird hidden
+                functions.
+              </li>
+              <li data-i18n="about.list2">
+                No profit guarantee: crypto is full risk, always.
+              </li>
+              <li data-i18n="about.list3">
+                Over time, the community helps decide the next steps.
+              </li>
             </ul>
           </div>
           <div class="card">
-            <h3>Tokenomics</h3>
-            <p>
-              A distribuição da PLHP pode evoluir com a comunidade, mas o ponto
-              central é manter tudo claro, rastreável e aberto.
+            <h3 data-i18n="about.tokenomicsTitle">Tokenomics</h3>
+            <p data-i18n="about.tokenomicsP">
+              PLHP distribution can evolve with the community, but everything
+              stays clear, on-chain and transparent.
             </p>
             <div class="tokenomics-grid">
-              <div class="pill"><strong>Supply:</strong> 69.420.000.000 PLHP</div>
-              <div class="pill"><strong>Taxas:</strong> 0% / 0%</div>
-              <div class="pill"><strong>Rede:</strong> BNB Chain</div>
-              <div class="pill"><strong>Contrato:</strong> simples e verificado</div>
-              <div class="pill"><strong>Liquidez:</strong> iniciada pelo criador</div>
-              <div class="pill"><strong>Uso:</strong> memes, hype & Web3</div>
+              <div class="pill" data-i18n="about.pillSupply">
+                <strong>Supply:</strong> 69,420,000,000 PLHP
+              </div>
+              <div class="pill" data-i18n="about.pillFees">
+                <strong>Fees:</strong> 0% / 0%
+              </div>
+              <div class="pill" data-i18n="about.pillChain">
+                <strong>Chain:</strong> BNB Chain
+              </div>
+              <div class="pill" data-i18n="about.pillContract">
+                <strong>Contract:</strong> simple & verified
+              </div>
+              <div class="pill" data-i18n="about.pillLiquidity">
+                <strong>Liquidity:</strong> started by creator
+              </div>
+              <div class="pill" data-i18n="about.pillUse">
+                <strong>Use:</strong> memes, hype & Web3
+              </div>
             </div>
           </div>
         </div>
@@ -971,38 +1134,46 @@
       <!-- HISTÓRIA DA PLHP -->
       <section class="section" id="story">
         <div class="section-header">
-          <h2 class="section-title">A história da PLHP</h2>
-          <p class="section-subtitle">
-            Toda meme coin boa nasce de um momento de surto, risada e “e se a gente realmente fizer isso?”.
+          <h2 class="section-title" data-i18n="story.title">
+            The PLHP story
+          </h2>
+          <p class="section-subtitle" data-i18n="story.subtitle">
+            Every good meme coin is born from that mix of tilt, laughter and
+            “what if we actually launch this?”
           </p>
         </div>
         <div class="card">
-          <p class="story-text">
-            Diz a lenda que a <span class="story-highlight">PLHP</span> nasceu num daqueles dias em que o
-            mercado tava caindo, as notícias só falavam de FUD, e um ariano
-            tiltado olhou pra tela e pensou:
-            <span class="story-highlight">“se é pra passar raiva, que seja com a minha própria moeda.”</span>
+          <p class="story-text" data-i18n="story.p1">
+            Legend says <span class="story-highlight">PLHP</span> was born on
+            one of those red days when the market was bleeding, news was pure
+            FUD and an Aries degen stared at the screen and thought:
+            <span class="story-highlight"
+              >“If I’m going to be mad anyway, I’d rather be mad at my own
+              coin.”</span
+            >
           </p>
-          <p class="story-text">
-            Em vez de só reclamar do Bitcoin, do ETH e das moedas que já estavam
-            prontas, a ideia foi criar um carneiro próprio, com a cara da
-            comunidade: meio meme, meio sério, 100% transparente. Nada de taxa
-            escondida, nada de função mágica no contrato, nada de “confia no dev
-            e fecha o olho”.
+          <p class="story-text" data-i18n="story.p2">
+            Instead of only complaining about Bitcoin, ETH and old coins, the
+            idea was to create a ram with the face of the community: part meme,
+            part serious, 100% transparent. No hidden tax, no magic function in
+            the contract, no “just trust the dev and close your eyes”.
           </p>
-          <p class="story-text">
-            A PLHP foi lançada na <span class="story-highlight">BNB Chain</span> com um supply de
-            <span class="story-highlight">69.420.000.000</span> tokens – porque, claro, meme também é número.
-            Liquidez inicial honesta, contrato público e a promessa mais realista
-            que existe em cripto:
-            <span class="story-highlight">“isso aqui é zoeira séria, mas sem garantia de nada.”</span>
+          <p class="story-text" data-i18n="story.p3">
+            PLHP launched on the
+            <span class="story-highlight">BNB Chain</span> with a supply of
+            <span class="story-highlight">69,420,000,000</span> tokens – because
+            yes, numbers can be memes too. Honest initial liquidity, public
+            contract and the most realistic promise in crypto:
+            <span class="story-highlight"
+              >“this is serious fun, but there are zero guarantees.”</span
+            >
           </p>
-          <p class="story-text">
-            A partir daí, o plano é simples: deixar o carneiro correr solto pela
-            blockchain, juntar uma galera que gosta de rir, construir aos poucos,
-            testar ideias Web3 e ver até onde a PLHP consegue ir. Se der bom,
-            todo mundo tava aqui desde o começo. Se der ruim, pelo menos a
-            história vai ser boa pra contar.
+          <p class="story-text" data-i18n="story.p4">
+            From there, the plan is simple: let the ram run wild across the
+            blockchain, gather people who like to laugh, build slowly, test
+            Web3 ideas and see how far PLHP can go. If it pumps, everyone was
+            here from the start. If it doesn’t, at least the story will be
+            legendary.
           </p>
         </div>
       </section>
@@ -1010,48 +1181,64 @@
       <!-- COMO COMPRAR -->
       <section class="section" id="how-to-buy">
         <div class="section-header">
-          <h2 class="section-title">Como comprar PLHP</h2>
-          <p class="section-subtitle">
-            Se você já está na BNB Chain, entrar pro rebanho é simples. Em poucos
-            cliques você troca BNB por PLHP.
+          <h2 class="section-title" data-i18n="how.title">
+            How to buy PLHP
+          </h2>
+          <p class="section-subtitle" data-i18n="how.subtitle">
+            If you’re already on BNB Chain, joining the herd is easy. In a few
+            clicks you swap BNB for PLHP.
           </p>
         </div>
         <div class="card">
           <div class="howto-steps">
             <div>
               <div class="step-title">
-                <span class="step-number">1</span> Configure a carteira
+                <span class="step-number">1</span>
+                <span data-i18n="how.step1Title">Set up your wallet</span>
               </div>
-              <p class="step-text">
-                Instale a MetaMask ou outra carteira compatível, adicione a rede
-                <strong>BNB Smart Chain</strong> e envie BNB para ela.
+              <p class="step-text" data-i18n="how.step1Text">
+                Install MetaMask or another compatible wallet, add
+                <strong>BNB Smart Chain</strong> and send BNB to it.
               </p>
             </div>
             <div>
               <div class="step-title">
-                <span class="step-number">2</span> Acesse a PancakeSwap
+                <span class="step-number">2</span>
+                <span data-i18n="how.step2Title">Go to PancakeSwap</span>
               </div>
-              <p class="step-text">
-                Vá até <strong>pancakeswap.finance</strong>, conecte sua
-                carteira e abra a tela de Swap. Se o PLHP não aparecer, cole o
-                contrato oficial e importe o token.
+              <p class="step-text" data-i18n="how.step2Text">
+                Open <strong>pancakeswap.finance</strong>, connect your wallet
+                and go to Swap. If PLHP doesn’t show, paste the official
+                contract address and import the token.
               </p>
             </div>
             <div>
               <div class="step-title">
-                <span class="step-number">3</span> Troque BNB por PLHP
+                <span class="step-number">3</span>
+                <span data-i18n="how.step3Title">Swap BNB for PLHP</span>
               </div>
-              <p class="step-text">
-                Escolha quanto BNB quer usar, confirme o swap e aguarde a
-                transação. Pronto, agora você faz parte do rebanho PLHP.
+              <p class="step-text" data-i18n="how.step3Text">
+                Choose how much BNB you want to use, confirm the swap and wait
+                for the transaction. Done – you’re now part of the PLHP herd.
               </p>
             </div>
           </div>
 
           <div class="contract-box" id="contract">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-              <span>Endereço oficial do contrato:</span>
-              <span class="badge-chain">BNB Smart Chain • BEP-20</span>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 4px;
+              "
+            >
+              <span data-i18n="how.contractLabel">
+                Official contract address:
+              </span>
+              <span class="badge-chain" data-i18n="how.contractBadge">
+                BNB Smart Chain • BEP-20
+              </span>
             </div>
             <code>0x69575D9877822277539355ae8B97b5D5dee1313F</code>
           </div>
@@ -1061,25 +1248,33 @@
       <!-- ROADMAP -->
       <section class="section" id="roadmap">
         <div class="section-header">
-          <h2 class="section-title">Roadmap</h2>
-          <p class="section-subtitle">
-            Nada de promessa de Lambo, só passos realistas pra construir algo
-            divertido e, se tudo der certo, memorável.
+          <h2 class="section-title" data-i18n="roadmap.title">Roadmap</h2>
+          <p class="section-subtitle" data-i18n="roadmap.subtitle">
+            No Lambo promises – just realistic steps to build something fun
+            and, with luck, unforgettable.
           </p>
         </div>
         <div class="card">
           <div class="roadmap-grid">
             <div class="milestone">
-              <h4>Fase 1 – Nascimento</h4>
-              <p>Deploy do contrato, criação da liquidez inicial, site no ar e primeiras compras.</p>
+              <h4 data-i18n="roadmap.phase1Title">Phase 1 – Birth</h4>
+              <p data-i18n="roadmap.phase1Text">
+                Contract deploy, initial liquidity, website live and first
+                buys.
+              </p>
             </div>
             <div class="milestone">
-              <h4>Fase 2 – Comunidade</h4>
-              <p>Twitter, Telegram, memes, parcerias orgânicas e holders iniciais.</p>
+              <h4 data-i18n="roadmap.phase2Title">Phase 2 – Community</h4>
+              <p data-i18n="roadmap.phase2Text">
+                X (Twitter), Telegram, memes, organic partnerships and early
+                holders.
+              </p>
             </div>
             <div class="milestone">
-              <h4>Fase 3 – Crescimento</h4>
-              <p>Aplicações para listagem em agregadores, bots de preço e integrações Web3.</p>
+              <h4 data-i18n="roadmap.phase3Title">Phase 3 – Growth</h4>
+              <p data-i18n="roadmap.phase3Text">
+                Listings on aggregators, price bots and Web3 integrations.
+              </p>
             </div>
           </div>
         </div>
@@ -1088,68 +1283,459 @@
 
     <footer>
       <div class="footer-inner">
-        <div>© <span id="year"></span> PLHP Coin • PlenaHype. Nenhuma promessa de retorno financeiro. Cripto é risco total.</div>
+        <div data-i18n="footer.text">
+          © <span id="year"></span> PLHP Coin • PlenaHype. No promise of
+          financial return. Crypto is full risk.
+        </div>
         <div class="footer-links">
-          <a href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56" target="_blank">Comprar PLHP</a>
-          <a href="https://bscscan.com/token/0x69575D9877822277539355ae8B97b5D5dee1313F" target="_blank">Ver no BscScan</a>
+          <a
+            href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
+            target="_blank"
+            data-i18n="footer.buy"
+          >
+            Buy PLHP
+          </a>
+          <a
+            href="https://bscscan.com/token/0x69575D9877822277539355ae8B97b5D5dee1313F"
+            target="_blank"
+            data-i18n="footer.bscscan"
+          >
+            View on BscScan
+          </a>
         </div>
       </div>
     </footer>
   </div>
 
   <script>
+    // YEAR
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // TRANSLATIONS
+    const translations = {
+      en: {
+        "nav.tagline": "PlenaHype • Meme coin on BNB Chain",
+        "nav.story": "Story",
+        "nav.roadmap": "Roadmap",
+        "nav.tokenomics": "Tokenomics",
+        "nav.howToBuy": "How to buy",
+
+        "hero.badge": "Tilted ram + meme hype = PLHP",
+        "hero.title":
+          "PLHP Coin is the token of the most furious ram on BNB Chain.",
+        "hero.subtitle":
+          "PLHP (PlenaHype) is a meme coin built for people who love fun, degen energy and transparency. Simple contract, no hidden taxes and full focus on community.",
+        "hero.btnBuy": "Buy on PancakeSwap",
+        "hero.btnStory": "Read PLHP story",
+        "hero.meta.network": "Network: BNB Smart Chain (BEP-20)",
+        "hero.meta.supply": "Supply: 69,420,000,000 PLHP",
+        "hero.poolChip": "Initial pool created",
+        "hero.stats.nameLabel": "Token name",
+        "hero.stats.nameValue": "PLHP Coin",
+        "hero.stats.symbolLabel": "Symbol",
+        "hero.stats.supplyLabel": "Total supply",
+        "hero.stats.taxLabel": "Contract fees",
+        "hero.stats.taxValue": "0% buy / 0% sell",
+
+        "price.title": "Live price",
+        "price.pair": "PLHP / BNB",
+        "price.usd": "Price in USD",
+        "price.liquidity": "Liquidity (USD)",
+        "price.volume": "24h volume",
+        "price.updating": "Updating...",
+
+        "about.title": "About the project",
+        "about.subtitle":
+          "The core of PLHP is to be simple, fun and transparent. No hidden functions, no dev scam, no magic promises.",
+        "about.whatTitle": "What is PLHP Coin?",
+        "about.whatP1":
+          "PLHP (PlenaHype) is a meme coin inspired by Aries energy: impulse, courage, short fuse and a bit of controlled chaos. It’s the ram that charges forward even when the market is trying to knock everyone down.",
+        "about.whatP2":
+          "The idea is to build a meme community with strong identity, its own lore and room for early degens – not just watching charts, but taking part in the chaos and the decisions.",
+        "about.list1":
+          "Standard contract, no trading taxes and no weird hidden functions.",
+        "about.list2": "No profit guarantee: crypto is full risk, always.",
+        "about.list3":
+          "Over time, the community helps decide the next steps.",
+        "about.tokenomicsTitle": "Tokenomics",
+        "about.tokenomicsP":
+          "PLHP distribution can evolve with the community, but everything stays clear, on-chain and transparent.",
+        "about.pillSupply": "<strong>Supply:</strong> 69,420,000,000 PLHP",
+        "about.pillFees": "<strong>Fees:</strong> 0% / 0%",
+        "about.pillChain": "<strong>Chain:</strong> BNB Chain",
+        "about.pillContract": "<strong>Contract:</strong> simple & verified",
+        "about.pillLiquidity": "<strong>Liquidity:</strong> started by creator",
+        "about.pillUse": "<strong>Use:</strong> memes, hype & Web3",
+
+        "story.title": "The PLHP story",
+        "story.subtitle":
+          "Every good meme coin is born from that mix of tilt, laughter and “what if we actually launch this?”",
+        "story.p1":
+          'Legend says <span class="story-highlight">PLHP</span> was born on one of those red days when the market was bleeding, news was pure FUD and an Aries degen stared at the screen and thought: <span class="story-highlight">“If I’m going to be mad anyway, I’d rather be mad at my own coin.”</span>',
+        "story.p2":
+          "Instead of only complaining about Bitcoin, ETH and old coins, the idea was to create a ram with the face of the community: part meme, part serious, 100% transparent. No hidden tax, no magic function in the contract, no “just trust the dev and close your eyes”.",
+        "story.p3":
+          'PLHP launched on the <span class="story-highlight">BNB Chain</span> with a supply of <span class="story-highlight">69,420,000,000</span> tokens – because yes, numbers can be memes too. Honest initial liquidity, public contract and the most realistic promise in crypto: <span class="story-highlight">“this is serious fun, but there are zero guarantees.”</span>',
+        "story.p4":
+          "From there, the plan is simple: let the ram run wild across the blockchain, gather people who like to laugh, build slowly, test Web3 ideas and see how far PLHP can go. If it pumps, everyone was here from the start. If it doesn’t, at least the story will be legendary.",
+
+        "how.title": "How to buy PLHP",
+        "how.subtitle":
+          "If you’re already on BNB Chain, joining the herd is easy. In a few clicks you swap BNB for PLHP.",
+        "how.step1Title": "Set up your wallet",
+        "how.step1Text":
+          "Install MetaMask or another compatible wallet, add <strong>BNB Smart Chain</strong> and send BNB to it.",
+        "how.step2Title": "Go to PancakeSwap",
+        "how.step2Text":
+          "Open <strong>pancakeswap.finance</strong>, connect your wallet and go to Swap. If PLHP doesn’t show, paste the official contract address and import the token.",
+        "how.step3Title": "Swap BNB for PLHP",
+        "how.step3Text":
+          "Choose how much BNB you want to use, confirm the swap and wait for the transaction. Done – you’re now part of the PLHP herd.",
+        "how.contractLabel": "Official contract address:",
+        "how.contractBadge": "BNB Smart Chain • BEP-20",
+
+        "roadmap.title": "Roadmap",
+        "roadmap.subtitle":
+          "No Lambo promises – just realistic steps to build something fun and, with luck, unforgettable.",
+        "roadmap.phase1Title": "Phase 1 – Birth",
+        "roadmap.phase1Text":
+          "Contract deploy, initial liquidity, website live and first buys.",
+        "roadmap.phase2Title": "Phase 2 – Community",
+        "roadmap.phase2Text":
+          "X (Twitter), Telegram, memes, organic partnerships and early holders.",
+        "roadmap.phase3Title": "Phase 3 – Growth",
+        "roadmap.phase3Text":
+          "Listings on aggregators, price bots and Web3 integrations.",
+
+        "footer.text":
+          "© <span id=\"year\"></span> PLHP Coin • PlenaHype. No promise of financial return. Crypto is full risk.",
+        "footer.buy": "Buy PLHP",
+        "footer.bscscan": "View on BscScan"
+      },
+      pt: {
+        "nav.tagline": "PlenaHype • Meme coin na BNB Chain",
+        "nav.story": "História",
+        "nav.roadmap": "Roadmap",
+        "nav.tokenomics": "Tokenomics",
+        "nav.howToBuy": "Como comprar",
+
+        "hero.badge": "Carneiro tiltado + hype de meme = PLHP",
+        "hero.title":
+          "A PLHP Coin é a moeda do carneiro mais brabo da BNB Chain.",
+        "hero.subtitle":
+          "PLHP (PlenaHype) é uma meme coin criada para quem gosta de zoeira, vibe de degen e transparência. Contrato simples, sem taxa escondida e foco total na comunidade.",
+        "hero.btnBuy": "Comprar na PancakeSwap",
+        "hero.btnStory": "Ler a história da PLHP",
+        "hero.meta.network": "Rede: BNB Smart Chain (BEP-20)",
+        "hero.meta.supply": "Supply: 69.420.000.000 PLHP",
+        "hero.poolChip": "Pool inicial criada",
+        "hero.stats.nameLabel": "Nome do token",
+        "hero.stats.nameValue": "PLHP Coin",
+        "hero.stats.symbolLabel": "Símbolo",
+        "hero.stats.supplyLabel": "Supply total",
+        "hero.stats.taxLabel": "Taxas do contrato",
+        "hero.stats.taxValue": "0% buy / 0% sell",
+
+        "price.title": "Preço em tempo real",
+        "price.pair": "PLHP / BNB",
+        "price.usd": "Preço em USD",
+        "price.liquidity": "Liquidez (USD)",
+        "price.volume": "Volume 24h",
+        "price.updating": "Atualizando...",
+
+        "about.title": "Sobre o projeto",
+        "about.subtitle":
+          "O foco da PLHP é ser simples, divertida e transparente. Nada de função escondida, scam de dev ou promessa mirabolante.",
+        "about.whatTitle": "O que é a PLHP Coin?",
+        "about.whatP1":
+          "PLHP (PlenaHype) é uma meme coin inspirada na energia de Áries: impulso, coragem, pavio curto e um pouco de caos controlado. É a moeda do carneiro que vai pra cima mesmo quando o mercado quer derrubar todo mundo.",
+        "about.whatP2":
+          "A ideia é criar uma comunidade meme com identidade forte, história própria e espaço pra quem quer entrar cedo – não só olhando gráfico, mas fazendo parte da zoeira e das decisões.",
+        "about.list1":
+          "Contrato padrão, sem taxas de trade e sem funções malucas escondidas.",
+        "about.list2":
+          "Sem promessa de lucro: cripto é risco total, sempre.",
+        "about.list3":
+          "Com o tempo, a comunidade ajuda a decidir os próximos passos.",
+        "about.tokenomicsTitle": "Tokenomics",
+        "about.tokenomicsP":
+          "A distribuição da PLHP pode evoluir com a comunidade, mas tudo fica claro, on-chain e transparente.",
+        "about.pillSupply": "<strong>Supply:</strong> 69.420.000.000 PLHP",
+        "about.pillFees": "<strong>Taxas:</strong> 0% / 0%",
+        "about.pillChain": "<strong>Rede:</strong> BNB Chain",
+        "about.pillContract":
+          "<strong>Contrato:</strong> simples e verificado",
+        "about.pillLiquidity":
+          "<strong>Liquidez:</strong> iniciada pelo criador",
+        "about.pillUse": "<strong>Uso:</strong> memes, hype & Web3",
+
+        "story.title": "A história da PLHP",
+        "story.subtitle":
+          "Toda boa meme coin nasce daquele mix de tilt, risada e “e se a gente realmente fizer isso?”.",
+        "story.p1":
+          'Diz a lenda que a <span class="story-highlight">PLHP</span> nasceu num daqueles dias totalmente vermelhos, mercado derretendo, notícia só de FUD e um ariano degen olhando pra tela pensando: <span class="story-highlight">“se é pra passar raiva, que seja com a minha própria moeda.”</span>',
+        "story.p2":
+          "Em vez de só reclamar do Bitcoin, do ETH e das moedas antigas, a ideia foi criar um carneiro com a cara da comunidade: meio meme, meio sério, 100% transparente. Nada de taxa escondida, nada de função mágica no contrato, nada de “confia no dev e fecha o olho”.",
+        "story.p3":
+          'A PLHP foi lançada na <span class="story-highlight">BNB Chain</span> com um supply de <span class="story-highlight">69.420.000.000</span> tokens – porque, sim, número também é meme. Liquidez inicial honesta, contrato público e a promessa mais verdadeira da cripto: <span class="story-highlight">“isso aqui é zoeira séria, mas sem garantia nenhuma.”</span>',
+        "story.p4":
+          "A partir daí, o plano é simples: deixar o carneiro correr solto pela blockchain, juntar a galera que gosta de rir, construir aos poucos, testar ideias Web3 e ver até onde a PLHP consegue ir. Se der bom, todo mundo estava aqui desde o começo. Se não der, pelo menos a história vai ser boa pra contar.",
+
+        "how.title": "Como comprar PLHP",
+        "how.subtitle":
+          "Se você já está na BNB Chain, entrar pro rebanho é simples. Em poucos cliques você troca BNB por PLHP.",
+        "how.step1Title": "Configure a carteira",
+        "how.step1Text":
+          "Instale a MetaMask ou outra carteira compatível, adicione a <strong>BNB Smart Chain</strong> e envie BNB para ela.",
+        "how.step2Title": "Acesse a PancakeSwap",
+        "how.step2Text":
+          "Abra o <strong>pancakeswap.finance</strong>, conecte sua carteira e vá em Swap. Se o PLHP não aparecer, cole o contrato oficial e importe o token.",
+        "how.step3Title": "Troque BNB por PLHP",
+        "how.step3Text":
+          "Escolha quanto BNB quer usar, confirme o swap e aguarde a transação. Pronto – agora você faz parte do rebanho PLHP.",
+        "how.contractLabel": "Endereço oficial do contrato:",
+        "how.contractBadge": "BNB Smart Chain • BEP-20",
+
+        "roadmap.title": "Roadmap",
+        "roadmap.subtitle":
+          "Nada de promessa de Lambo – só passos realistas pra construir algo divertido e, com sorte, memorável.",
+        "roadmap.phase1Title": "Fase 1 – Nascimento",
+        "roadmap.phase1Text":
+          "Deploy do contrato, criação da liquidez inicial, site no ar e primeiras compras.",
+        "roadmap.phase2Title": "Fase 2 – Comunidade",
+        "roadmap.phase2Text":
+          "Twitter, Telegram, memes, parcerias orgânicas e holders iniciais.",
+        "roadmap.phase3Title": "Fase 3 – Crescimento",
+        "roadmap.phase3Text":
+          "Aplicações para listagem em agregadores, bots de preço e integrações Web3.",
+
+        "footer.text":
+          "© <span id=\"year\"></span> PLHP Coin • PlenaHype. Nenhuma promessa de retorno financeiro. Cripto é risco total.",
+        "footer.buy": "Comprar PLHP",
+        "footer.bscscan": "Ver no BscScan"
+      },
+      es: {
+        "nav.tagline": "PlenaHype • Meme coin en BNB Chain",
+        "nav.story": "Historia",
+        "nav.roadmap": "Roadmap",
+        "nav.tokenomics": "Tokenomics",
+        "nav.howToBuy": "Cómo comprar",
+
+        "hero.badge": "Carnero tilt + hype de meme = PLHP",
+        "hero.title":
+          "PLHP Coin es la moneda del carnero más bravo de la BNB Chain.",
+        "hero.subtitle":
+          "PLHP (PlenaHype) es una meme coin creada para quien disfruta del caos, el degen y la transparencia. Contrato simple, sin tasas ocultas y foco total en la comunidad.",
+        "hero.btnBuy": "Comprar en PancakeSwap",
+        "hero.btnStory": "Leer la historia de PLHP",
+        "hero.meta.network": "Red: BNB Smart Chain (BEP-20)",
+        "hero.meta.supply": "Supply: 69.420.000.000 PLHP",
+        "hero.poolChip": "Pool inicial creada",
+        "hero.stats.nameLabel": "Nombre del token",
+        "hero.stats.nameValue": "PLHP Coin",
+        "hero.stats.symbolLabel": "Símbolo",
+        "hero.stats.supplyLabel": "Supply total",
+        "hero.stats.taxLabel": "Tasas del contrato",
+        "hero.stats.taxValue": "0% buy / 0% sell",
+
+        "price.title": "Precio en tiempo real",
+        "price.pair": "PLHP / BNB",
+        "price.usd": "Precio en USD",
+        "price.liquidity": "Liquidez (USD)",
+        "price.volume": "Volumen 24h",
+        "price.updating": "Actualizando...",
+
+        "about.title": "Sobre el proyecto",
+        "about.subtitle":
+          "El objetivo de PLHP es ser simple, divertida y transparente. Nada de funciones ocultas, estafas de dev o promesas imposibles.",
+        "about.whatTitle": "¿Qué es PLHP Coin?",
+        "about.whatP1":
+          "PLHP (PlenaHype) es una meme coin inspirada en la energía de Aries: impulso, coraje, poca paciencia y un poco de caos controlado. Es la moneda del carnero que avanza incluso cuando el mercado quiere tumbar a todos.",
+        "about.whatP2":
+          "La idea es crear una comunidad meme con identidad fuerte, historia propia y espacio para los que quieren entrar temprano – no sólo mirando gráficos, sino participando del caos y de las decisiones.",
+        "about.list1":
+          "Contrato estándar, sin tasas de trade y sin funciones extrañas ocultas.",
+        "about.list2":
+          "Sin promesa de ganancias: cripto es riesgo total, siempre.",
+        "about.list3":
+          "Con el tiempo, la comunidad ayuda a definir los próximos pasos.",
+        "about.tokenomicsTitle": "Tokenomics",
+        "about.tokenomicsP":
+          "La distribución de PLHP puede evolucionar con la comunidad, pero todo se mantiene claro, on-chain y transparente.",
+        "about.pillSupply": "<strong>Supply:</strong> 69.420.000.000 PLHP",
+        "about.pillFees": "<strong>Tasas:</strong> 0% / 0%",
+        "about.pillChain": "<strong>Red:</strong> BNB Chain",
+        "about.pillContract":
+          "<strong>Contrato:</strong> simple y verificado",
+        "about.pillLiquidity":
+          "<strong>Liquidez:</strong> iniciada por el creador",
+        "about.pillUse": "<strong>Uso:</strong> memes, hype & Web3",
+
+        "story.title": "La historia de PLHP",
+        "story.subtitle":
+          "Toda buena meme coin nace de esa mezcla de tilt, risas y “¿y si realmente lanzamos esto?”.",
+        "story.p1":
+          'Cuenta la leyenda que <span class="story-highlight">PLHP</span> nació en uno de esos días rojos, mercado cayendo, noticias llenas de FUD y un Aries degen mirando la pantalla y pensando: <span class="story-highlight">“si me voy a enojar igual, que sea con mi propia moneda.”</span>',
+        "story.p2":
+          "En lugar de quejarse sólo de Bitcoin, ETH y las monedas viejas, la idea fue crear un carnero con la cara de la comunidad: mitad meme, mitad serio, 100% transparente. Nada de tasas ocultas, nada de función mágica en el contrato, nada de “confía en el dev y listo”.",
+        "story.p3":
+          'PLHP se lanzó en la <span class="story-highlight">BNB Chain</span> con un supply de <span class="story-highlight">69.420.000.000</span> tokens – porque los números también pueden ser memes. Liquidez inicial honesta, contrato público y la promesa más realista de cripto: <span class="story-highlight">“esto es diversión seria, pero sin garantías.”</span>',
+        "story.p4":
+          "A partir de ahí, el plan es simple: dejar que el carnero corra libre por la blockchain, juntar a la gente que le gusta reír, construir poco a poco, probar ideas Web3 y ver hasta dónde puede llegar PLHP. Si sale bien, todos estuvieron aquí desde el inicio. Si no, por lo menos la historia será buena para contar.",
+
+        "how.title": "Cómo comprar PLHP",
+        "how.subtitle":
+          "Si ya estás en BNB Chain, entrar al rebaño es fácil. En pocos clics cambias BNB por PLHP.",
+        "how.step1Title": "Configura tu wallet",
+        "how.step1Text":
+          "Instala MetaMask u otra wallet compatible, agrega la <strong>BNB Smart Chain</strong> y envía BNB a ella.",
+        "how.step2Title": "Entra a PancakeSwap",
+        "how.step2Text":
+          "Abre <strong>pancakeswap.finance</strong>, conecta tu wallet y ve a Swap. Si PLHP no aparece, pega la dirección del contrato oficial e importa el token.",
+        "how.step3Title": "Cambia BNB por PLHP",
+        "how.step3Text":
+          "Elige cuánto BNB quieres usar, confirma el swap y espera la transacción. Listo: ahora eres parte del rebaño PLHP.",
+        "how.contractLabel": "Dirección oficial del contrato:",
+        "how.contractBadge": "BNB Smart Chain • BEP-20",
+
+        "roadmap.title": "Roadmap",
+        "roadmap.subtitle":
+          "Nada de promesas de Lambo – sólo pasos realistas para construir algo divertido y, con suerte, inolvidable.",
+        "roadmap.phase1Title": "Fase 1 – Nacimiento",
+        "roadmap.phase1Text":
+          "Deploy del contrato, creación de la liquidez inicial, sitio online y primeras compras.",
+        "roadmap.phase2Title": "Fase 2 – Comunidad",
+        "roadmap.phase2Text":
+          "Twitter, Telegram, memes, alianzas orgánicas y holders iniciales.",
+        "roadmap.phase3Title": "Fase 3 – Crecimiento",
+        "roadmap.phase3Text":
+          "Aplicaciones para listarse en agregadores, bots de precio e integraciones Web3.",
+
+        "footer.text":
+          "© <span id=\"year\"></span> PLHP Coin • PlenaHype. Ninguna promesa de retorno financiero. Cripto es riesgo total.",
+        "footer.buy": "Comprar PLHP",
+        "footer.bscscan": "Ver en BscScan"
+      }
+    };
+
+    function setLanguage(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang =
+        lang === "pt" ? "pt-BR" : lang === "es" ? "es" : "en";
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        const value = dict[key];
+        if (value !== undefined) {
+          el.innerHTML = value;
+        }
+      });
+
+      document.querySelectorAll(".btn-lang").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+
+      // Ajusta texto de erro/atualização do widget se já tiver sido setado
+      const updated = document.getElementById("price-updated");
+      if (updated && updated.dataset.error === "1") {
+        if (lang === "pt") updated.textContent = "Falha ao atualizar";
+        else if (lang === "es") updated.textContent = "Error al actualizar";
+        else updated.textContent = "Failed to update";
+      }
+    }
+
+    document.querySelectorAll(".btn-lang").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setLanguage(btn.getAttribute("data-lang"));
+      });
+    });
+
+    // Inicializa em inglês
+    setLanguage("en");
+
+    // PREÇOS
     async function fetchPLHPPrice() {
-      const apiUrl = "https://api.dexscreener.com/latest/dex/tokens/0x69575D9877822277539355ae8B97b5D5dee1313F";
+      const apiUrl =
+        "https://api.dexscreener.com/latest/dex/tokens/0x69575D9877822277539355ae8B97b5D5dee1313F";
 
       try {
         const res = await fetch(apiUrl);
         if (!res.ok) throw new Error("Erro ao buscar preço");
         const data = await res.json();
 
-        if (!data.pairs || !data.pairs.length) throw new Error("Par não encontrado");
+        if (!data.pairs || !data.pairs.length)
+          throw new Error("Par não encontrado");
 
         const pair = data.pairs[0];
 
-        const priceNative   = pair.priceNative;
-        const priceUsd      = pair.priceUsd;
-        const liquidityUsd  = pair.liquidity?.usd;
-        const volume24hUsd  = pair.volume?.h24;
+        const priceNative = pair.priceNative;
+        const priceUsd = pair.priceUsd;
+        const liquidityUsd = pair.liquidity?.usd;
+        const volume24hUsd = pair.volume?.h24;
 
-        const elNative   = document.getElementById("price-native");
-        const elUsd      = document.getElementById("price-usd");
-        const elLiq      = document.getElementById("liquidity-usd");
-        const elVol      = document.getElementById("volume-usd");
-        const elUpdated  = document.getElementById("price-updated");
+        const elNative = document.getElementById("price-native");
+        const elUsd = document.getElementById("price-usd");
+        const elLiq = document.getElementById("liquidity-usd");
+        const elVol = document.getElementById("volume-usd");
+        const elUpdated = document.getElementById("price-updated");
 
         if (!elNative || !elUsd) return;
 
-        elNative.textContent =
-          priceNative ? priceNative + " BNB" : "-";
+        elNative.textContent = priceNative ? priceNative + " BNB" : "-";
 
-        elUsd.textContent =
-          priceUsd ? "$" + Number(priceUsd).toFixed(8) : "-";
+        elUsd.textContent = priceUsd
+          ? "$" + Number(priceUsd).toFixed(8)
+          : "-";
 
-        elLiq.textContent =
-          liquidityUsd ? "$" + Number(liquidityUsd).toLocaleString("en-US", { maximumFractionDigits: 0 }) : "-";
+        elLiq.textContent = liquidityUsd
+          ? "$" +
+            Number(liquidityUsd).toLocaleString("en-US", {
+              maximumFractionDigits: 0
+            })
+          : "-";
 
-        elVol.textContent =
-          volume24hUsd ? "$" + Number(volume24hUsd).toLocaleString("en-US", { maximumFractionDigits: 0 }) : "-";
+        elVol.textContent = volume24hUsd
+          ? "$" +
+            Number(volume24hUsd).toLocaleString("en-US", {
+              maximumFractionDigits: 0
+            })
+          : "-";
 
         const now = new Date();
+        const currentLang = document
+          .querySelector(".btn-lang.active")
+          ?.getAttribute("data-lang");
+
+        let prefix = "Updated at ";
+        if (currentLang === "pt") prefix = "Atualizado às ";
+        if (currentLang === "es") prefix = "Actualizado a las ";
+
+        elUpdated.dataset.error = "0";
         elUpdated.textContent =
-          "Atualizado às " +
-          now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+          prefix +
+          now.toLocaleTimeString(currentLang === "pt" ? "pt-BR" : "en-US", {
+            hour: "2-digit",
+            minute: "2-digit"
+          });
       } catch (err) {
         console.error(err);
-        const elNative  = document.getElementById("price-native");
-        const elUsd     = document.getElementById("price-usd");
+        const elNative = document.getElementById("price-native");
+        const elUsd = document.getElementById("price-usd");
         const elUpdated = document.getElementById("price-updated");
 
-        if (elNative)  elNative.textContent  = "Erro";
-        if (elUsd)     elUsd.textContent     = "Erro";
-        if (elUpdated) elUpdated.textContent = "Falha ao atualizar";
+        if (elNative) elNative.textContent = "Error";
+        if (elUsd) elUsd.textContent = "Error";
+
+        if (elUpdated) {
+          const currentLang = document
+            .querySelector(".btn-lang.active")
+            ?.getAttribute("data-lang");
+          elUpdated.dataset.error = "1";
+          if (currentLang === "pt") elUpdated.textContent = "Falha ao atualizar";
+          else if (currentLang === "es")
+            elUpdated.textContent = "Error al actualizar";
+          else elUpdated.textContent = "Failed to update";
+        }
       }
     }
 

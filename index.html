@@ -53,7 +53,7 @@
       text-decoration: none;
     }
 
-    /* ===== FUNDO PORTAL CÓSMICO + CARNEIROS (IGUAL AO SITE ANTIGO) ===== */
+    /* ===== FUNDO PORTAL CÓSMICO + CARNEIROS ===== */
 
     .animated-bg,
     .portal-ring,
@@ -245,7 +245,7 @@
       }
     }
 
-    /* ===== LAYOUT PRINCIPAL (estilo PEPE, mas PLHP) ===== */
+    /* ===== LAYOUT PRINCIPAL ===== */
 
     .shell {
       max-width: 1120px;
@@ -282,17 +282,24 @@
     }
 
     .logo-mark {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #facc15, #f97316 60%, #b91c1c);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
+      background: #facc15;
       box-shadow:
         0 0 0 1px rgba(248, 250, 252, 0.15),
         0 14px 35px rgba(0, 0, 0, 0.88);
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .logo-text {
@@ -509,15 +516,28 @@
       overflow: hidden;
     }
 
-    .hero-card::before {
-      content: "PLHP";
+    /* logo grandona dentro do card */
+    .hero-logo-coin {
       position: absolute;
-      right: -18px;
-      top: 10px;
-      font-size: 3.1rem;
-      font-weight: 800;
-      letter-spacing: 0.28em;
-      color: rgba(15, 23, 42, 0.6);
+      right: -20px;
+      bottom: -40px;
+      width: 160px;
+      opacity: 0.25;
+      filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.9));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-logo-coin img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* garantir que o conteúdo fique por cima da moeda */
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-card-top {
@@ -805,14 +825,6 @@
       padding: 0.65rem;
     }
 
-    .chart-card header {
-      position: static;
-      border: none;
-      background: none;
-      backdrop-filter: none;
-      padding: 0 0 0.35rem;
-    }
-
     .chart-card-title {
       display: flex;
       align-items: baseline;
@@ -983,8 +995,10 @@
         padding: 1.3rem 1.1rem;
       }
 
-      .hero-card::before {
-        opacity: 0.5;
+      .hero-logo-coin {
+        right: -10px;
+        bottom: -30px;
+        width: 130px;
       }
 
       .tokenomics-grid,
@@ -1009,7 +1023,7 @@
   </style>
 </head>
 <body class="turbo-on">
-  <!-- Fundo animado memezado (portal + carneiros + foguete) -->
+  <!-- Fundo animado memezado -->
   <div class="animated-bg"></div>
   <div class="portal-ring"></div>
 
@@ -1036,7 +1050,9 @@
     <header>
       <div class="shell nav">
         <div class="nav-left">
-          <div class="logo-mark">🐏</div>
+          <div class="logo-mark">
+            <img src="logo.png" alt="PLHP Coin Logo" class="logo-img" />
+          </div>
           <div class="logo-text">
             <span>PLHP</span>
             <span>PlenaHype on BNB Chain</span>
@@ -1129,52 +1145,59 @@
           </div>
 
           <aside class="hero-card">
-            <div class="hero-card-top">
-              <div>
-                <div class="hero-card-title">PLHP • PlenaHype</div>
-                <div class="hero-card-text">
-                  Meme coin brasileira na BNB Chain, nascida para zoar o mercado
-                  inteiro – mas com liquidez travada e respeito pela comunidade.
+            <!-- moedona PLHP no fundo -->
+            <figure class="hero-logo-coin">
+              <img src="logo.png" alt="PLHP Coin" />
+            </figure>
+
+            <div class="hero-card-inner">
+              <div class="hero-card-top">
+                <div>
+                  <div class="hero-card-title">PLHP • PlenaHype</div>
+                  <div class="hero-card-text">
+                    Meme coin brasileira na BNB Chain, nascida para zoar o mercado
+                    inteiro – mas com liquidez travada e respeito pela comunidade.
+                  </div>
+                </div>
+                <div class="hero-card-tag">
+                  <span class="icon-circle">🐏</span>
+                  <span>Carneiro on-chain</span>
                 </div>
               </div>
-              <div class="hero-card-tag">
-                <span class="icon-circle">🐏</span>
-                <span>Carneiro on-chain</span>
-              </div>
-            </div>
 
-            <div class="hero-card-pill-row">
-              <span class="pill highlight">BNB Chain</span>
-              <span class="pill">Meme coin</span>
-              <span class="pill">Liquidez travada</span>
-              <span class="pill">Zero promessas milagrosas</span>
-            </div>
-
-            <div class="hero-card-footer">
-              <div class="hero-card-contract">
-                <strong>Contract:</strong><br />
-                0x69575D9877822277539355ae8B97b5D5dee1313F
+              <div class="hero-card-pill-row">
+                <span class="pill highlight">BNB Chain</span>
+                <span class="pill">Meme coin</span>
+                <span class="pill">Liquidez travada</span>
+                <span class="pill">Zero promessas milagrosas</span>
               </div>
-              <div class="hero-card-social">
-                <div class="social-row">
-                  <a
-                    class="social-circle"
-                    href="https://twitter.com/PlenaHype_Coin"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="X (Twitter)"
-                  >
-                    𝕏
-                  </a>
-                  <a
-                    class="social-circle"
-                    href="#"
-                    title="Telegram (em breve)"
-                  >
-                    ✈️
-                  </a>
+
+              <div class="hero-card-footer">
+                <div class="hero-card-contract">
+                  <strong>Contract:</strong><br />
+                  0x69575D9877822277539355ae8B97b5D5dee1313F
                 </div>
-                <span class="social-label">Siga, compartilhe e faça o hype acontecer.</span>
+                <div class="hero-card-social">
+                  <div class="social-row">
+                    <a
+                      class="social-circle"
+                      href="https://twitter.com/PlenaHype_Coin"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="X (Twitter)"
+                    >
+                      𝕏
+                    </a>
+                    <a
+                      class="social-circle"
+                      href="#"
+                      title="Telegram (em breve)"
+                    >
+                      ✈️
+                    </a>
+                  </div>
+                  <span class="social-label">Siga, compartilhe e faça o hype acontecer.</span>
+                </div>
               </div>
             </div>
           </aside>
@@ -1563,7 +1586,6 @@
   </div>
 
   <script>
-    // ano automático no footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>

@@ -6,24 +6,25 @@
   <title>PLHP Coin – PlenaHype</title>
   <meta
     name="description"
-    content="PLHP (PlenaHype) é a meme coin do carneiro mais brabo da BNB Chain. Simples, transparente e focada na comunidade."
+    content="PLHP (PlenaHype) é a meme coin do carneiro mais brabo da BNB Chain. Comunidade, hype e transparência total."
   />
   <style>
     :root {
-      --bg-page: #050309;
-      --bg-surface: #ffffff;
-      --bg-surface-soft: #f6f7fb;
-      --border-subtle: #e3e6f0;
-      --primary: #14b86a;
-      --primary-dark: #0c7e47;
-      --primary-soft: #e5f7ee;
-      --accent: #ffb020;
-      --text: #111827;
-      --muted: #6b7280;
-      --radius-xl: 26px;
+      --bg: #050309;
+      --bg2: #0b0615;
+      --card: #140b27;
+      --card-soft: #1b0f33;
+      --primary: #22c55e;
+      --primary-dark: #15803d;
+      --primary-soft: rgba(34, 197, 94, 0.18);
+      --accent: #f97316;
+      --accent-soft: rgba(249, 115, 22, 0.16);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.4);
       --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.16);
+      --shadow-card: 0 22px 60px rgba(0, 0, 0, 0.72);
+      --shadow-soft: 0 10px 35px rgba(15, 23, 42, 0.6);
     }
 
     * {
@@ -34,145 +35,336 @@
 
     html,
     body {
-      height: 100%;
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      color: var(--text);
-      background: var(--bg-page);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
 
     a {
       color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== FUNDO ANIMADO MEMEZADO ===== */
+
+    .animated-bg,
+    .portal-ring,
+    .sheep-layer,
+    .meme-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .animated-bg {
+      background:
+        radial-gradient(circle at 10% 0%, rgba(92, 40, 180, 0.5), transparent 55%),
+        radial-gradient(circle at 90% 0%, rgba(255, 189, 89, 0.4), transparent 55%),
+        radial-gradient(circle at 0% 100%, rgba(255, 79, 123, 0.35), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(32, 211, 238, 0.35), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), transparent 60%),
+        radial-gradient(circle at 30% 70%, rgba(148, 163, 253, 0.26), transparent 60%),
+        radial-gradient(circle at 70% 20%, rgba(129, 140, 248, 0.18), transparent 60%);
+      opacity: 0.85;
+      filter: saturate(1.1);
+      animation: bgShift 32s ease-in-out infinite alternate;
+    }
+
+    .portal-ring {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portal-ring::before {
+      content: "";
+      width: min(520px, 80vw);
+      height: min(520px, 80vw);
+      border-radius: 50%;
+      border: 1px solid rgba(248, 250, 252, 0.08);
+      box-shadow:
+        0 0 80px rgba(129, 140, 248, 0.1),
+        0 0 160px rgba(56, 189, 248, 0.25);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(244, 244, 245, 0.1), transparent 60%),
+        radial-gradient(circle at 70% 80%, rgba(56, 189, 248, 0.07), transparent 55%);
+      opacity: 0.55;
+      animation: portalPulse 14s ease-in-out infinite alternate;
+    }
+
+    .sheep-layer {
+      opacity: 0.16;
+      mix-blend-mode: screen;
+    }
+
+    .sheep-layer span {
+      position: absolute;
+      font-size: 32px;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.7));
+      animation: sheepFloat 28s linear infinite;
+    }
+
+    .sheep-layer span:nth-child(1) {
+      top: 16%;
+      left: 8%;
+      animation-duration: 26s;
+    }
+    .sheep-layer span:nth-child(2) {
+      top: 26%;
+      right: 10%;
+      animation-duration: 32s;
+    }
+    .sheep-layer span:nth-child(3) {
+      bottom: 18%;
+      left: 18%;
+      animation-duration: 30s;
+    }
+    .sheep-layer span:nth-child(4) {
+      bottom: 12%;
+      right: 22%;
+      animation-duration: 34s;
+    }
+    .sheep-layer span:nth-child(5) {
+      top: 48%;
+      left: 44%;
+      animation-duration: 38s;
+    }
+    .sheep-layer span:nth-child(6) {
+      top: 8%;
+      right: 45%;
+      animation-duration: 36s;
+    }
+
+    .meme-layer {
+      opacity: 0.3;
+      mix-blend-mode: screen;
+    }
+
+    .meme-layer span {
+      position: absolute;
+      font-size: 26px;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.7));
+      animation: memeFloat 24s linear infinite;
+    }
+
+    .meme-layer span:nth-child(1) {
+      top: 14%;
+      left: 30%;
+    }
+    .meme-layer span:nth-child(2) {
+      top: 36%;
+      right: 30%;
+    }
+    .meme-layer span:nth-child(3) {
+      bottom: 22%;
+      left: 32%;
+    }
+    .meme-layer span:nth-child(4) {
+      bottom: 26%;
+      right: 18%;
+    }
+    .meme-layer span:nth-child(5) {
+      top: 52%;
+      right: 8%;
+    }
+    .meme-layer span:nth-child(6) {
+      top: 6%;
+      right: 18%;
+    }
+
+    body.turbo-on .animated-bg {
+      opacity: 0.95;
+      animation-duration: 26s;
+    }
+
+    body.turbo-on .sheep-layer {
+      opacity: 0.18;
+    }
+
+    body.turbo-on .meme-layer {
+      opacity: 0.4;
     }
 
     .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes bgShift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-10px, 6px, 0) scale(1.02);
+      }
+      100% {
+        transform: translate3d(12px, -6px, 0) scale(1.03);
+      }
+    }
+
+    @keyframes portalPulse {
+      0% {
+        transform: scale(0.96) rotate(0deg);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.02) rotate(2deg);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1.05) rotate(-2deg);
+        opacity: 0.6;
+      }
+    }
+
+    @keyframes sheepFloat {
+      0% {
+        transform: translate3d(-10px, 10px, 0) rotate(-4deg);
+      }
+      50% {
+        transform: translate3d(10px, -8px, 0) rotate(4deg);
+      }
+      100% {
+        transform: translate3d(-12px, 10px, 0) rotate(-3deg);
+      }
+    }
+
+    @keyframes memeFloat {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate3d(6px, -10px, 0) rotate(4deg);
+      }
+      100% {
+        transform: translate3d(-6px, 10px, 0) rotate(-4deg);
+      }
+    }
+
+    /* ===== LAYOUT PRINCIPAL (estilo PEPE, mas PLHP) ===== */
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
     }
 
     header {
-      background: rgba(6, 10, 20, 0.98);
-      color: #fff;
       position: sticky;
       top: 0;
       z-index: 20;
-      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(26px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 5, 15, 0.94),
+        rgba(5, 5, 15, 0.78),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
     }
 
     .nav {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      padding: 0.9rem 0;
+      gap: 1.5rem;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.8rem;
     }
 
-    .nav-logo {
+    .logo-mark {
       width: 40px;
       height: 40px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: #000;
-      border: 2px solid #22c55e;
-      box-shadow: 0 0 14px rgba(34, 197, 94, 0.7);
-      flex-shrink: 0;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #facc15, #f97316 60%, #b91c1c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 0 1px rgba(248, 250, 252, 0.15),
+        0 14px 35px rgba(0, 0, 0, 0.88);
+      font-size: 20px;
     }
 
-    .nav-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .nav-title {
+    .logo-text {
       display: flex;
       flex-direction: column;
+      line-height: 1.1;
     }
 
-    .nav-title-main {
-      font-size: 1.05rem;
+    .logo-text span:first-child {
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
+      font-size: 0.88rem;
+      text-transform: uppercase;
     }
 
-    .nav-title-sub {
-      font-size: 0.78rem;
-      color: rgba(226, 232, 240, 0.86);
+    .logo-text span:last-child {
+      font-size: 0.72rem;
+      color: var(--muted);
     }
 
-    .nav-center {
+    .nav-links {
       display: flex;
-      gap: 18px;
       align-items: center;
-      flex: 1;
-      justify-content: center;
-    }
-
-    .nav-link {
+      gap: 1.2rem;
       font-size: 0.86rem;
-      color: rgba(226, 232, 240, 0.9);
-      text-decoration: none;
-      padding: 6px 2px;
-      position: relative;
-      cursor: pointer;
     }
 
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
+    .nav-links a {
+      padding: 0.4rem 0.6rem;
       border-radius: 999px;
-      background: linear-gradient(90deg, #22c55e, #22c55e);
-      transform-origin: center;
-      transform: scaleX(0);
-      transition: transform 0.16s ease-out;
-    }
-
-    .nav-link:hover::after {
-      transform: scaleX(1);
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
       border: 1px solid transparent;
-      font-size: 0.86rem;
-      padding: 7px 14px;
+      transition: all 0.16s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.4);
+      background: radial-gradient(
+        circle at 0 0,
+        rgba(34, 197, 94, 0.14),
+        transparent 55%
+      );
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn,
+    .chip {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      background: transparent;
-      color: inherit;
-      text-decoration: none;
+      gap: 0.5rem;
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      line-height: 1.1;
       white-space: nowrap;
       transition: all 0.16s ease-out;
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .btn-primary {
@@ -186,1776 +378,1193 @@
     }
 
     .btn-primary:hover {
+      filter: brightness(1.05);
       transform: translateY(-1px);
       box-shadow:
-        0 0 0 1px rgba(21, 128, 61, 0.7),
-        0 18px 46px rgba(22, 163, 74, 0.46);
+        0 0 0 1px rgba(21, 128, 61, 0.8),
+        0 18px 50px rgba(22, 163, 74, 0.52);
     }
 
-    .btn-ghost {
-      border-color: rgba(148, 163, 184, 0.4);
-      color: rgba(226, 232, 240, 0.9);
-      background: rgba(15, 23, 42, 0.7);
+    .chip {
+      border-color: rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.88);
+      color: var(--muted);
     }
 
-    .btn-ghost:hover {
-      border-color: rgba(148, 163, 184, 0.9);
-      background: rgba(30, 64, 175, 0.4);
+    .chip:hover {
+      border-color: rgba(249, 115, 22, 0.8);
+      background: radial-gradient(
+        circle at 0 0,
+        rgba(249, 115, 22, 0.2),
+        transparent 60%
+      );
+      color: #fed7aa;
     }
 
-    .btn-lang {
-      font-size: 0.78rem;
-      padding: 4px 9px;
+    .icon-circle {
+      width: 22px;
+      height: 22px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: transparent;
-      color: rgba(226, 232, 240, 0.86);
-      cursor: pointer;
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
     }
 
-    .btn-lang.active {
-      background: #e5f7ee;
-      color: #064e3b;
-      border-color: #22c55e;
-      font-weight: 600;
-    }
-
-    main {
-      flex: 1;
-      padding: 26px 10px 32px;
-    }
-
-    .shell {
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 32px 24px;
-      border-radius: var(--radius-xl);
-      background: var(--bg-surface);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 26px;
-    }
-
-    .section-alt {
-      background: var(--bg-surface-soft);
-    }
-
-    h1,
-    h2,
-    h3 {
-      letter-spacing: -0.02em;
-    }
-
-    /* HERO com fundo animado */
+    /* HERO */
 
     .hero {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-      gap: 40px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
       align-items: center;
-      padding: 38px 30px;
-      border-radius: var(--radius-xl);
-      color: #f9fafb;
-      background: radial-gradient(circle at 0% 0%, #f97316, #581c87 35%, #020617);
-      background-size: 220% 220%;
-      animation: heroBg 26s ease-in-out infinite;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(80px);
-      opacity: 0.25;
-      mix-blend-mode: screen;
-    }
-
-    .hero::before {
-      width: 260px;
-      height: 260px;
-      background: #22c55e;
-      top: -80px;
-      left: 10%;
-    }
-
-    .hero::after {
-      width: 280px;
-      height: 280px;
-      background: #f97316;
-      bottom: -80px;
-      right: 4%;
-    }
-
-    @keyframes heroBg {
-      0% {
-        background-position: 0% 0%;
-      }
-      50% {
-        background-position: 100% 80%;
-      }
-      100% {
-        background-position: 0% 0%;
-      }
-    }
-
-    .hero > * {
-      position: relative;
-      z-index: 1;
     }
 
     .hero-kicker {
-      font-size: 0.86rem;
-      color: #facc15;
-      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.96);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-kicker span.tag {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      background: rgba(34, 197, 94, 0.12);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.5);
     }
 
     .hero-title {
-      font-size: clamp(2.3rem, 4vw, 2.9rem);
+      font-size: clamp(2.3rem, 3vw + 1.5rem, 3.2rem);
       line-height: 1.05;
-      margin-bottom: 14px;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.9rem;
+      text-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
     }
 
-    .hero-title span {
-      color: #bbf7d0;
+    .hero-title span.accent {
+      background: linear-gradient(135deg, #facc15, #f97316, #ef4444);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .hero-subtitle {
       font-size: 0.98rem;
-      color: #e5e7eb;
-      max-width: 560px;
-      margin-bottom: 20px;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.6rem;
     }
 
-    .hero-cta {
+    .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1rem;
     }
 
-    .hero-meta {
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-metrics {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      font-size: 0.82rem;
-      color: #e5e7eb;
+      gap: 1rem;
+      margin-top: 1.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-metrics span {
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-card {
+      border-radius: 26px;
+      background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.08), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.24), transparent 60%),
+        linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.8));
+      padding: 1.6rem 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "PLHP";
+      position: absolute;
+      right: -18px;
+      top: 10px;
+      font-size: 3.1rem;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      color: rgba(15, 23, 42, 0.6);
+    }
+
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-card-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.1rem;
     }
 
     .pill {
+      padding: 0.25rem 0.55rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 6px 11px;
-      background: rgba(15, 23, 42, 0.7);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    .hero-logo-wrap {
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-logo-card {
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #fef9c3, #16a34a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 28px 60px rgba(15, 23, 42, 0.8);
-      border: 6px solid rgba(15, 23, 42, 0.9);
-      position: relative;
-    }
-
-    .hero-logo-inner {
-      width: 82%;
-      height: 82%;
-      border-radius: 50%;
-      overflow: hidden;
-      background: #000;
-      border: 3px solid #0f172a;
-    }
-
-    .hero-logo-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-logo-tag {
-      position: absolute;
-      bottom: 12px;
-      right: -10px;
-      background: #0f172a;
+      font-size: 0.7rem;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.5);
       color: #e5e7eb;
-      border-radius: 999px;
-      font-size: 0.74rem;
-      padding: 5px 12px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
     }
 
-    /* GERAL SEÇÕES */
+    .pill.highlight {
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero-card-contract {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.72rem;
+      word-break: break-all;
+      padding: 0.45rem 0.6rem;
+      border-radius: 12px;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-card-social {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .social-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      transition: all 0.16s ease-out;
+    }
+
+    .social-circle:hover {
+      transform: translateY(-1px) scale(1.03);
+      border-color: rgba(34, 197, 94, 0.9);
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.45);
+    }
+
+    .social-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* SEÇÕES */
+
+    section {
+      padding: 2.4rem 0 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.2rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 0.3rem;
+    }
 
     .section-title {
-      font-size: 1.7rem;
-      margin-bottom: 8px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
     }
 
-    .section-lead {
-      font-size: 0.98rem;
+    .section-subtitle {
+      font-size: 0.86rem;
       color: var(--muted);
-      margin-bottom: 18px;
-      max-width: 720px;
+      max-width: 32rem;
     }
 
-    .text-muted {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .two-col {
+    .section-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 32px;
-      align-items: flex-start;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.6rem;
     }
 
     .card {
-      background: #ffffff;
       border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 0.82)
+      );
+      box-shadow: var(--shadow-card);
+      padding: 1.3rem 1.2rem;
+      font-size: 0.86rem;
+      color: var(--muted);
     }
 
     .card h3 {
-      font-size: 1.08rem;
-      margin-bottom: 6px;
-    }
-
-    .badge-chain {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: var(--primary-soft);
-      color: var(--primary-dark);
-      border: 1px solid rgba(34, 197, 94, 0.5);
-    }
-
-    .contract-box {
-      margin-top: 10px;
-      padding: 10px 12px;
-      background: #0b1120;
-      color: #e5e7eb;
-      border-radius: var(--radius-md);
-      font-size: 0.8rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
-      word-break: break-all;
-    }
-
-    .list {
-      list-style: none;
-      padding: 0;
-      margin-top: 8px;
-    }
-
-    .list li {
-      font-size: 0.9rem;
-      color: var(--muted);
-      padding-left: 16px;
-      position: relative;
-      margin-bottom: 4px;
-    }
-
-    .list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--primary-dark);
-    }
-
-    /* QUICKSTART */
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .step-card {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      background: #ffffff;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .step-header {
-      background: #2563eb;
-      color: #f9fafb;
-      padding: 8px 14px;
-      font-size: 0.86rem;
-      font-weight: 600;
-    }
-
-    .step-body {
-      padding: 14px 14px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex: 1;
-    }
-
-    .step-body h3 {
       font-size: 0.98rem;
+      margin-bottom: 0.45rem;
+      color: var(--text);
     }
 
-    .step-body p {
-      font-size: 0.86rem;
-      color: var(--muted);
+    .card p + p {
+      margin-top: 0.55rem;
     }
 
-    .step-actions {
-      margin-top: 6px;
+    .list-dot {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.55rem 0 0;
+    }
+
+    .list-dot li {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .btn-step {
-      border-radius: 999px;
-      border: 1px solid #22c55e;
-      background: var(--primary-soft);
-      color: var(--primary-dark);
-      padding: 5px 10px;
-      font-size: 0.8rem;
-      text-decoration: none;
-    }
-
-    .btn-step.secondary {
-      border-color: var(--border-subtle);
-      background: #fff;
-      color: var(--muted);
-    }
-
-    /* QUICK FACTS */
-
-    .facts-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .fact {
-      text-align: center;
-      padding: 12px 8px;
-    }
-
-    .fact-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: #e5f7ee;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-
-    .fact-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .fact-text {
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+      align-items: flex-start;
       font-size: 0.84rem;
       color: var(--muted);
     }
 
-    /* TRADE */
-
-    .trade-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 26px;
-      align-items: stretch;
+    .list-dot li::before {
+      content: "•";
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-top: 0.05rem;
     }
 
-    .embed-box {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      background: #050816;
+    /* Tokenomics */
+
+    .tokenomics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    .token-card {
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.12), transparent 60%),
+        rgba(15, 23, 42, 0.96);
+      padding: 0.7rem 0.75rem;
+      font-size: 0.8rem;
       box-shadow: var(--shadow-soft);
     }
 
-    .embed-box iframe {
-      display: block;
-      width: 100%;
-      border: 0;
+    .token-label {
+      font-size: 0.75rem;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 0.2rem;
     }
 
-    .small-note {
+    .token-value {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .token-pill {
+      font-size: 0.7rem;
+      margin-top: 0.22rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      background: rgba(22, 101, 52, 0.38);
+      color: #bbf7d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Como comprar */
+
+    .steps {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.6rem;
+      align-items: flex-start;
+      font-size: 0.84rem;
+    }
+
+    .step-index {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      color: #e5e7eb;
+    }
+
+    .step-title {
+      font-weight: 500;
+      margin-bottom: 0.12rem;
+      color: var(--text);
+    }
+
+    .step-text {
+      color: var(--muted);
+    }
+
+    /* Trade (DexScreener) */
+
+    .chart-card {
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.2), transparent 60%),
+        rgba(15, 23, 42, 0.98);
+      box-shadow: var(--shadow-card);
+      padding: 0.65rem;
+    }
+
+    .chart-card header {
+      position: static;
+      border: none;
+      background: none;
+      backdrop-filter: none;
+      padding: 0 0 0.35rem;
+    }
+
+    .chart-card-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
       font-size: 0.8rem;
       color: var(--muted);
-      margin-top: 8px;
     }
 
-    /* COMMUNITY – estilo cards Pepe */
+    .chart-card-title strong {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .chart-frame {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      min-height: 400px;
+      overflow: hidden;
+    }
+
+    /* Comunidade */
 
     .community-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
+      gap: 0.9rem;
+      margin-top: 0.9rem;
     }
 
     .community-card {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 0 0, rgba(249, 115, 22, 0.18), transparent 60%),
+        rgba(15, 23, 42, 0.96);
       box-shadow: var(--shadow-soft);
-      padding: 14px 14px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      padding: 0.9rem 0.8rem;
+      font-size: 0.82rem;
     }
 
-    .community-header {
+    .community-icon-wrap {
+      margin-bottom: 0.4rem;
+    }
+
+    .community-icon {
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: #f9fafb;
-    }
-
-    .community-header.twitter {
-      background: #000000;
-    }
-
-    .community-header.telegram {
-      background: #1d9bf0;
-    }
-
-    .community-header.discord {
-      background: #5865f2;
-    }
-
-    .community-label {
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .community-card .btn-step {
-      margin-top: 4px;
-      border-color: #22c55e;
-      background: #ffffff;
-    }
-
-    .community-card .btn-step.secondary {
-      border-color: var(--border-subtle);
-      background: #f9fafb;
-      color: var(--muted);
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #020617;
-      color: #cbd5f5;
-      padding: 24px 16px 26px;
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-    }
-
-    .footer-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) repeat(3, minmax(0, 1fr));
-      gap: 26px;
-      font-size: 0.78rem;
-    }
-
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .footer-brand-logo {
+      border: 1px solid rgba(148, 163, 184, 0.7);
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 4px;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.98);
+      font-size: 1rem;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.8);
     }
 
-    .footer-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: #000;
-      border: 2px solid #22c55e;
+    .community-card h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
     }
 
-    .footer-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .community-card p {
+      color: var(--muted);
     }
 
-    .footer-brand-name {
-      font-size: 0.94rem;
-      font-weight: 700;
-    }
-
-    .footer-brand-sub {
+    .community-card a.cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.55rem;
       font-size: 0.78rem;
-      color: #94a3b8;
+      color: #fed7aa;
     }
 
-    .footer-socials {
+    .community-card a.cta span {
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 2.4rem 0 1.8rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-top {
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 4px;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
     }
 
-    .footer-socials a {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      padding: 4px 9px;
-      text-decoration: none;
-      color: #e2e8f0;
-      font-size: 0.76rem;
-    }
-
-    .footer-socials a:hover {
-      border-color: #22c55e;
-      color: #bbf7d0;
-    }
-
-    .footer-copy {
-      margin-top: 8px;
-      color: #94a3b8;
-      max-width: 340px;
-    }
-
-    .footer-col {
+    .footer-links {
       display: flex;
-      flex-direction: column;
-      gap: 5px;
-      color: #e2e8f0;
+      flex-wrap: wrap;
+      gap: 0.7rem;
     }
 
-    .footer-col-title {
-      font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 4px;
+    .footer-links a {
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.95);
     }
 
-    .footer-col a {
-      text-decoration: none;
-      color: #94a3b8;
-      font-size: 0.78rem;
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding-top: 0.9rem;
     }
 
-    .footer-col a:hover {
-      color: #bbf7d0;
+    .footer-social {
+      display: flex;
+      gap: 0.4rem;
     }
 
     /* RESPONSIVO */
 
-    @media (max-width: 960px) {
+    @media (max-width: 900px) {
+      .hero,
+      .section-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .hero {
-        grid-template-columns: minmax(0, 1fr);
-        text-align: left;
+        padding-top: 1.8rem;
       }
 
-      .hero-logo-wrap {
+      .hero-card {
         order: -1;
-        margin-bottom: 8px;
       }
 
-      .two-col,
-      .trade-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .steps-grid,
-      .facts-grid,
-      .community-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .footer-inner {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav {
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-
-      .nav-center {
+      .nav-links {
         display: none;
       }
 
-      main {
-        padding-inline: 10px;
+      .nav-cta {
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        padding-inline: 1rem;
       }
 
-      .section {
-        padding: 26px 18px;
+      .hero-title {
+        font-size: 2.1rem;
       }
 
-      .hero {
-        padding: 26px 20px;
+      .hero-subtitle {
+        font-size: 0.9rem;
       }
 
-      .steps-grid,
-      .facts-grid,
+      .hero-card {
+        padding: 1.3rem 1.1rem;
+      }
+
+      .hero-card::before {
+        opacity: 0.5;
+      }
+
+      .tokenomics-grid,
       .community-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .footer-inner {
-        grid-template-columns: minmax(0, 1fr);
+      .chart-frame {
+        min-height: 360px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-bottom {
+        flex-direction: column-reverse;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
-<body>
+<body class="turbo-on">
+  <!-- Fundo animado memezado -->
+  <div class="animated-bg"></div>
+  <div class="portal-ring"></div>
+
+  <div class="sheep-layer">
+    <span>🐏</span>
+    <span>🐏</span>
+    <span>🐏</span>
+    <span>🐏</span>
+    <span>🐏</span>
+    <span>🐏</span>
+  </div>
+
+  <div class="meme-layer">
+    <span>🚀</span>
+    <span>🔥</span>
+    <span>⚡</span>
+    <span>💰</span>
+    <span>🌕</span>
+    <span>🧨</span>
+  </div>
+
+  <!-- Conteúdo principal -->
   <div class="page">
-    <!-- NAVBAR -->
     <header>
-      <nav class="nav">
+      <div class="shell nav">
         <div class="nav-left">
-          <div class="nav-logo">
-            <!-- troque para seu logo -->
-            <img src="logo.png" alt="PLHP Logo" />
-          </div>
-          <div class="nav-title">
-            <span class="nav-title-main">PLHP Coin</span>
-            <span class="nav-title-sub" data-i18n="nav.tagline">
-              Meme coin do carneiro mais brabo da BNB Chain.
-            </span>
+          <div class="logo-mark">🐏</div>
+          <div class="logo-text">
+            <span>PLHP</span>
+            <span>PlenaHype on BNB Chain</span>
           </div>
         </div>
 
-        <div class="nav-center">
-          <a href="#about" class="nav-link" data-scroll data-i18n="nav.about">
-            Sobre
-          </a>
-          <a href="#story" class="nav-link" data-scroll data-i18n="nav.story">
-            História
-          </a>
-          <a
-            href="#quickstart"
-            class="nav-link"
-            data-scroll
-            data-i18n="nav.quickstart"
-          >
-            Como começar
-          </a>
-          <a href="#trade" class="nav-link" data-scroll data-i18n="nav.trade">
-            Trade
-          </a>
-          <a
-            href="#community"
-            class="nav-link"
-            data-scroll
-            data-i18n="nav.community"
-          >
-            Comunidade
-          </a>
-        </div>
+        <nav class="nav-links">
+          <a href="#sobre">Sobre</a>
+          <a href="#historia">História</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="#como-comprar">Como comprar</a>
+          <a href="#trade">Trade</a>
+          <a href="#comunidade">Comunidade</a>
+        </nav>
 
-        <div class="nav-right">
-          <button
-            class="btn-ghost btn"
-            data-scroll
-            data-target="#trade"
-            data-i18n="nav.chart"
-          >
-            Ver gráfico
-          </button>
+        <div class="nav-cta">
           <a
-            class="btn btn-primary"
-            href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
+            class="btn-primary btn"
+            href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chain=bsc&inputCurrency=BNB"
             target="_blank"
-            data-i18n="nav.buy"
+            rel="noopener noreferrer"
           >
-            Comprar PLHP
+            <span>Comprar na PancakeSwap</span>
           </a>
-          <button class="btn-lang active" data-lang="pt">PT</button>
-          <button class="btn-lang" data-lang="en">EN</button>
-          <button class="btn-lang" data-lang="es">ES</button>
         </div>
-      </nav>
+      </div>
     </header>
 
     <main>
       <div class="shell">
         <!-- HERO -->
-        <section class="hero" id="top">
+        <section class="hero" id="topo">
           <div>
-            <div class="hero-kicker" data-i18n="hero.kicker">
-              PlenaHype • Meme coin na BNB Chain
+            <div class="hero-kicker">
+              <span class="tag">BNB Chain</span>
+              <span>Liquidez travada • Meme sério com hype</span>
             </div>
-            <h1 class="hero-title" data-i18n="hero.title">
-              PLHP é o carneiro que <span>não aceita dump.</span>
+
+            <h1 class="hero-title">
+              Enquanto as outras moedas disputam atenção, o
+              <span class="accent">PLHP</span> só observa…
             </h1>
-            <p class="hero-subtitle" data-i18n="hero.subtitle">
-              PLHP (PlenaHype) é uma meme coin simples, transparente e focada na
-              comunidade. Sem promessas loucas, sem taxa escondida – só meme,
-              hype e um contrato claro na BNB Smart Chain.
+
+            <p class="hero-subtitle">
+              PLHP é a meme coin do carneiro mais brabo da BNB Chain. Sem promessas
+              mágicas: transparência, comunidade e muito meme fazendo barulho onde
+              realmente importa.
             </p>
 
-            <div class="hero-cta">
+            <div class="hero-cta-row">
               <a
-                class="btn btn-primary"
-                href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
+                class="btn-primary btn"
+                href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chain=bsc&inputCurrency=BNB"
                 target="_blank"
-                data-i18n="hero.btnBuy"
+                rel="noopener noreferrer"
               >
-                Comprar na PancakeSwap
+                <span>Comprar PLHP agora</span>
+                <span class="icon-circle">🚀</span>
               </a>
-              <button
-                class="btn btn-ghost"
-                data-scroll
-                data-target="#trade"
-                data-i18n="hero.btnTrade"
+
+              <a
+                class="chip"
+                href="https://dexscreener.com/bsc/0x69575D9877822277539355ae8b97b5d5dee1313f?embed=1&theme=dark"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Ver trade e gráfico
-              </button>
+                <span class="icon-circle">📈</span>
+                <span>Ver gráfico no DexScreener</span>
+              </a>
             </div>
 
-            <div class="hero-meta">
-              <span class="pill">
-                <span class="pill-dot"></span>
-                <span data-i18n="hero.meta.chain">
-                  Rede: BNB Smart Chain (BEP-20)
-                </span>
+            <div class="hero-badge">
+              <span class="icon-circle">🔒</span>
+              <span>
+                Liquidez travada em:
+                <a
+                  href="https://www.pinksale.finance/pinklock/bsc/record/1397746"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  PinkLock
+                </a>
               </span>
-              <span class="pill" data-i18n="hero.meta.supply">
-                Supply: 69.420.000.000 PLHP
-              </span>
-              <span class="pill" data-i18n="hero.meta.tax">
-                Taxas: 0% buy / 0% sell
-              </span>
+            </div>
+
+            <div class="hero-metrics">
+              <span>✅ Comunidade em construção, supply 100% on-chain</span>
+              <span>🐏 Meme de carneiro, alma de blue chip (um dia, quem sabe)</span>
             </div>
           </div>
 
-          <div class="hero-logo-wrap">
-            <div class="hero-logo-card">
-              <div class="hero-logo-inner">
-                <img src="logo.png" alt="PLHP logo" />
+          <aside class="hero-card">
+            <div class="hero-card-top">
+              <div>
+                <div class="hero-card-title">PLHP • PlenaHype</div>
+                <div class="hero-card-text">
+                  Meme coin brasileira na BNB Chain, nascida para zoar o mercado
+                  inteiro – mas com liquidez travada e respeito pela comunidade.
+                </div>
               </div>
-              <div class="hero-logo-tag" data-i18n="hero.badge">
-                Meme coin da comunidade
+              <div class="hero-card-tag">
+                <span class="icon-circle">🐏</span>
+                <span>Carneiro on-chain</span>
               </div>
             </div>
-          </div>
+
+            <div class="hero-card-pill-row">
+              <span class="pill highlight">BNB Chain</span>
+              <span class="pill">Meme coin</span>
+              <span class="pill">Liquidez travada</span>
+              <span class="pill">Zero promessas milagrosas</span>
+            </div>
+
+            <div class="hero-card-footer">
+              <div class="hero-card-contract">
+                <strong>Contract:</strong><br />
+                0x69575D9877822277539355ae8B97b5D5dee1313F
+              </div>
+              <div class="hero-card-social">
+                <div class="social-row">
+                  <a
+                    class="social-circle"
+                    href="https://twitter.com/PlenaHype_Coin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="X (Twitter)"
+                  >
+                    𝕏
+                  </a>
+                  <a
+                    class="social-circle"
+                    href="#"
+                    title="Telegram (em breve)"
+                  >
+                    ✈️
+                  </a>
+                </div>
+                <span class="social-label">Siga, compartilhe e faça o hype acontecer.</span>
+              </div>
+            </div>
+          </aside>
         </section>
 
-        <!-- ABOUT -->
-        <section class="section section-alt" id="about" style="margin-top:26px;">
-          <div class="two-col">
-            <div>
-              <h2 class="section-title" data-i18n="about.title">
-                O que é a PLHP Coin?
-              </h2>
-              <p class="section-lead" data-i18n="about.lead">
-                A PLHP é uma meme coin criada para quem gosta de mercado cripto,
-                meme e zoeira com responsabilidade. O foco é ser simples de
-                entender e fácil de acompanhar on-chain.
+        <!-- SOBRE -->
+        <section id="sobre">
+          <div class="section-header">
+            <div class="section-kicker">Sobre</div>
+            <h2 class="section-title">O que é a PLHP Coin?</h2>
+            <p class="section-subtitle">
+              PLHP nasceu como uma brincadeira com cara de meme, mas com o compromisso
+              de ser transparente com quem acredita no projeto. Nada de papo furado:
+              contrato público, liquidez travada e comunidade em primeiro lugar.
+            </p>
+          </div>
+
+          <div class="section-grid">
+            <div class="card">
+              <h3>Simples, direto e 100% on-chain</h3>
+              <p>
+                Nada de whitepaper de 40 páginas que ninguém lê. PLHP é uma meme coin
+                simples, focada em comunidade, liquidez travada e narrativa forte na
+                BNB Chain.
               </p>
-              <p class="text-muted" data-i18n="about.body1">
-                Nada de função obscura ou contrato impossível de ler. O smart
-                contract é padrão BEP-20, sem taxas de compra e venda, e a
-                liquidez inicial foi criada de forma pública na BNB Smart Chain.
+              <p>
+                A ideia é clara: transformar hype em movimento real. O token existe
+                para ser negociado, memezado, compartilhado e eventualmente fazer
+                parte da cultura cripto BR – começando pequeno, mas pensando alto.
               </p>
-              <ul class="list">
-                <li data-i18n="about.item1">
-                  Sem promessa de retorno financeiro – cripto é risco total.
-                </li>
-                <li data-i18n="about.item2">
-                  A comunidade ajuda a decidir próximos passos, parceiros e
-                  integrações.
-                </li>
-                <li data-i18n="about.item3">
-                  Roadmap leve, focado em construção de marca, memes e presença
-                  em Web3.
-                </li>
-              </ul>
             </div>
 
             <div class="card">
-              <h3 data-i18n="about.tokenTitle">Detalhes do token</h3>
-              <p class="text-muted" data-i18n="about.tokenText">
-                Essas são as informações on-chain da PLHP. Sempre confirme o
-                endereço antes de interagir com o contrato.
+              <h3>Por que o carneiro?</h3>
+              <p>
+                Enquanto todo mundo corre atrás do próximo meta, o carneiro observa
+                de canto de olho, espera a oportunidade certa e aí sim vem com tudo.
               </p>
-              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
-                <span class="badge-chain" data-i18n="about.chainBadge">
-                  BNB Smart Chain • BEP-20
-                </span>
-                <span class="badge-chain" data-i18n="about.liqBadge">
-                  Liquidez travada (PinkLock)
-                </span>
+              <ul class="list-dot">
+                <li>Identidade visual própria, sem copiar mascote de ninguém.</li>
+                <li>Estética meme, mas com site, contrato e fluxo organizados.</li>
+                <li>Espaço aberto para a comunidade criar artes, piadas e lore.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- HISTÓRIA -->
+        <section id="historia">
+          <div class="section-header">
+            <div class="section-kicker">Lore</div>
+            <h2 class="section-title">A história do carneiro mais brabo da chain</h2>
+            <p class="section-subtitle">
+              PLHP começou como uma ideia simples: “e se a gente criasse uma moeda
+              meme, mas com cara de projeto bem feito, site bonito e liquidez
+              travada?” Daí o carneiro tomou forma.
+            </p>
+          </div>
+
+          <div class="section-grid">
+            <div class="card">
+              <h3>Do meme ao contrato</h3>
+              <p>
+                Primeiro veio a piada. Depois veio o contrato na BNB Chain. A partir
+                daí foi só trabalho: subir o site, conectar na PancakeSwap,
+                embutir DexScreener e travar liquidez na PinkLock.
+              </p>
+              <p>
+                A história de PLHP ainda está no começo. Quem entra agora, entra
+                cedo. Quem ficar, ajuda a escrever o resto do enredo.
+              </p>
+            </div>
+            <div class="card">
+              <h3>O que vem depois?</h3>
+              <p>
+                Nenhuma promessa de “to the moon” garantido. O plano é construir uma
+                comunidade forte, criar meme bom, manter transparência e deixar que o
+                mercado faça o que sabe fazer.
+              </p>
+              <p>
+                Se você gosta de meme, gosta de risco calculado e gosta de entrar em
+                projeto com cara de organizado, o PLHP é pra você.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOKENOMICS -->
+        <section id="tokenomics">
+          <div class="section-header">
+            <div class="section-kicker">Tokenomics</div>
+            <h2 class="section-title">Distribuição e regras do jogo</h2>
+            <p class="section-subtitle">
+              Esses números são um exemplo e podem ser ajustados por você no
+              contrato/site. A ideia é deixar claro para o investidor o que está
+              acontecendo com o supply.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="tokenomics-grid">
+              <div class="token-card">
+                <div class="token-label">Supply total</div>
+                <div class="token-value">1.000.000.000 PLHP</div>
+                <div class="token-pill">
+                  <span>🔥</span>
+                  <span>Parte pode ser queimada com o tempo</span>
+                </div>
               </div>
 
-              <div class="contract-box" id="contract">
-                <div
-                  style="margin-bottom:4px;"
-                  data-i18n="about.contractLabel"
-                >
-                  Endereço oficial do contrato:
+              <div class="token-card">
+                <div class="token-label">Liquidez inicial</div>
+                <div class="token-value">Travada via PinkLock</div>
+                <div class="token-pill">
+                  <span>🔒</span>
+                  <span>
+                    <a
+                      href="https://www.pinksale.finance/pinklock/bsc/record/1397746"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Ver lock na PinkLock
+                    </a>
+                  </span>
                 </div>
-                <code>0x69575D9877822277539355ae8B97b5D5dee1313F</code>
-                <div style="margin-top:6px;font-size:0.76rem;">
+              </div>
+
+              <div class="token-card">
+                <div class="token-label">Taxas por trade</div>
+                <div class="token-value">0% / 0% (exemplo)</div>
+                <div class="token-pill">
+                  <span>⚙️</span>
+                  <span>Edite aqui se houver taxas futuras</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMO COMPRAR -->
+        <section id="como-comprar">
+          <div class="section-header">
+            <div class="section-kicker">Guia rápido</div>
+            <h2 class="section-title">Como comprar PLHP em poucos passos</h2>
+            <p class="section-subtitle">
+              Tudo acontece na BNB Chain usando a PancakeSwap. Se você já mexeu com
+              DeFi, vai se sentir em casa.
+            </p>
+          </div>
+
+          <div class="section-grid">
+            <div class="card">
+              <h3>Passo a passo</h3>
+              <div class="steps">
+                <div class="step">
+                  <div class="step-index">1</div>
+                  <div>
+                    <div class="step-title">Conecte sua carteira</div>
+                    <div class="step-text">
+                      Use MetaMask ou outra carteira compatível com BNB Chain. Certifique-se
+                      de estar na rede BSC.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <div class="step-index">2</div>
+                  <div>
+                    <div class="step-title">Acesse o par na PancakeSwap</div>
+                    <div class="step-text">
+                      Clique no botão de compra ou cole o contrato:
+                      <code>0x69575D9877822277539355ae8B97b5D5dee1313F</code> no campo de
+                      busca de tokens.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <div class="step-index">3</div>
+                  <div>
+                    <div class="step-title">Ajuste o slippage (se precisar)</div>
+                    <div class="step-text">
+                      Caso haja taxa ou volatilidade, pode ser preciso ajustar o slippage.
+                      Se não houver taxa, 0,1%–0,5% costuma ser suficiente.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <div class="step-index">4</div>
+                  <div>
+                    <div class="step-title">Confirme a transação</div>
+                    <div class="step-text">
+                      Confirme na sua carteira, espere a confirmação na BNB Chain e pronto:
+                      você já é um holder de PLHP.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Links úteis</h3>
+              <ul class="list-dot">
+                <li>
+                  <strong>PancakeSwap:</strong>
                   <a
-                    href="https://bscscan.com/token/0x69575D9877822277539355ae8B97b5D5dee1313F"
+                    href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chain=bsc&inputCurrency=BNB"
                     target="_blank"
-                    style="color:#a5b4fc;text-decoration:none;"
-                    data-i18n="about.bscscanLink"
+                    rel="noopener noreferrer"
                   >
-                    Ver no BscScan
+                    abrir par PLHP / BNB
                   </a>
-                  &nbsp;•&nbsp;
+                </li>
+                <li>
+                  <strong>DexScreener:</strong>
+                  <a
+                    href="https://dexscreener.com/bsc/0x69575D9877822277539355ae8b97b5d5dee1313f?embed=1&theme=dark"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ver gráfico ao vivo
+                  </a>
+                </li>
+                <li>
+                  <strong>BscScan:</strong> cole o contrato
+                  <code>0x69575D9877822277539355ae8B97b5D5dee1313F</code> para verificar
+                  supply, holders e transações.
+                </li>
+                <li>
+                  <strong>PinkLock:</strong>
                   <a
                     href="https://www.pinksale.finance/pinklock/bsc/record/1397746"
                     target="_blank"
-                    style="color:#a5b4fc;text-decoration:none;"
-                    data-i18n="about.lockLink"
+                    rel="noopener noreferrer"
                   >
-                    Liquidez travada (PinkLock)
+                    comprovar liquidez travada
                   </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- STORY / LORE -->
-        <section class="section" id="story">
-          <h2 class="section-title" data-i18n="story.title">
-            A história da PLHP
-          </h2>
-          <p class="section-lead" data-i18n="story.lead">
-            A ideia da PLHP nasceu no meio de candles totalmente vermelhos,
-            timeline cheia de FUD e aquela sensação de “se é pra passar raiva,
-            que seja com a minha própria moeda”.
-          </p>
-          <p class="text-muted" data-i18n="story.body1">
-            Em vez de criar mais um token sem rosto, a proposta foi simples:
-            transformar o carneiro – símbolo da teimosia e da persistência – em
-            um meme vivo na BNB Chain. Um carneiro que não aceita dump fácil,
-            que só confirma entrada quando a comunidade fala “confia ou não
-            confia”.
-          </p>
-          <p class="text-muted" style="margin-top:10px;" data-i18n="story.body2">
-            A PLHP surgiu como um experimento de transparência: contrato claro,
-            supply definido, liquidez inicial travada e comunicação aberta no X
-            (Twitter) e nos grupos. Nada de print milagroso, planilha mágica ou
-            promessa de retorno garantido. Aqui a ideia é construir aos poucos,
-            junto com quem realmente acredita na zoeira organizada.
-          </p>
-          <p class="text-muted" style="margin-top:10px;" data-i18n="story.body3">
-            Se der certo, a história foi escrita pela comunidade. Se der errado,
-            pelo menos o carneiro tentou pular o muro com estilo. De qualquer
-            forma, a PLHP está registrada on-chain – e quem entrar faz parte
-            oficial desse capítulo.
-          </p>
-        </section>
-
-        <!-- QUICKSTART -->
-        <section class="section section-alt" id="quickstart">
-          <h2 class="section-title" data-i18n="qs.title">
-            Guia rápido para entrar na PLHP
-          </h2>
-          <p class="section-lead" data-i18n="qs.lead">
-            Em poucos passos você já consegue comprar PLHP na BNB Smart Chain.
-          </p>
-
-          <div class="steps-grid">
-            <div class="step-card">
-              <div class="step-header" data-i18n="qs.step1Header">
-                Passo 1
-              </div>
-              <div class="step-body">
-                <h3 data-i18n="qs.step1Title">
-                  Crie ou configure sua carteira
-                </h3>
-                <p data-i18n="qs.step1Text">
-                  Use MetaMask, Rabby ou outra carteira compatível com redes
-                  EVM. Adicione a BNB Smart Chain e guarde a seed com cuidado.
-                </p>
-                <div class="step-actions">
-                  <a
-                    href="https://metamask.io/"
-                    target="_blank"
-                    class="btn-step"
-                    data-i18n="qs.step1Btn1"
-                  >
-                    Baixar MetaMask
-                  </a>
-                  <a
-                    href="https://chainlist.org/chain/56"
-                    target="_blank"
-                    class="btn-step secondary"
-                    data-i18n="qs.step1Btn2"
-                  >
-                    Adicionar BNB Chain
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="step-card">
-              <div class="step-header" data-i18n="qs.step2Header">
-                Passo 2
-              </div>
-              <div class="step-body">
-                <h3 data-i18n="qs.step2Title">
-                  Tenha BNB na sua carteira
-                </h3>
-                <p data-i18n="qs.step2Text">
-                  Envie BNB de uma corretora para sua carteira ou compre BNB
-                  via on-ramp. É ele que você vai usar para trocar por PLHP.
-                </p>
-                <div class="step-actions">
-                  <a
-                    href="#trade"
-                    class="btn-step"
-                    data-scroll
-                    data-i18n="qs.step2Btn1"
-                  >
-                    Ir para a seção de trade
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="step-card">
-              <div class="step-header" data-i18n="qs.step3Header">
-                Passo 3
-              </div>
-              <div class="step-body">
-                <h3 data-i18n="qs.step3Title">
-                  Troque BNB por PLHP
-                </h3>
-                <p data-i18n="qs.step3Text">
-                  Use a PancakeSwap (link oficial abaixo), sempre conferindo o
-                  endereço de contrato. Depois é só segurar, usar e acompanhar
-                  os memes.
-                </p>
-                <div class="step-actions">
-                  <a
-                    href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
-                    target="_blank"
-                    class="btn-step"
-                    data-i18n="qs.step3Btn1"
-                  >
-                    Abrir PancakeSwap
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- QUICK FACTS -->
-        <section class="section">
-          <h2 class="section-title" data-i18n="facts.title">
-            PLHP em poucas palavras
-          </h2>
-          <p class="section-lead" data-i18n="facts.lead">
-            Alguns pontos rápidos sobre o projeto para você entender a proposta.
-          </p>
-
-          <div class="facts-grid">
-            <div class="fact">
-              <div class="fact-icon">⚡</div>
-              <div class="fact-title" data-i18n="facts.fastTitle">
-                Rápida
-              </div>
-              <div class="fact-text" data-i18n="facts.fastText">
-                Transações na BNB Chain são confirmadas em poucos segundos.
-              </div>
-            </div>
-            <div class="fact">
-              <div class="fact-icon">🔒</div>
-              <div class="fact-title" data-i18n="facts.lockTitle">
-                Liquidez travada
-              </div>
-              <div class="fact-text" data-i18n="facts.lockText">
-                Parte da liquidez inicial foi travada em contrato para dar mais
-                segurança à comunidade.
-              </div>
-            </div>
-            <div class="fact">
-              <div class="fact-icon">📖</div>
-              <div class="fact-title" data-i18n="facts.simpleTitle">
-                Contrato simples
-              </div>
-              <div class="fact-text" data-i18n="facts.simpleText">
-                Sem taxas de compra e venda, sem funções secretas ou mint
-                infinito.
-              </div>
-            </div>
-            <div class="fact">
-              <div class="fact-icon">🎭</div>
-              <div class="fact-title" data-i18n="facts.memeTitle">
-                Meme first
-              </div>
-              <div class="fact-text" data-i18n="facts.memeText">
-                A prioridade é construir uma comunidade forte, criativa e cheia
-                de histórias em volta do carneiro PLHP.
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- TRADE & CHART -->
-        <section class="section section-alt" id="trade">
-          <h2 class="section-title" data-i18n="trade.title">
-            Faça trade de PLHP sem sair do site
-          </h2>
-          <p class="section-lead" data-i18n="trade.lead">
-            Acompanhe o gráfico em tempo real pela DexScreener e use o botão
-            oficial para abrir a PancakeSwap e comprar PLHP com segurança.
-          </p>
-
-          <div class="trade-grid">
-            <div>
-              <h3 data-i18n="trade.chartTitle">Gráfico em tempo real</h3>
-              <p class="text-muted" data-i18n="trade.chartText">
-                Use o widget da DexScreener para acompanhar preço, volume e
-                liquidez da PLHP em tempo real.
-              </p>
-              <div class="embed-box" style="margin-top:10px;">
-                <iframe
-                  src="https://dexscreener.com/bsc/0x69575D9877822277539355ae8b97b5d5dee1313f?embed=1&theme=dark"
-                  height="460"
-                  loading="lazy"
-                ></iframe>
-              </div>
-            </div>
-
-            <div>
-              <h3 data-i18n="trade.swapTitle">Comprar na PancakeSwap</h3>
-              <p class="text-muted" data-i18n="trade.swapText">
-                O swap é feito diretamente na PancakeSwap. Sempre confira se o
-                endereço do contrato é o mesmo listado neste site antes de
-                confirmar qualquer transação.
-              </p>
-              <ul class="list" style="margin-top:10px;">
-                <li data-i18n="trade.swapItem1">
-                  Abra a PancakeSwap pelo botão oficial abaixo.
-                </li>
-                <li data-i18n="trade.swapItem2">
-                  Conecte sua carteira na BNB Smart Chain.
-                </li>
-                <li data-i18n="trade.swapItem3">
-                  Selecione BNB → PLHP e revise o endereço do contrato.
                 </li>
               </ul>
-              <a
-                class="btn btn-primary"
-                style="margin-top:14px;"
-                href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
-                target="_blank"
-                data-i18n="trade.swapBtn"
-              >
-                Abrir PancakeSwap
-              </a>
-              <p class="small-note" style="margin-top:10px;" data-i18n="trade.swapNote">
-                Dica: favorite o link oficial da PLHP na PancakeSwap para evitar
-                cair em contratos falsos.
-              </p>
             </div>
           </div>
         </section>
 
-        <!-- COMMUNITY -->
-        <section class="section" id="community">
-          <h2 class="section-title" data-i18n="community.title">
-            Comunidade PLHP
-          </h2>
-          <p class="section-lead" data-i18n="community.lead">
-            É nas redes que o carneiro realmente aparece. Entre nos canais
-            oficiais para acompanhar novidades e memes.
-          </p>
+        <!-- TRADE / DEXSCREENER -->
+        <section id="trade">
+          <div class="section-header">
+            <div class="section-kicker">Mercado</div>
+            <h2 class="section-title">Preço em tempo real</h2>
+            <p class="section-subtitle">
+              Acompanhe o gráfico ao vivo do par PLHP diretamente pelo DexScreener,
+              sem sair do site.
+            </p>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-title">
+              <strong>DexScreener • PLHP / BNB</strong>
+              <span>Fonte: dexscreener.com</span>
+            </div>
+            <iframe
+              class="chart-frame"
+              src="https://dexscreener.com/bsc/0x69575D9877822277539355ae8b97b5d5dee1313f?embed=1&theme=dark"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </section>
+
+        <!-- COMUNIDADE -->
+        <section id="comunidade">
+          <div class="section-header">
+            <div class="section-kicker">Comunidade</div>
+            <h2 class="section-title">Entre para o rebanho</h2>
+            <p class="section-subtitle">
+              Meme bom não vive sozinho. Siga nas redes, entre no grupo e ajude a
+              espalhar o carneiro mais brabo da BNB Chain.
+            </p>
+          </div>
 
           <div class="community-grid">
             <div class="community-card">
-              <div class="community-header twitter">X (Twitter)</div>
-              <div class="community-label" data-i18n="community.xText">
-                Atualizações, memes, anúncios e tudo que for notícia sobre PLHP.
+              <div class="community-icon-wrap">
+                <div class="community-icon">𝕏</div>
               </div>
+              <h3>X (Twitter)</h3>
+              <p>
+                Atualizações rápidas, memes diários e aquele flood básico na
+                timeline cripto.
+              </p>
               <a
+                class="cta"
                 href="https://twitter.com/PlenaHype_Coin"
                 target="_blank"
-                class="btn-step"
-                data-i18n="community.xBtn"
+                rel="noopener noreferrer"
               >
-                Abrir perfil no X
+                <span>→</span>
+                <span>Abrir perfil no X</span>
               </a>
             </div>
 
             <div class="community-card">
-              <div class="community-header telegram">Telegram</div>
-              <div class="community-label" data-i18n="community.tgText">
-                Grupo para conversar sobre mercado, ideias para o projeto e
-                acompanhar chamadas da comunidade.
+              <div class="community-icon-wrap">
+                <div class="community-icon">✈️</div>
               </div>
-              <a
-                href="#"
-                target="_blank"
-                class="btn-step"
-                data-i18n="community.tgBtn"
-              >
-                Entrar no Telegram
+              <h3>Telegram</h3>
+              <p>
+                Grupo da comunidade para falar de preço, plano, meme e tudo mais.
+                Link será divulgado aqui.
+              </p>
+              <a class="cta" href="#" title="Em breve">
+                <span>⏳</span>
+                <span>Grupo em breve</span>
               </a>
             </div>
 
             <div class="community-card">
-              <div class="community-header discord">Discord</div>
-              <div class="community-label" data-i18n="community.dcText">
-                Espaço para quem curte organizar canais, bots e integrações –
-                planejado para fases futuras.
+              <div class="community-icon-wrap">
+                <div class="community-icon">🎨</div>
               </div>
-              <button
-                type="button"
-                class="btn-step secondary"
-                style="cursor:default;opacity:0.7;"
-                disabled
-                data-i18n="community.dcBtn"
-              >
-                Em breve
-              </button>
+              <h3>Crie o seu meme</h3>
+              <p>
+                Faça artes, vídeos, posts e lore para o PLHP. A moeda cresce quando
+                a comunidade cria junto.
+              </p>
+              <span class="cta">
+                <span>✨</span>
+                <span>Use a marca com responsabilidade</span>
+              </span>
             </div>
           </div>
         </section>
       </div>
     </main>
 
-    <!-- FOOTER -->
     <footer>
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="footer-brand-logo">
-            <div class="footer-logo">
-              <img src="logo.png" alt="PLHP Logo" />
-            </div>
-            <div>
-              <div class="footer-brand-name">PLHP Coin</div>
-              <div class="footer-brand-sub" data-i18n="footer.tagline">
-                Meme coin do carneiro mais brabo da BNB Chain.
-              </div>
-            </div>
+      <div class="shell">
+        <div class="footer-top">
+          <div>
+            <strong>PLHP • PlenaHype</strong><br />
+            <span>O carneiro mais brabo da BNB Chain.</span>
           </div>
-          <div class="footer-socials">
+          <div class="footer-links">
             <a
-              href="https://twitter.com/PlenaHype_Coin"
+              href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chain=bsc&inputCurrency=BNB"
               target="_blank"
-              data-i18n="footer.x"
+              rel="noopener noreferrer"
             >
-              X / Twitter
+              PancakeSwap
             </a>
-            <a href="#" target="_blank" data-i18n="footer.tg">Telegram</a>
             <a
-              href="https://bscscan.com/token/0x69575D9877822277539355ae8B97b5D5dee1313F"
+              href="https://dexscreener.com/bsc/0x69575D9877822277539355ae8b97b5d5dee1313f?embed=1&theme=dark"
               target="_blank"
-              data-i18n="footer.bscscan"
+              rel="noopener noreferrer"
             >
-              BscScan
+              DexScreener
             </a>
             <a
               href="https://www.pinksale.finance/pinklock/bsc/record/1397746"
               target="_blank"
-              data-i18n="footer.lock"
+              rel="noopener noreferrer"
             >
               PinkLock
             </a>
           </div>
-          <div class="footer-copy" data-i18n="footer.disclaimer">
-            © <span id="year"></span> PLHP Coin • PlenaHype. Nenhuma promessa
-            de retorno financeiro. Cripto é risco total; faça sempre sua própria
-            pesquisa.
-          </div>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title" data-i18n="footer.colAbout">
-            Sobre
+        <div class="footer-bottom">
+          <div>
+            © <span id="year"></span> PLHP • Projeto experimental de meme coin na
+            BNB Chain. Não é aconselhamento financeiro.
           </div>
-          <a href="#about" data-scroll data-i18n="footer.aboutLink1">
-            O que é PLHP?
-          </a>
-          <a href="#story" data-scroll data-i18n="footer.aboutLinkStory">
-            História da moeda
-          </a>
-          <a href="#quickstart" data-scroll data-i18n="footer.aboutLink2">
-            Como começar
-          </a>
-        </div>
-
-        <div class="footer-col">
-          <div class="footer-col-title" data-i18n="footer.colTrade">
-            Trade
+          <div class="footer-social">
+            <a
+              class="social-circle"
+              href="https://twitter.com/PlenaHype_Coin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              𝕏
+            </a>
+            <a class="social-circle" href="#" title="Telegram em breve">✈️</a>
           </div>
-          <a
-            href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
-            target="_blank"
-            data-i18n="footer.tradeLink1"
-          >
-            PancakeSwap
-          </a>
-          <a
-            href="https://dexscreener.com/bsc/0x69575D9877822277539355ae8b97b5d5dee1313f"
-            target="_blank"
-            data-i18n="footer.tradeLink2"
-          >
-            DexScreener
-          </a>
-        </div>
-
-        <div class="footer-col">
-          <div class="footer-col-title" data-i18n="footer.colCommunity">
-            Comunidade
-          </div>
-          <a href="#community" data-scroll data-i18n="footer.commLink1">
-            Canais oficiais
-          </a>
-          <a href="#top" data-scroll data-i18n="footer.commLink2">
-            Voltar ao topo
-          </a>
         </div>
       </div>
     </footer>
   </div>
 
   <script>
-    // ano no footer
-    function updateYear() {
-      const y = document.getElementById("year");
-      if (y) y.textContent = new Date().getFullYear();
-    }
-    updateYear();
-
-    // scroll suave
-    function smoothScrollTo(target) {
-      const el = document.querySelector(target);
-      if (!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-
-    document.querySelectorAll("[data-scroll]").forEach((el) => {
-      el.addEventListener("click", (e) => {
-        const href = el.getAttribute("href") || el.dataset.target;
-        if (!href || !href.startsWith("#")) return;
-        e.preventDefault();
-        smoothScrollTo(href);
-      });
-    });
-
-    document.querySelectorAll("[data-target]").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const target = btn.getAttribute("data-target");
-        if (target) smoothScrollTo(target);
-      });
-    });
-
-    // traduções
-    const translations = {
-      pt: {
-        "nav.tagline":
-          "Meme coin do carneiro mais brabo da BNB Chain.",
-        "nav.about": "Sobre",
-        "nav.story": "História",
-        "nav.quickstart": "Como começar",
-        "nav.trade": "Trade",
-        "nav.community": "Comunidade",
-        "nav.chart": "Ver gráfico",
-        "nav.buy": "Comprar PLHP",
-
-        "hero.kicker": "PlenaHype • Meme coin na BNB Chain",
-        "hero.title":
-          "PLHP é o carneiro que <span>não aceita dump.</span>",
-        "hero.subtitle":
-          "PLHP (PlenaHype) é uma meme coin simples, transparente e focada na comunidade. Sem promessas loucas, sem taxa escondida – só meme, hype e um contrato claro na BNB Smart Chain.",
-        "hero.btnBuy": "Comprar na PancakeSwap",
-        "hero.btnTrade": "Ver trade e gráfico",
-        "hero.meta.chain": "Rede: BNB Smart Chain (BEP-20)",
-        "hero.meta.supply": "Supply: 69.420.000.000 PLHP",
-        "hero.meta.tax": "Taxas: 0% buy / 0% sell",
-        "hero.badge": "Meme coin da comunidade",
-
-        "about.title": "O que é a PLHP Coin?",
-        "about.lead":
-          "A PLHP é uma meme coin criada para quem gosta de mercado cripto, meme e zoeira com responsabilidade. O foco é ser simples de entender e fácil de acompanhar on-chain.",
-        "about.body1":
-          "Nada de função obscura ou contrato impossível de ler. O smart contract é padrão BEP-20, sem taxas de compra e venda, e a liquidez inicial foi criada de forma pública na BNB Smart Chain.",
-        "about.item1":
-          "Sem promessa de retorno financeiro – cripto é risco total.",
-        "about.item2":
-          "A comunidade ajuda a decidir próximos passos, parceiros e integrações.",
-        "about.item3":
-          "Roadmap leve, focado em construção de marca, memes e presença em Web3.",
-        "about.tokenTitle": "Detalhes do token",
-        "about.tokenText":
-          "Essas são as informações on-chain da PLHP. Sempre confirme o endereço antes de interagir com o contrato.",
-        "about.chainBadge": "BNB Smart Chain • BEP-20",
-        "about.liqBadge": "Liquidez travada (PinkLock)",
-        "about.contractLabel": "Endereço oficial do contrato:",
-        "about.bscscanLink": "Ver no BscScan",
-        "about.lockLink": "Liquidez travada (PinkLock)",
-
-        "story.title": "A história da PLHP",
-        "story.lead":
-          "A ideia da PLHP nasceu no meio de candles totalmente vermelhos, timeline cheia de FUD e aquela sensação de “se é pra passar raiva, que seja com a minha própria moeda”.",
-        "story.body1":
-          "Em vez de criar mais um token sem rosto, a proposta foi simples: transformar o carneiro – símbolo da teimosia e da persistência – em um meme vivo na BNB Chain. Um carneiro que não aceita dump fácil, que só confirma entrada quando a comunidade fala “confia ou não confia”.",
-        "story.body2":
-          "A PLHP surgiu como um experimento de transparência: contrato claro, supply definido, liquidez inicial travada e comunicação aberta no X (Twitter) e nos grupos. Nada de print milagroso, planilha mágica ou promessa de retorno garantido. Aqui a ideia é construir aos poucos, junto com quem realmente acredita na zoeira organizada.",
-        "story.body3":
-          "Se der certo, a história foi escrita pela comunidade. Se der errado, pelo menos o carneiro tentou pular o muro com estilo. De qualquer forma, a PLHP está registrada on-chain – e quem entrar faz parte oficial desse capítulo.",
-
-        "qs.title": "Guia rápido para entrar na PLHP",
-        "qs.lead":
-          "Em poucos passos você já consegue comprar PLHP na BNB Smart Chain.",
-        "qs.step1Header": "Passo 1",
-        "qs.step1Title": "Crie ou configure sua carteira",
-        "qs.step1Text":
-          "Use MetaMask, Rabby ou outra carteira compatível com redes EVM. Adicione a BNB Smart Chain e guarde a seed com cuidado.",
-        "qs.step1Btn1": "Baixar MetaMask",
-        "qs.step1Btn2": "Adicionar BNB Chain",
-        "qs.step2Header": "Passo 2",
-        "qs.step2Title": "Tenha BNB na sua carteira",
-        "qs.step2Text":
-          "Envie BNB de uma corretora para sua carteira ou compre BNB via on-ramp. É ele que você vai usar para trocar por PLHP.",
-        "qs.step2Btn1": "Ir para a seção de trade",
-        "qs.step3Header": "Passo 3",
-        "qs.step3Title": "Troque BNB por PLHP",
-        "qs.step3Text":
-          "Use a PancakeSwap (link oficial abaixo), sempre conferindo o endereço de contrato. Depois é só segurar, usar e acompanhar os memes.",
-        "qs.step3Btn1": "Abrir PancakeSwap",
-
-        "facts.title": "PLHP em poucas palavras",
-        "facts.lead":
-          "Alguns pontos rápidos sobre o projeto para você entender a proposta.",
-        "facts.fastTitle": "Rápida",
-        "facts.fastText":
-          "Transações na BNB Chain são confirmadas em poucos segundos.",
-        "facts.lockTitle": "Liquidez travada",
-        "facts.lockText":
-          "Parte da liquidez inicial foi travada em contrato para dar mais segurança à comunidade.",
-        "facts.simpleTitle": "Contrato simples",
-        "facts.simpleText":
-          "Sem taxas de compra e venda, sem funções secretas ou mint infinito.",
-        "facts.memeTitle": "Meme first",
-        "facts.memeText":
-          "A prioridade é construir uma comunidade forte, criativa e cheia de histórias em volta do carneiro PLHP.",
-
-        "trade.title": "Faça trade de PLHP sem sair do site",
-        "trade.lead":
-          "Acompanhe o gráfico em tempo real pela DexScreener e use o botão oficial para abrir a PancakeSwap e comprar PLHP com segurança.",
-        "trade.chartTitle": "Gráfico em tempo real",
-        "trade.chartText":
-          "Use o widget da DexScreener para acompanhar preço, volume e liquidez da PLHP em tempo real.",
-        "trade.swapTitle": "Comprar na PancakeSwap",
-        "trade.swapText":
-          "O swap é feito diretamente na PancakeSwap. Sempre confira se o endereço do contrato é o mesmo listado neste site antes de confirmar qualquer transação.",
-        "trade.swapItem1":
-          "Abra a PancakeSwap pelo botão oficial abaixo.",
-        "trade.swapItem2":
-          "Conecte sua carteira na BNB Smart Chain.",
-        "trade.swapItem3":
-          "Selecione BNB → PLHP e revise o endereço do contrato.",
-        "trade.swapBtn": "Abrir PancakeSwap",
-        "trade.swapNote":
-          "Dica: favorite o link oficial da PLHP na PancakeSwap para evitar cair em contratos falsos.",
-
-        "community.title": "Comunidade PLHP",
-        "community.lead":
-          "É nas redes que o carneiro realmente aparece. Entre nos canais oficiais para acompanhar novidades e memes.",
-        "community.xText":
-          "Atualizações, memes, anúncios e tudo que for notícia sobre PLHP.",
-        "community.xBtn": "Abrir perfil no X",
-        "community.tgText":
-          "Grupo para conversar sobre mercado, ideias para o projeto e acompanhar chamadas da comunidade.",
-        "community.tgBtn": "Entrar no Telegram",
-        "community.dcText":
-          "Espaço para quem curte organizar canais, bots e integrações – planejado para fases futuras.",
-        "community.dcBtn": "Em breve",
-
-        "footer.tagline":
-          "Meme coin do carneiro mais brabo da BNB Chain.",
-        "footer.x": "X / Twitter",
-        "footer.tg": "Telegram",
-        "footer.bscscan": "BscScan",
-        "footer.lock": "PinkLock",
-        "footer.disclaimer":
-          "© <span id=\"year\"></span> PLHP Coin • PlenaHype. Nenhuma promessa de retorno financeiro. Cripto é risco total; faça sempre sua própria pesquisa.",
-        "footer.colAbout": "Sobre",
-        "footer.aboutLink1": "O que é PLHP?",
-        "footer.aboutLinkStory": "História da moeda",
-        "footer.aboutLink2": "Como começar",
-        "footer.colTrade": "Trade",
-        "footer.tradeLink1": "PancakeSwap",
-        "footer.tradeLink2": "DexScreener",
-        "footer.colCommunity": "Comunidade",
-        "footer.commLink1": "Canais oficiais",
-        "footer.commLink2": "Voltar ao topo"
-      },
-      en: {
-        "nav.tagline":
-          "Meme coin of the most furious ram on BNB Chain.",
-        "nav.about": "About",
-        "nav.story": "Story",
-        "nav.quickstart": "Get started",
-        "nav.trade": "Trade",
-        "nav.community": "Community",
-        "nav.chart": "View chart",
-        "nav.buy": "Buy PLHP",
-
-        "hero.kicker": "PlenaHype • Meme coin on BNB Chain",
-        "hero.title":
-          "PLHP is the ram that <span>doesn’t accept dumps.</span>",
-        "hero.subtitle":
-          "PLHP (PlenaHype) is a simple, transparent meme coin focused on community. No crazy promises, no hidden tax – just memes, hype and a clear smart contract on BNB Smart Chain.",
-        "hero.btnBuy": "Buy on PancakeSwap",
-        "hero.btnTrade": "See trade & chart",
-        "hero.meta.chain": "Network: BNB Smart Chain (BEP-20)",
-        "hero.meta.supply": "Supply: 69,420,000,000 PLHP",
-        "hero.meta.tax": "Fees: 0% buy / 0% sell",
-        "hero.badge": "Community meme coin",
-
-        "about.title": "What is PLHP Coin?",
-        "about.lead":
-          "PLHP is a meme coin for people who enjoy crypto, memes and a bit of chaos with responsibility. The goal is to stay simple to understand and easy to track on-chain.",
-        "about.body1":
-          "No obscure functions or impossible-to-read contract. The smart contract is a standard BEP-20, with no buy/sell taxes and liquidity created publicly on BNB Smart Chain.",
-        "about.item1":
-          "No promise of financial return – crypto is full risk.",
-        "about.item2":
-          "The community helps decide next steps, partners and integrations.",
-        "about.item3":
-          "Lightweight roadmap focused on brand building, memes and Web3 presence.",
-        "about.tokenTitle": "Token details",
-        "about.tokenText":
-          "These are PLHP’s on-chain details. Always double-check the address before interacting with the contract.",
-        "about.chainBadge": "BNB Smart Chain • BEP-20",
-        "about.liqBadge": "Liquidity locked (PinkLock)",
-        "about.contractLabel": "Official contract address:",
-        "about.bscscanLink": "View on BscScan",
-        "about.lockLink": "Liquidity locked (PinkLock)",
-
-        "story.title": "The story of PLHP",
-        "story.lead":
-          "PLHP was born in the middle of fully red candles, a timeline full of FUD and that feeling of “if I’m going to be mad anyway, it might as well be with my own coin”.",
-        "story.body1":
-          "Instead of creating yet another faceless token, the idea was simple: turn the ram – symbol of stubbornness and persistence – into a living meme on BNB Chain. A ram that doesn’t accept easy dumps and only confirms entry when the community says “we trust or we don’t”.",
-        "story.body2":
-          "PLHP started as a transparency experiment: clear contract, defined supply, initial liquidity locked and open communication on X (Twitter) and community groups. No magic screenshots, no miracle spreadsheets, no guaranteed return promises. The idea is to build slowly together with those who truly believe in organized chaos.",
-        "story.body3":
-          "If it works, history was written by the community. If it doesn’t, at least the ram tried to jump the fence in style. Either way, PLHP is on-chain – and anyone who joins officially becomes part of this chapter.",
-
-        "qs.title": "Quickstart guide to join PLHP",
-        "qs.lead":
-          "In just a few steps you can buy PLHP on BNB Smart Chain.",
-        "qs.step1Header": "Step 1",
-        "qs.step1Title": "Create or set up your wallet",
-        "qs.step1Text":
-          "Use MetaMask, Rabby or another EVM-compatible wallet. Add BNB Smart Chain and keep your seed phrase safe.",
-        "qs.step1Btn1": "Download MetaMask",
-        "qs.step1Btn2": "Add BNB Chain",
-        "qs.step2Header": "Step 2",
-        "qs.step2Title": "Get BNB in your wallet",
-        "qs.step2Text":
-          "Send BNB from an exchange to your wallet or buy BNB via on-ramp. You’ll use it to swap for PLHP.",
-        "qs.step2Btn1": "Go to trade section",
-        "qs.step3Header": "Step 3",
-        "qs.step3Title": "Swap BNB for PLHP",
-        "qs.step3Text":
-          "Use PancakeSwap (official link below), always confirming the contract address. Then you just hold, use and enjoy the memes.",
-        "qs.step3Btn1": "Open PancakeSwap",
-
-        "facts.title": "PLHP in a nutshell",
-        "facts.lead":
-          "A few quick points to understand what this project is about.",
-        "facts.fastTitle": "Fast",
-        "facts.fastText":
-          "Transactions on BNB Chain are confirmed in seconds.",
-        "facts.lockTitle": "Liquidity locked",
-        "facts.lockText":
-          "Part of the initial liquidity has been locked to give the community more confidence.",
-        "facts.simpleTitle": "Simple contract",
-        "facts.simpleText":
-          "No buy/sell taxes, no secret functions and no infinite mint.",
-        "facts.memeTitle": "Meme first",
-        "facts.memeText":
-          "The priority is building a strong, creative community around the PLHP ram.",
-
-        "trade.title": "Trade PLHP without leaving this site",
-        "trade.lead":
-          "Track the live chart via DexScreener and use the official button to open PancakeSwap and buy PLHP safely.",
-        "trade.chartTitle": "Live chart",
-        "trade.chartText":
-          "Use the DexScreener widget to follow PLHP price, volume and liquidity in real time.",
-        "trade.swapTitle": "Buy on PancakeSwap",
-        "trade.swapText":
-          "Swaps are done directly on PancakeSwap. Always check that the contract address matches the one on this site before confirming any transaction.",
-        "trade.swapItem1":
-          "Open PancakeSwap using the official button below.",
-        "trade.swapItem2":
-          "Connect your wallet on BNB Smart Chain.",
-        "trade.swapItem3":
-          "Select BNB → PLHP and double-check the contract address.",
-        "trade.swapBtn": "Open PancakeSwap",
-        "trade.swapNote":
-          "Tip: bookmark the official PLHP link on PancakeSwap to avoid fake contracts.",
-
-        "community.title": "PLHP Community",
-        "community.lead":
-          "This is where the ram actually shows up. Join the official channels to follow news and memes.",
-        "community.xText":
-          "Updates, memes, announcements and anything newsworthy about PLHP.",
-        "community.xBtn": "Open profile on X",
-        "community.tgText":
-          "Group to chat about the market, project ideas and follow community calls.",
-        "community.tgBtn": "Join Telegram",
-        "community.dcText":
-          "Space for people who like channels, bots and integrations – planned for future phases.",
-        "community.dcBtn": "Coming soon",
-
-        "footer.tagline":
-          "Meme coin of the most furious ram on BNB Chain.",
-        "footer.x": "X / Twitter",
-        "footer.tg": "Telegram",
-        "footer.bscscan": "BscScan",
-        "footer.lock": "PinkLock",
-        "footer.disclaimer":
-          "© <span id=\"year\"></span> PLHP Coin • PlenaHype. No promise of financial return. Crypto is high risk; always do your own research.",
-        "footer.colAbout": "About",
-        "footer.aboutLink1": "What is PLHP?",
-        "footer.aboutLinkStory": "Coin story",
-        "footer.aboutLink2": "How to get started",
-        "footer.colTrade": "Trade",
-        "footer.tradeLink1": "PancakeSwap",
-        "footer.tradeLink2": "DexScreener",
-        "footer.colCommunity": "Community",
-        "footer.commLink1": "Official channels",
-        "footer.commLink2": "Back to top"
-      },
-      es: {
-        "nav.tagline":
-          "Meme coin del carnero más bravo en BNB Chain.",
-        "nav.about": "Sobre",
-        "nav.story": "Historia",
-        "nav.quickstart": "Cómo empezar",
-        "nav.trade": "Trade",
-        "nav.community": "Comunidad",
-        "nav.chart": "Ver gráfico",
-        "nav.buy": "Comprar PLHP",
-
-        "hero.kicker": "PlenaHype • Meme coin en BNB Chain",
-        "hero.title":
-          "PLHP es el carnero que <span>no acepta dumps.</span>",
-        "hero.subtitle":
-          "PLHP (PlenaHype) es una meme coin simple y transparente, enfocada en la comunidad. Sin promesas locas, sin tasas ocultas: sólo memes, hype y un contrato claro en BNB Smart Chain.",
-        "hero.btnBuy": "Comprar en PancakeSwap",
-        "hero.btnTrade": "Ver trade y gráfico",
-        "hero.meta.chain": "Red: BNB Smart Chain (BEP-20)",
-        "hero.meta.supply": "Supply: 69.420.000.000 PLHP",
-        "hero.meta.tax": "Tasas: 0% buy / 0% sell",
-        "hero.badge": "Meme coin de la comunidad",
-
-        "about.title": "¿Qué es PLHP Coin?",
-        "about.lead":
-          "PLHP es una meme coin para quien disfruta del mercado cripto, los memes y un poco de caos con responsabilidad. El objetivo es ser fácil de entender y sencilla de seguir on-chain.",
-        "about.body1":
-          "Nada de funciones oscuras ni contratos imposibles de leer. El smart contract es estándar BEP-20, sin tasas de compra o venta, y la liquidez inicial fue creada públicamente en BNB Smart Chain.",
-        "about.item1":
-          "Sin promesa de retorno financiero: cripto es riesgo total.",
-        "about.item2":
-          "La comunidad ayuda a decidir próximos pasos, socios e integraciones.",
-        "about.item3":
-          "Roadmap ligero, enfocado en marca, memes y presencia en Web3.",
-        "about.tokenTitle": "Detalles del token",
-        "about.tokenText":
-          "Estos son los datos on-chain de PLHP. Verifica siempre la dirección antes de interactuar con el contrato.",
-        "about.chainBadge": "BNB Smart Chain • BEP-20",
-        "about.liqBadge": "Liquidez bloqueada (PinkLock)",
-        "about.contractLabel": "Dirección oficial del contrato:",
-        "about.bscscanLink": "Ver en BscScan",
-        "about.lockLink": "Liquidez bloqueada (PinkLock)",
-
-        "story.title": "La historia de PLHP",
-        "story.lead":
-          "La idea de PLHP nació en medio de velas totalmente rojas, timeline llena de FUD y esa sensación de “si me voy a enojar igual, que sea con mi propia moneda”.",
-        "story.body1":
-          "En lugar de crear otro token sin rostro, la propuesta fue simple: transformar al carnero – símbolo de terquedad y persistencia – en un meme vivo en BNB Chain. Un carnero que no acepta dumps fáciles y sólo confirma entrada cuando la comunidad dice “confiamos o no confiamos”.",
-        "story.body2":
-          "PLHP surgió como un experimento de transparencia: contrato claro, supply definido, liquidez inicial bloqueada y comunicación abierta en X (Twitter) y en los grupos. Nada de capturas milagrosas, hojas de cálculo mágicas ni promesas de retorno garantizado. La idea es construir poco a poco junto con quien realmente cree en el caos organizado.",
-        "story.body3":
-          "Si sale bien, la historia fue escrita por la comunidad. Si sale mal, por lo menos el carnero intentó saltar la cerca con estilo. En cualquier caso, PLHP está registrada on-chain – y quien entra pasa a ser parte oficial de este capítulo.",
-
-        "qs.title": "Guía rápida para entrar en PLHP",
-        "qs.lead":
-          "En pocos pasos ya puedes comprar PLHP en BNB Smart Chain.",
-        "qs.step1Header": "Paso 1",
-        "qs.step1Title": "Crea o configura tu wallet",
-        "qs.step1Text":
-          "Usa MetaMask, Rabby u otra wallet compatible con EVM. Agrega BNB Smart Chain y guarda muy bien tu seed phrase.",
-        "qs.step1Btn1": "Descargar MetaMask",
-        "qs.step1Btn2": "Agregar BNB Chain",
-        "qs.step2Header": "Paso 2",
-        "qs.step2Title": "Ten BNB en tu wallet",
-        "qs.step2Text":
-          "Envía BNB desde un exchange a tu wallet o compra BNB vía on-ramp. Lo usarás para cambiar por PLHP.",
-        "qs.step2Btn1": "Ir a la sección de trade",
-        "qs.step3Header": "Paso 3",
-        "qs.step3Title": "Cambia BNB por PLHP",
-        "qs.step3Text":
-          "Usa PancakeSwap (enlace oficial abajo), siempre confirmando la dirección del contrato. Luego sólo queda holdear, usar y disfrutar los memes.",
-        "qs.step3Btn1": "Abrir PancakeSwap",
-
-        "facts.title": "PLHP en pocas palabras",
-        "facts.lead":
-          "Algunos puntos rápidos para entender la propuesta del proyecto.",
-        "facts.fastTitle": "Rápida",
-        "facts.fastText":
-          "Las transacciones en BNB Chain se confirman en segundos.",
-        "facts.lockTitle": "Liquidez bloqueada",
-        "facts.lockText":
-          "Parte de la liquidez inicial fue bloqueada en contrato para dar más seguridad a la comunidad.",
-        "facts.simpleTitle": "Contrato simple",
-        "facts.simpleText":
-          "Sin tasas de compra o venta, sin funciones secretas ni mint infinito.",
-        "facts.memeTitle": "Meme first",
-        "facts.memeText":
-          "La prioridad es construir una comunidad fuerte y creativa alrededor del carnero PLHP.",
-
-        "trade.title": "Haz trade de PLHP sin salir del sitio",
-        "trade.lead":
-          "Sigue el gráfico en tiempo real con DexScreener y usa el botón oficial para abrir PancakeSwap y comprar PLHP con seguridad.",
-        "trade.chartTitle": "Gráfico en tiempo real",
-        "trade.chartText":
-          "Usa el widget de DexScreener para seguir el precio, volumen y liquidez de PLHP en tiempo real.",
-        "trade.swapTitle": "Comprar en PancakeSwap",
-        "trade.swapText":
-          "El swap se realiza directamente en PancakeSwap. Verifica siempre que la dirección del contrato sea la misma que aparece en este sitio antes de confirmar cualquier transacción.",
-        "trade.swapItem1":
-          "Abre PancakeSwap desde el botón oficial de abajo.",
-        "trade.swapItem2":
-          "Conecta tu wallet en BNB Smart Chain.",
-        "trade.swapItem3":
-          "Selecciona BNB → PLHP y revisa la dirección del contrato.",
-        "trade.swapBtn": "Abrir PancakeSwap",
-        "trade.swapNote":
-          "Tip: guarda en favoritos el enlace oficial de PLHP en PancakeSwap para evitar contratos falsos.",
-
-        "community.title": "Comunidad PLHP",
-        "community.lead":
-          "Es en las redes donde el carnero realmente aparece. Entra a los canales oficiales para seguir novedades y memes.",
-        "community.xText":
-          "Actualizaciones, memes, anuncios y todo lo importante sobre PLHP.",
-        "community.xBtn": "Abrir perfil en X",
-        "community.tgText":
-          "Grupo para hablar de mercado, ideas para el proyecto y seguir las llamadas de la comunidad.",
-        "community.tgBtn": "Entrar al Telegram",
-        "community.dcText":
-          "Espacio para quien le gustan los canales, bots e integraciones – planeado para fases futuras.",
-        "community.dcBtn": "Pronto",
-
-        "footer.tagline":
-          "Meme coin del carnero más bravo en BNB Chain.",
-        "footer.x": "X / Twitter",
-        "footer.tg": "Telegram",
-        "footer.bscscan": "BscScan",
-        "footer.lock": "PinkLock",
-        "footer.disclaimer":
-          "© <span id=\"year\"></span> PLHP Coin • PlenaHype. Ninguna promesa de retorno financiero. Cripto es riesgo total; siempre haz tu propia investigación.",
-        "footer.colAbout": "Sobre",
-        "footer.aboutLink1": "Qué es PLHP",
-        "footer.aboutLinkStory": "Historia de la moneda",
-        "footer.aboutLink2": "Cómo empezar",
-        "footer.colTrade": "Trade",
-        "footer.tradeLink1": "PancakeSwap",
-        "footer.tradeLink2": "DexScreener",
-        "footer.colCommunity": "Comunidad",
-        "footer.commLink1": "Canales oficiales",
-        "footer.commLink2": "Volver arriba"
-      }
-    };
-
-    function setLanguage(lang) {
-      const dict = translations[lang] || translations.pt;
-      document.documentElement.lang =
-        lang === "pt" ? "pt-BR" : lang === "es" ? "es" : "en";
-
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        const value = dict[key];
-        if (value !== undefined) {
-          el.innerHTML = value;
-        }
-      });
-
-      document.querySelectorAll(".btn-lang").forEach((btn) => {
-        btn.classList.toggle(
-          "active",
-          btn.getAttribute("data-lang") === lang
-        );
-      });
-
-      // garantir que o ano continue aparecendo após troca de idioma
-      updateYear();
-    }
-
-    document.querySelectorAll(".btn-lang").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        setLanguage(btn.getAttribute("data-lang"));
-      });
-    });
-
-    // idioma padrão
-    setLanguage("pt");
+    // ano automático no footer
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

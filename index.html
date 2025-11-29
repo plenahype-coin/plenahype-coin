@@ -222,7 +222,7 @@
       }
     }
 
-    /* MODO TURBO MEME – sempre ligado via class="turbo-on" no body */
+    /* MODO TURBO MEME – sempre ligado */
     body.turbo-on .animated-bg {
       background:
         radial-gradient(circle at 0% 0%, #ff9c3a 0, transparent 55%),
@@ -860,6 +860,78 @@
       width: 100%;
     }
 
+    /* TABS HORIZONTAIS */
+    .tabs-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tab-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(9, 5, 22, 0.9);
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.16s ease-out;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--primary-soft);
+      color: var(--primary-soft);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ffd44a, #ff9c3a);
+      color: #2a1900;
+      border-color: rgba(255, 212, 74, 0.9);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+      font-weight: 600;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* TRADE / GRÁFICO */
+    .trade-grid {
+      margin-top: 8px;
+    }
+
+    .swap-embed,
+    .chart-embed {
+      margin-top: 10px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .swap-embed iframe,
+    .chart-embed iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .swap-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+      opacity: 0.85;
+    }
+
     @media (max-width: 880px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
@@ -910,7 +982,7 @@
     <span>🐏</span>
   </div>
 
-  <!-- CAMADA MEME (turbo sempre ligado) -->
+  <!-- CAMADA MEME -->
   <div class="meme-layer">
     <span>🚀</span>
     <span>🔥</span>
@@ -935,22 +1007,34 @@
           </div>
         </div>
         <div class="nav-actions">
-          <a href="#story" class="btn btn-outline" data-i18n="nav.story">
+          <a
+            href="#info-tabs"
+            class="btn btn-outline"
+            data-tab-target="story"
+            data-i18n="nav.story"
+          >
             História
           </a>
-          <a href="#roadmap" class="btn btn-outline" data-i18n="nav.roadmap">
+          <a
+            href="#info-tabs"
+            class="btn btn-outline"
+            data-tab-target="roadmap"
+            data-i18n="nav.roadmap"
+          >
             Roadmap
           </a>
           <a
-            href="#tokenomics"
+            href="#info-tabs"
             class="btn btn-outline"
+            data-tab-target="tokenomics"
             data-i18n="nav.tokenomics"
           >
             Tokenomics
           </a>
           <a
-            href="#how-to-buy"
+            href="#info-tabs"
             class="btn btn-primary"
+            data-tab-target="how-to-buy"
             data-i18n="nav.howToBuy"
           >
             Como comprar
@@ -992,7 +1076,7 @@
             >
               Comprar na PancakeSwap
             </a>
-            <a class="btn btn-outline" href="#story" data-i18n="hero.btnStory">
+            <a class="btn btn-outline" href="#info-tabs" data-tab-target="story" data-i18n="hero.btnStory">
               Ler a história da PLHP
             </a>
           </div>
@@ -1087,225 +1171,286 @@
         </aside>
       </section>
 
-      <!-- SOBRE / TOKENOMICS -->
-      <section class="section" id="tokenomics">
+      <!-- TABS PRINCIPAIS -->
+      <section class="section" id="info-tabs">
         <div class="section-header">
-          <h2 class="section-title" data-i18n="about.title">
-            Sobre o projeto
+          <h2 class="section-title" data-i18n="info.title">
+            PLHP em detalhe
           </h2>
-          <p class="section-subtitle" data-i18n="about.subtitle">
-            O foco da PLHP é ser simples, divertida e transparente. Nada de
-            função escondida, scam de dev ou promessa mirabolante.
+          <p class="section-subtitle" data-i18n="info.subtitle">
+            Explore tokenomics, história, roadmap, como comprar e ainda faça o
+            trade direto no site com gráfico em tempo real.
           </p>
         </div>
-        <div class="grid-2">
+
+        <div class="tabs-nav">
+          <button class="tab-btn" data-tab="story" data-i18n="tabs.story">
+            História
+          </button>
+          <button class="tab-btn active" data-tab="tokenomics" data-i18n="tabs.tokenomics">
+            Tokenomics
+          </button>
+          <button class="tab-btn" data-tab="how-to-buy" data-i18n="tabs.how">
+            Como comprar
+          </button>
+          <button class="tab-btn" data-tab="roadmap" data-i18n="tabs.roadmap">
+            Roadmap
+          </button>
+          <button class="tab-btn" data-tab="trade" data-i18n="tabs.trade">
+            Trade & Gráfico
+          </button>
+        </div>
+
+        <!-- TAB: TOKENOMICS / SOBRE O PROJETO -->
+        <div class="tab-panel active" data-tab-content="tokenomics">
+          <div class="grid-2">
+            <div class="card">
+              <h3 data-i18n="about.whatTitle">O que é a PLHP Coin?</h3>
+              <p data-i18n="about.whatP1">
+                PLHP (PlenaHype) é uma meme coin inspirada na energia de Áries:
+                impulso, coragem, pavio curto e um pouco de caos controlado. É a
+                moeda do carneiro que vai pra cima mesmo quando o mercado quer
+                derrubar todo mundo.
+              </p>
+              <p data-i18n="about.whatP2">
+                A ideia é criar uma comunidade meme com identidade forte,
+                história própria e espaço pra quem quer entrar cedo – não só
+                olhando gráfico, mas fazendo parte da zoeira e das decisões.
+              </p>
+              <ul class="list-check">
+                <li data-i18n="about.list1">
+                  Contrato padrão, sem taxas de trade e sem funções malucas
+                  escondidas.
+                </li>
+                <li data-i18n="about.list2">
+                  Sem promessa de lucro: cripto é risco total, sempre.
+                </li>
+                <li data-i18n="about.list3">
+                  Com o tempo, a comunidade ajuda a decidir os próximos passos.
+                </li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3 data-i18n="about.tokenomicsTitle">Tokenomics</h3>
+              <p data-i18n="about.tokenomicsP">
+                A distribuição da PLHP pode evoluir com a comunidade, mas tudo
+                fica claro, on-chain e transparente.
+              </p>
+              <div class="tokenomics-grid">
+                <div class="pill" data-i18n="about.pillSupply">
+                  <strong>Supply:</strong> 69.420.000.000 PLHP
+                </div>
+                <div class="pill" data-i18n="about.pillFees">
+                  <strong>Taxas:</strong> 0% / 0%
+                </div>
+                <div class="pill" data-i18n="about.pillChain">
+                  <strong>Rede:</strong> BNB Chain
+                </div>
+                <div class="pill" data-i18n="about.pillContract">
+                  <strong>Contrato:</strong> simples e verificado
+                </div>
+                <div class="pill" data-i18n="about.pillLiquidity">
+                  <strong>Liquidez:</strong> iniciada pelo criador
+                </div>
+                <div class="pill" data-i18n="about.pillUse">
+                  <strong>Uso:</strong> memes, hype & Web3
+                </div>
+                <div class="pill" data-i18n="about.pillLock">
+                  <strong>Liquidez:</strong> travada (PinkLock)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: HISTÓRIA -->
+        <div class="tab-panel" data-tab-content="story">
           <div class="card">
-            <h3 data-i18n="about.whatTitle">O que é a PLHP Coin?</h3>
-            <p data-i18n="about.whatP1">
-              PLHP (PlenaHype) é uma meme coin inspirada na energia de Áries:
-              impulso, coragem, pavio curto e um pouco de caos controlado. É a
-              moeda do carneiro que vai pra cima mesmo quando o mercado quer
-              derrubar todo mundo.
+            <h3 class="story-title" data-i18n="story.title">
+              A história da PLHP
+            </h3>
+            <p class="story-text" data-i18n="story.p1">
+              Diz a lenda que
+              <span class="story-highlight">PLHP</span> nasceu num daqueles dias
+              totalmente vermelhos, mercado derretendo, notícia só de FUD e um
+              ariano degen olhando pra tela pensando:
+              <span class="story-highlight"
+                >“se é pra passar raiva, que seja com a minha própria
+                moeda.”</span
+              >
             </p>
-            <p data-i18n="about.whatP2">
-              A ideia é criar uma comunidade meme com identidade forte,
-              história própria e espaço pra quem quer entrar cedo – não só
-              olhando gráfico, mas fazendo parte da zoeira e das decisões.
+            <p class="story-text" data-i18n="story.p2">
+              Em vez de só reclamar do Bitcoin, do ETH e das moedas antigas, a
+              ideia foi criar um carneiro com a cara da comunidade: meio meme,
+              meio sério, 100% transparente. Nada de taxa escondida, nada de
+              função mágica no contrato, nada de “confia no dev e fecha o
+              olho”.
             </p>
-            <ul class="list-check">
-              <li data-i18n="about.list1">
-                Contrato padrão, sem taxas de trade e sem funções malucas
-                escondidas.
-              </li>
-              <li data-i18n="about.list2">
-                Sem promessa de lucro: cripto é risco total, sempre.
-              </li>
-              <li data-i18n="about.list3">
-                Com o tempo, a comunidade ajuda a decidir os próximos passos.
-              </li>
-            </ul>
+            <p class="story-text" data-i18n="story.p3">
+              A PLHP foi lançada na
+              <span class="story-highlight">BNB Chain</span> com um supply de
+              <span class="story-highlight">69.420.000.000</span> tokens –
+              porque, sim, número também é meme. Liquidez inicial honesta,
+              contrato público e a promessa mais verdadeira da cripto:
+              <span class="story-highlight"
+                >“isso aqui é zoeira séria, mas sem garantia
+                nenhuma.”</span
+              >
+            </p>
+            <p class="story-text" data-i18n="story.p4">
+              A partir daí, o plano é simples: deixar o carneiro correr solto
+              pela blockchain, juntar a galera que gosta de rir, construir aos
+              poucos, testar ideias Web3 e ver até onde a PLHP consegue ir. Se
+              der bom, todo mundo estava aqui desde o começo. Se não der, pelo
+              menos a história vai ser boa pra contar.
+            </p>
           </div>
+        </div>
+
+        <!-- TAB: COMO COMPRAR -->
+        <div class="tab-panel" data-tab-content="how-to-buy">
           <div class="card">
-            <h3 data-i18n="about.tokenomicsTitle">Tokenomics</h3>
-            <p data-i18n="about.tokenomicsP">
-              A distribuição da PLHP pode evoluir com a comunidade, mas tudo
-              fica claro, on-chain e transparente.
+            <h3 data-i18n="how.title">Como comprar PLHP</h3>
+            <p class="section-subtitle" data-i18n="how.subtitle">
+              Se você já está na BNB Chain, entrar pro rebanho é simples. Em
+              poucos cliques você troca BNB por PLHP.
             </p>
-            <div class="tokenomics-grid">
-              <div class="pill" data-i18n="about.pillSupply">
-                <strong>Supply:</strong> 69.420.000.000 PLHP
+            <div class="howto-steps">
+              <div>
+                <div class="step-title">
+                  <span class="step-number">1</span>
+                  <span data-i18n="how.step1Title">Configure a carteira</span>
+                </div>
+                <p class="step-text" data-i18n="how.step1Text">
+                  Instale a MetaMask ou outra carteira compatível, adicione a
+                  <strong>BNB Smart Chain</strong> e envie BNB para ela.
+                </p>
               </div>
-              <div class="pill" data-i18n="about.pillFees">
-                <strong>Taxas:</strong> 0% / 0%
+              <div>
+                <div class="step-title">
+                  <span class="step-number">2</span>
+                  <span data-i18n="how.step2Title">Acesse a PancakeSwap</span>
+                </div>
+                <p class="step-text" data-i18n="how.step2Text">
+                  Abra o <strong>pancakeswap.finance</strong>, conecte sua
+                  carteira e vá em Swap. Se o PLHP não aparecer, cole o
+                  contrato oficial e importe o token.
+                </p>
               </div>
-              <div class="pill" data-i18n="about.pillChain">
-                <strong>Rede:</strong> BNB Chain
+              <div>
+                <div class="step-title">
+                  <span class="step-number">3</span>
+                  <span data-i18n="how.step3Title">Troque BNB por PLHP</span>
+                </div>
+                <p class="step-text" data-i18n="how.step3Text">
+                  Escolha quanto BNB quer usar, confirme o swap e aguarde a
+                  transação. Pronto – agora você faz parte do rebanho PLHP.
+                </p>
               </div>
-              <div class="pill" data-i18n="about.pillContract">
-                <strong>Contrato:</strong> simples e verificado
+            </div>
+
+            <div class="contract-box" id="contract">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 4px;
+                "
+              >
+                <span data-i18n="how.contractLabel">
+                  Endereço oficial do contrato:
+                </span>
+                <span class="badge-chain" data-i18n="how.contractBadge">
+                  BNB Smart Chain • BEP-20
+                </span>
               </div>
-              <div class="pill" data-i18n="about.pillLiquidity">
-                <strong>Liquidez:</strong> iniciada pelo criador
+              <code>0x69575D9877822277539355ae8B97b5D5dee1313F</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: ROADMAP -->
+        <div class="tab-panel" data-tab-content="roadmap">
+          <div class="card">
+            <h3 data-i18n="roadmap.title">Roadmap</h3>
+            <p class="section-subtitle" data-i18n="roadmap.subtitle">
+              Nada de promessa de Lambo – só passos realistas pra construir algo
+              divertido e, com sorte, memorável.
+            </p>
+            <div class="roadmap-grid">
+              <div class="milestone">
+                <h4 data-i18n="roadmap.phase1Title">Fase 1 – Nascimento</h4>
+                <p data-i18n="roadmap.phase1Text">
+                  Deploy do contrato, criação da liquidez inicial, site no ar e
+                  primeiras compras.
+                </p>
               </div>
-              <div class="pill" data-i18n="about.pillUse">
-                <strong>Uso:</strong> memes, hype & Web3
+              <div class="milestone">
+                <h4 data-i18n="roadmap.phase2Title">Fase 2 – Comunidade</h4>
+                <p data-i18n="roadmap.phase2Text">
+                  Twitter, Telegram, memes, parcerias orgânicas e holders
+                  iniciais.
+                </p>
               </div>
-              <div class="pill" data-i18n="about.pillLock">
-                <strong>Liquidez:</strong> travada (PinkLock)
+              <div class="milestone">
+                <h4 data-i18n="roadmap.phase3Title">Fase 3 – Crescimento</h4>
+                <p data-i18n="roadmap.phase3Text">
+                  Aplicações para listagem em agregadores, bots de preço e
+                  integrações Web3.
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- HISTÓRIA DA PLHP -->
-      <section class="section" id="story">
-        <div class="section-header">
-          <h2 class="section-title" data-i18n="story.title">
-            A história da PLHP
-          </h2>
-          <p class="section-subtitle" data-i18n="story.subtitle">
-            Toda boa meme coin nasce daquele mix de tilt, risada e “e se a
-            gente realmente fizer isso?”.
-          </p>
-        </div>
-        <div class="card">
-          <p class="story-text" data-i18n="story.p1">
-            Diz a lenda que
-            <span class="story-highlight">PLHP</span> nasceu num daqueles dias
-            totalmente vermelhos, mercado derretendo, notícia só de FUD e um
-            ariano degen olhando pra tela pensando:
-            <span class="story-highlight"
-              >“se é pra passar raiva, que seja com a minha própria
-              moeda.”</span
-            >
-          </p>
-          <p class="story-text" data-i18n="story.p2">
-            Em vez de só reclamar do Bitcoin, do ETH e das moedas antigas, a
-            ideia foi criar um carneiro com a cara da comunidade: meio meme,
-            meio sério, 100% transparente. Nada de taxa escondida, nada de
-            função mágica no contrato, nada de “confia no dev e fecha o
-            olho”.
-          </p>
-          <p class="story-text" data-i18n="story.p3">
-            A PLHP foi lançada na
-            <span class="story-highlight">BNB Chain</span> com um supply de
-            <span class="story-highlight">69.420.000.000</span> tokens – 
-            porque, sim, número também é meme. Liquidez inicial honesta,
-            contrato público e a promessa mais verdadeira da cripto:
-            <span class="story-highlight"
-              >“isso aqui é zoeira séria, mas sem garantia
-              nenhuma.”</span
-            >
-          </p>
-          <p class="story-text" data-i18n="story.p4">
-            A partir daí, o plano é simples: deixar o carneiro correr solto
-            pela blockchain, juntar a galera que gosta de rir, construir aos
-            poucos, testar ideias Web3 e ver até onde a PLHP consegue ir. Se
-            der bom, todo mundo estava aqui desde o começo. Se não der, pelo
-            menos a história vai ser boa pra contar.
-          </p>
-        </div>
-      </section>
-
-      <!-- COMO COMPRAR -->
-      <section class="section" id="how-to-buy">
-        <div class="section-header">
-          <h2 class="section-title" data-i18n="how.title">
-            Como comprar PLHP
-          </h2>
-          <p class="section-subtitle" data-i18n="how.subtitle">
-            Se você já está na BNB Chain, entrar pro rebanho é simples. Em
-            poucos cliques você troca BNB por PLHP.
-          </p>
-        </div>
-        <div class="card">
-          <div class="howto-steps">
-            <div>
-              <div class="step-title">
-                <span class="step-number">1</span>
-                <span data-i18n="how.step1Title">Configure a carteira</span>
+        <!-- TAB: TRADE & GRÁFICO -->
+        <div class="tab-panel" data-tab-content="trade">
+          <div class="grid-2 trade-grid">
+            <div class="card">
+              <h3 data-i18n="trade.swapTitle">Trade direto no site</h3>
+              <p data-i18n="trade.swapDesc">
+                Conecte sua carteira e troque BNB por PLHP sem sair da página.
+                O swap usa a própria interface da PancakeSwap dentro do site.
+              </p>
+              <div class="swap-embed">
+                <!-- Alguns navegadores podem bloquear iframe de dapps.
+                     Se não carregar, o botão abaixo abre a PancakeSwap. -->
+                <iframe
+                  src="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
+                  height="520"
+                  loading="lazy"
+                  allow="clipboard-read; clipboard-write; web-share; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                ></iframe>
               </div>
-              <p class="step-text" data-i18n="how.step1Text">
-                Instale a MetaMask ou outra carteira compatível, adicione a
-                <strong>BNB Smart Chain</strong> e envie BNB para ela.
+              <p class="swap-note" data-i18n="trade.swapNote">
+                Se o swap não carregar no navegador (por bloqueio de iframe),
+                use o botão abaixo para abrir direto na PancakeSwap.
               </p>
+              <a
+                class="btn btn-primary"
+                href="https://pancakeswap.finance/swap?outputCurrency=0x69575D9877822277539355ae8B97b5D5dee1313F&chainId=56"
+                target="_blank"
+                style="margin-top: 10px;"
+                data-i18n="trade.openPancake"
+              >
+                Abrir na PancakeSwap
+              </a>
             </div>
-            <div>
-              <div class="step-title">
-                <span class="step-number">2</span>
-                <span data-i18n="how.step2Title">Acesse a PancakeSwap</span>
-              </div>
-              <p class="step-text" data-i18n="how.step2Text">
-                Abra o <strong>pancakeswap.finance</strong>, conecte sua
-                carteira e vá em Swap. Se o PLHP não aparecer, cole o
-                contrato oficial e importe o token.
-              </p>
-            </div>
-            <div>
-              <div class="step-title">
-                <span class="step-number">3</span>
-                <span data-i18n="how.step3Title">Troque BNB por PLHP</span>
-              </div>
-              <p class="step-text" data-i18n="how.step3Text">
-                Escolha quanto BNB quer usar, confirme o swap e aguarde a
-                transação. Pronto – agora você faz parte do rebanho PLHP.
-              </p>
-            </div>
-          </div>
 
-          <div class="contract-box" id="contract">
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 4px;
-              "
-            >
-              <span data-i18n="how.contractLabel">
-                Endereço oficial do contrato:
-              </span>
-              <span class="badge-chain" data-i18n="how.contractBadge">
-                BNB Smart Chain • BEP-20
-              </span>
-            </div>
-            <code>0x69575D9877822277539355ae8B97b5D5dee1313F</code>
-          </div>
-        </div>
-      </section>
-
-      <!-- ROADMAP -->
-      <section class="section" id="roadmap">
-        <div class="section-header">
-          <h2 class="section-title" data-i18n="roadmap.title">Roadmap</h2>
-          <p class="section-subtitle" data-i18n="roadmap.subtitle">
-            Nada de promessa de Lambo – só passos realistas pra construir algo
-            divertido e, com sorte, memorável.
-          </p>
-        </div>
-        <div class="card">
-          <div class="roadmap-grid">
-            <div class="milestone">
-              <h4 data-i18n="roadmap.phase1Title">Fase 1 – Nascimento</h4>
-              <p data-i18n="roadmap.phase1Text">
-                Deploy do contrato, criação da liquidez inicial, site no ar e
-                primeiras compras.
+            <div class="card">
+              <h3 data-i18n="trade.chartTitle">Gráfico em tempo real</h3>
+              <p data-i18n="trade.chartDesc">
+                Acompanhe preço, volume e liquidez da PLHP direto pelo widget
+                oficial da DexScreener.
               </p>
-            </div>
-            <div class="milestone">
-              <h4 data-i18n="roadmap.phase2Title">Fase 2 – Comunidade</h4>
-              <p data-i18n="roadmap.phase2Text">
-                Twitter, Telegram, memes, parcerias orgânicas e holders
-                iniciais.
-              </p>
-            </div>
-            <div class="milestone">
-              <h4 data-i18n="roadmap.phase3Title">Fase 3 – Crescimento</h4>
-              <p data-i18n="roadmap.phase3Text">
-                Aplicações para listagem em agregadores, bots de preço e
-                integrações Web3.
-              </p>
+              <div class="chart-embed">
+                <iframe
+                  src="https://dexscreener.com/bsc/0x69575D9877822277539355ae8b97b5d5dee1313f?embed=1&theme=dark"
+                  height="520"
+                  loading="lazy"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -1378,7 +1523,7 @@
     // YEAR
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // TRANSLATIONS
+    // TRANSLATIONS ORIGINAIS
     const translations = {
       en: {
         "nav.tagline": "PlenaHype • Meme coin on BNB Chain",
@@ -1431,13 +1576,14 @@
         "about.pillFees": "<strong>Fees:</strong> 0% / 0%",
         "about.pillChain": "<strong>Chain:</strong> BNB Chain",
         "about.pillContract": "<strong>Contract:</strong> simple & verified",
-        "about.pillLiquidity": "<strong>Liquidity:</strong> started by creator",
+        "about.pillLiquidity":
+          "<strong>Liquidity:</strong> started by creator",
         "about.pillUse": "<strong>Use:</strong> memes, hype & Web3",
         "about.pillLock": "<strong>Liquidity:</strong> locked (PinkLock)",
 
         "story.title": "The PLHP story",
         "story.subtitle":
-          "Every good meme coin is born from that mix of tilt, laughter and “what if we actually launch this?”",
+          "Every good meme coin is born from that mix of tilt, laughter and “what if we actually launch this?”.",
         "story.p1":
           'Legend says <span class="story-highlight">PLHP</span> was born on one of those red days when the market was bleeding, news was pure FUD and an Aries degen stared at the screen and thought: <span class="story-highlight">“If I’m going to be mad anyway, I’d rather be mad at my own coin.”</span>',
         "story.p2":
@@ -1706,6 +1852,67 @@
       }
     };
 
+    /* NOVAS CHAVES PARA AS ABAS E TRADE */
+    Object.assign(translations.en, {
+      "tabs.story": "Story",
+      "tabs.tokenomics": "Tokenomics",
+      "tabs.how": "How to buy",
+      "tabs.roadmap": "Roadmap",
+      "tabs.trade": "Trade & chart",
+      "info.title": "PLHP in detail",
+      "info.subtitle":
+        "Explore tokenomics, story, roadmap, how to buy and trade PLHP directly on this page with a live chart.",
+      "trade.swapTitle": "Trade directly on the site",
+      "trade.swapDesc":
+        "Connect your wallet and swap BNB for PLHP without leaving the page. The swap uses the PancakeSwap interface inside the site.",
+      "trade.swapNote":
+        "If the swap doesn’t load in your browser (iframe blocked), use the button below to open PancakeSwap in a new tab.",
+      "trade.openPancake": "Open on PancakeSwap",
+      "trade.chartTitle": "Live chart",
+      "trade.chartDesc":
+        "Track PLHP price, volume and liquidity using the official DexScreener widget."
+    });
+
+    Object.assign(translations.pt, {
+      "tabs.story": "História",
+      "tabs.tokenomics": "Tokenomics",
+      "tabs.how": "Como comprar",
+      "tabs.roadmap": "Roadmap",
+      "tabs.trade": "Trade & Gráfico",
+      "info.title": "PLHP em detalhe",
+      "info.subtitle":
+        "Explore tokenomics, história, roadmap, como comprar e faça o trade direto no site com gráfico em tempo real.",
+      "trade.swapTitle": "Trade direto no site",
+      "trade.swapDesc":
+        "Conecte sua carteira e troque BNB por PLHP sem sair da página. O swap usa a própria interface da PancakeSwap dentro do site.",
+      "trade.swapNote":
+        "Se o swap não carregar no navegador (bloqueio de iframe), use o botão abaixo para abrir direto na PancakeSwap.",
+      "trade.openPancake": "Abrir na PancakeSwap",
+      "trade.chartTitle": "Gráfico em tempo real",
+      "trade.chartDesc":
+        "Acompanhe preço, volume e liquidez da PLHP direto pelo widget oficial da DexScreener."
+    });
+
+    Object.assign(translations.es, {
+      "tabs.story": "Historia",
+      "tabs.tokenomics": "Tokenomics",
+      "tabs.how": "Cómo comprar",
+      "tabs.roadmap": "Roadmap",
+      "tabs.trade": "Trade & Gráfico",
+      "info.title": "PLHP en detalle",
+      "info.subtitle":
+        "Explora tokenomics, historia, roadmap, cómo comprar y haz el trade directamente en el sitio con gráfico en tiempo real.",
+      "trade.swapTitle": "Trade directo en el sitio",
+      "trade.swapDesc":
+        "Conecta tu wallet y cambia BNB por PLHP sin salir de la página. El swap usa la interfaz de PancakeSwap dentro del sitio.",
+      "trade.swapNote":
+        "Si el swap no se carga en tu navegador (iframe bloqueado), usa el botón de abajo para abrir PancakeSwap.",
+      "trade.openPancake": "Abrir en PancakeSwap",
+      "trade.chartTitle": "Gráfico en tiempo real",
+      "trade.chartDesc":
+        "Sigue el precio, volumen y liquidez de PLHP con el widget oficial de DexScreener."
+    });
+
     function setLanguage(lang) {
       const dict = translations[lang] || translations.pt;
       document.documentElement.lang =
@@ -1737,10 +1944,55 @@
       });
     });
 
-    // Inicializa em português
-    setLanguage("pt");
+    // ABAS (TABS)
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabPanels = document.querySelectorAll(".tab-panel");
 
-    // PREÇOS (usando endpoint estável de search do DexScreener)
+    function activateTab(tab) {
+      tabButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.tab === tab);
+      });
+      tabPanels.forEach((panel) => {
+        panel.classList.toggle(
+          "active",
+          panel.getAttribute("data-tab-content") === tab
+        );
+      });
+
+      const section = document.getElementById("info-tabs");
+      if (section) {
+        const offset = 80;
+        const top =
+          section.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        activateTab(btn.dataset.tab);
+      });
+    });
+
+    document.querySelectorAll("[data-tab-target]").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        const tab = el.getAttribute("data-tab-target");
+        activateTab(tab);
+      });
+    });
+
+    // Define linguagem padrão e aba padrão
+    setLanguage("pt");
+    const initialHash = window.location.hash.replace("#", "");
+    const allowedTabs = ["story", "tokenomics", "how-to-buy", "roadmap", "trade"];
+    if (allowedTabs.includes(initialHash)) {
+      activateTab(initialHash);
+    } else {
+      activateTab("tokenomics");
+    }
+
+    // PREÇOS (DexScreener)
     async function fetchPLHPPrice() {
       const apiUrl =
         "https://api.dexscreener.com/latest/dex/search?q=0x69575D9877822277539355ae8B97b5D5dee1313F";

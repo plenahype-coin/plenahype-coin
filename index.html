@@ -542,7 +542,7 @@
       align-items: center;
       gap: 6px;
       color: var(--muted);
-      white-space: nowrap;   /* NÃO DEIXA QUEBRAR EM 3 LINHAS */
+      white-space: nowrap;
     }
 
     .hero-chip span {
@@ -857,6 +857,7 @@
     .twitter-card .twitter-timeline {
       display: block;
       width: 100%;
+      min-height: 550px;
     }
 
     @media (max-width: 880px) {
@@ -1321,14 +1322,13 @@
         <div class="card twitter-card">
           <a
             class="twitter-timeline"
+            href="https://twitter.com/PlenaHype_Coin?ref_src=twsrc%5Etfw"
             data-theme="dark"
-            data-width="100%"
             data-height="550"
             data-chrome="noheader nofooter transparent"
-            href="https://twitter.com/PlenaHype_Coin"
             data-i18n="twitter.linkLabel"
           >
-            Tweets por @PlenaHype_Coin
+            Tweets by @PlenaHype_Coin
           </a>
         </div>
       </section>
@@ -1550,10 +1550,13 @@
           "Instale a MetaMask ou outra carteira compatível, adicione a <strong>BNB Smart Chain</strong> e envie BNB para ela.",
         "how.step2Title": "Acesse a PancakeSwap",
         "how.step2Text":
-          "Abra o <strong>pancakeswap.finance</strong>, conecte sua carteira e vá em Swap. Se o PLHP não aparecer, cole o contrato oficial e importe o token.",
+          "Abra o <strong>pancakeswap.finance</strong>, conecte sua
+              carteira e vá em Swap. Se o PLHP não aparecer, cole o contrato
+              oficial e importe o token.",
         "how.step3Title": "Troque BNB por PLHP",
         "how.step3Text":
-          "Escolha quanto BNB quer usar, confirme o swap e aguarde a transação. Pronto – agora você faz parte do rebanho PLHP.",
+          "Escolha quanto BNB quer usar, confirme o swap e aguarde a
+              transação. Pronto – agora você faz parte do rebanho PLHP.",
         "how.contractLabel": "Endereço oficial do contrato:",
         "how.contractBadge": "BNB Smart Chain • BEP-20",
 

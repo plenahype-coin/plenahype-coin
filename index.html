@@ -536,15 +536,16 @@
       background: rgba(5, 3, 9, 0.85);
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 4px 10px;
+      padding: 4px 12px;
       font-size: 0.78rem;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       color: var(--muted);
+      white-space: nowrap;
     }
 
-    .hero-chip span {
+    .hero-chip-dot {
       width: 9px;
       height: 9px;
       border-radius: 50%;
@@ -1021,7 +1022,7 @@
 
         <aside class="hero-card">
           <div class="hero-chip">
-            <span></span>
+            <span class="hero-chip-dot"></span>
             <span data-i18n="hero.poolChip">Pool inicial criada</span>
           </div>
           <div class="hero-logo-wrap">
@@ -1300,11 +1301,12 @@
             class="twitter-timeline"
             data-theme="dark"
             data-height="550"
+            data-width="100%"
             data-chrome="transparent nofooter"
-            href="https://x.com/PlenaHype_Coin"
+            href="https://twitter.com/PlenaHype_Coin"
             data-i18n="twitter.linkLabel"
           >
-            Tweets by @PlenaHype_Coin
+            Tweets por @PlenaHype_Coin
           </a>
         </div>
       </section>

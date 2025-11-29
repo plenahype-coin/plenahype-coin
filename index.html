@@ -542,15 +542,22 @@
       align-items: center;
       gap: 6px;
       color: var(--muted);
-      white-space: nowrap;
+      white-space: nowrap;   /* NÃO DEIXA QUEBRAR EM 3 LINHAS */
     }
 
-    .hero-chip-dot {
+    .hero-chip span {
       width: 9px;
       height: 9px;
       border-radius: 50%;
       background: #0bff7b;
       box-shadow: 0 0 12px rgba(11, 255, 123, 0.9);
+    }
+
+    .hero-chip span[data-i18n] {
+      width: auto;
+      height: auto;
+      background: none;
+      box-shadow: none;
     }
 
     .hero-stats {
@@ -841,6 +848,17 @@
       opacity: 0.7;
     }
 
+    /* TWITTER CARD */
+    .twitter-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .twitter-card .twitter-timeline {
+      display: block;
+      width: 100%;
+    }
+
     @media (max-width: 880px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
@@ -871,6 +889,10 @@
       }
       footer {
         padding-inline: 18px;
+      }
+      .hero-chip {
+        font-size: 0.7rem;
+        padding-inline: 8px;
       }
     }
   </style>
@@ -1022,7 +1044,7 @@
 
         <aside class="hero-card">
           <div class="hero-chip">
-            <span class="hero-chip-dot"></span>
+            <span></span>
             <span data-i18n="hero.poolChip">Pool inicial criada</span>
           </div>
           <div class="hero-logo-wrap">
@@ -1296,13 +1318,13 @@
             direto do nosso perfil oficial no X (Twitter).
           </p>
         </div>
-        <div class="card">
+        <div class="card twitter-card">
           <a
             class="twitter-timeline"
             data-theme="dark"
-            data-height="550"
             data-width="100%"
-            data-chrome="transparent nofooter"
+            data-height="550"
+            data-chrome="noheader nofooter transparent"
             href="https://twitter.com/PlenaHype_Coin"
             data-i18n="twitter.linkLabel"
           >
@@ -1684,7 +1706,6 @@
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
       });
 
-      // Ajusta texto de erro/atualização do widget se já tiver sido setado
       const updated = document.getElementById("price-updated");
       if (updated && updated.dataset.error === "1") {
         if (lang === "pt") updated.textContent = "Falha ao atualizar";
